@@ -1,1 +1,1 @@
-# Rent_A_Lux
+# Rent-A-Lux
