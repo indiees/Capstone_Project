@@ -1,23 +1,55 @@
 package controller;
 
-import io.javalin.http.Handler;
+import controller.util.Status;
 import io.javalin.http.Context;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 public class UserControllerTest {
-    private Context ctx = mock(Context.class);
+    private Context ctx;
 
-    //TODO
-    //NOT WORKING
+    private static final String VALIDUSER = "test123";
+    private static final String VALIDPASS = "test321";
+    private static final String INVALIDUSER = "-1";
+    private static final String INVALIDPASS = "-1";
+
+    @BeforeEach
+    void setup() {
+        ctx = mock(Context.class);
+    }
+
     @Test
-    void testCheckLoginHandler() throws Exception {
-        when(ctx.formParam("username")).thenReturn("test123");
-        when(ctx.formParam("password")).thenReturn("test321");
-        Handler checkLogin = UserController.checkLogin;
-        checkLogin.handle(ctx);
+    void testValidLoginCredentials() throws Exception {
+        // Set up the mock context with valid credentials
+        when(ctx.formParam("username")).thenReturn(VALIDUSER);
+        when(ctx.formParam("password")).thenReturn(VALIDPASS);
+        UserController.checkLogin.handle(ctx);
+        // Use argumentCaptor to get the status
+        ArgumentCaptor<Status> statusCaptor = ArgumentCaptor.forClass(Status.class);
+        // Use verify to capture the status passed to ctx.json()
+        verify(ctx).json(statusCaptor.capture());
+        // Check the status
+        Assertions.assertEquals("success", statusCaptor.getValue().status);
+    }
+
+    @Test
+    void testInvalidLoginCredentials() throws Exception {
+        // Set up the mock context with invalid credentials
+        when(ctx.formParam("username")).thenReturn(INVALIDUSER);
+        when(ctx.formParam("password")).thenReturn(INVALIDPASS);
+        UserController.checkLogin.handle(ctx);
+        // Use argumentCaptor to get the status
+        ArgumentCaptor<Status> statusCaptor = ArgumentCaptor.forClass(Status.class);
+        // Use verify to capture the status passed to ctx.json()
+        verify(ctx).json(statusCaptor.capture());
+        // Check the status
+        Assertions.assertEquals("failed", statusCaptor.getValue().status);
     }
 }
