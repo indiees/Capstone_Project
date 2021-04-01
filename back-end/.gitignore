@@ -24,3 +24,5 @@ hs_err_pid*
 
 # Configuration for intellij
 java/.idea/
+
+*.iml
