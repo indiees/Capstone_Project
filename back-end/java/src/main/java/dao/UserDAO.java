@@ -15,7 +15,7 @@ public class UserDAO {
         //Returns 2 if employee, 3 if admin, 0 if none (in future 1 will be customer)
         try {
             // Here you prepare your sql statement
-            String sql = "SELECT  `email`, `password` FROM rent-a-lux.Users WHERE `email` = '" + email + "';";
+            String sql = "SELECT  `email`, `password` FROM `rent-a-lux`.Users WHERE `email` = '" + email + "';";
             System.out.println(sql);
             // Execute the query
             Connection connection = DatabaseUtils.connectToDatabase();
@@ -49,7 +49,7 @@ public class UserDAO {
 
         try {
             // Here you prepare your sql statement
-            String sql = "SELECT * FROM rent-a-lux.Users WHERE email = '" + email + "';";
+            String sql = "SELECT * FROM `rent-a-lux`.Users WHERE email = '" + email + "';";
             System.out.println(sql);
             // Execute the query
             Connection connection = DatabaseUtils.connectToDatabase();
@@ -59,7 +59,8 @@ public class UserDAO {
             // If you have multiple results, you do a while
             if(result.next()) {
                 // 2) Add it to the list we have prepared
-                users.add(new User());
+                users.add(new User(result.getInt("user_id"),result.getString("email"),result.getString("password"),
+                                    result.getString("first_name"),result.getString("last_name")));
             }
 
             // Close it
@@ -74,4 +75,5 @@ public class UserDAO {
         // If we are here, something bad happened
         return null;
     }
+
 }

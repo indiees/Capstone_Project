@@ -8,7 +8,7 @@ import model.User;
 
 public class UserController {
     public static Handler checkLogin = ctx ->{
-        String str_email = ctx.formParam("username");
+        String str_email = ctx.formParam("email");
         if (str_email==null) {
             ctx.json(new Status("No 'email' Provided"));
             return;
