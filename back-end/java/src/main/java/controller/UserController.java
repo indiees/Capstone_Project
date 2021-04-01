@@ -13,6 +13,10 @@ public class UserController {
             ctx.json(new Status("No 'email' Provided"));
             return;
         }
+        if (UserDAO.emailInUse(str_email)){
+            ctx.json(new Status("`email` is allready in use, please user another"));
+            return;
+        }
         String str_password = ctx.formParam("password");
         if (str_password==null) {
             ctx.json(new Status("No 'password' Provided"));
@@ -28,6 +32,8 @@ public class UserController {
             ctx.json(new Status("No 'last_name' Provided"));
             return;
         }
+        UserDAO.createUser(str_email, str_password, str_first_name, str_last_name);
+        ctx.json(new Status());
     };
 
     public static Handler checkLogin = ctx ->{

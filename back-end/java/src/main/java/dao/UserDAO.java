@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-    public static User createUser(int business_id, int type, String first_name,
-                                      String last_name, String email, String phone, String password) {
+    public static User createUser(String email, String password,String first_name,String last_name) {
         User user = new User(email, password, first_name, last_name);
         String update_sql;
         update_sql = "INSERT INTO `rent-a-lux`.`Users` ( `email`, `password`, `first_name`,`last_name`) " +
@@ -37,7 +36,6 @@ public class UserDAO {
         try {
             // Here you prepare your sql statement
             String sql = "SELECT  `email`, `password` FROM `rent-a-lux`.Users WHERE `email` = '" + email + "';";
-            System.out.println(sql);
             // Execute the query
             Connection connection = DatabaseUtils.connectToDatabase();
             Statement statement = connection.createStatement();
@@ -71,7 +69,6 @@ public class UserDAO {
         try {
             // Here you prepare your sql statement
             String sql = "SELECT * FROM `rent-a-lux`.Users WHERE email = '" + email + "';";
-            System.out.println(sql);
             // Execute the query
             Connection connection = DatabaseUtils.connectToDatabase();
             Statement statement = connection.createStatement();
@@ -95,6 +92,29 @@ public class UserDAO {
         }
         // If we are here, something bad happened
         return null;
+    }
+    public static boolean emailInUse(String email) {
+        try {
+            // Here you prepare your sql statement
+            String sql = "SELECT `email` FROM `rent-a-lux`.Users WHERE `email` = '" + email + "';";
+
+            // Execute the query
+            Connection connection = DatabaseUtils.connectToDatabase();
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            // If there is a result, that means that the email matches.
+            if(result.next()) {
+                return true;
+            }
+
+            // Close it
+            DatabaseUtils.closeConnection(connection);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }
