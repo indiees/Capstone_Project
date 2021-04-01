@@ -2,13 +2,15 @@ package controller;
 
 
 import controller.util.Status;
+import dao.util.UserDAO;
 import io.javalin.http.Handler;
+import model.User;
 
 public class UserController {
     public static Handler checkLogin = ctx ->{
-        String str_username = ctx.formParam("username");
-        if (str_username==null) {
-            ctx.json(new Status("No 'username' Provided"));
+        String str_email = ctx.formParam("username");
+        if (str_email==null) {
+            ctx.json(new Status("No 'email' Provided"));
             return;
         }
         String str_password = ctx.formParam("password");
@@ -16,13 +18,14 @@ public class UserController {
             ctx.json(new Status("No 'password' Provided"));
             return;
         }
-        //For now the username and password are hard coded, but we will integrate this with database at a later date
-        if (str_username.equals("test123") && str_password.equals("test321")){
-            ctx.json(new Status("success", "Login success"));
+        User user = UserDAO.checkLogin(str_email, str_password);
+        if (user!=null){
+            ctx.json(new Status(user));
         }
         else{
             ctx.json(new Status("Incorrect username or password"));
         }
+        return;
 
     };
 }
