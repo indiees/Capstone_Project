@@ -2,7 +2,7 @@ package controller;
 
 
 import controller.util.Status;
-import dao.util.UserDAO;
+import dao.UserDAO;
 import io.javalin.http.Handler;
 import model.User;
 
