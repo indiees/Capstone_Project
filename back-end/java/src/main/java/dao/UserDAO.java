@@ -11,6 +11,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
+    public static User createUser(int business_id, int type, String first_name,
+                                      String last_name, String email, String phone, String password) {
+        User user = new User(email, password, first_name, last_name);
+        String update_sql;
+        update_sql = "INSERT INTO `rent-a-lux`.`Users` ( `email`, `password`, `first_name`,`last_name`) " +
+                "VALUES('" + email + "' ,'" + Utils.generateHashPassword(password)+ "' ,'" + first_name + "','" +
+                last_name + "');";
+
+        try {
+            // Execute the query
+            Connection connection = DatabaseUtils.connectToDatabase();
+            Statement statement = connection.createStatement();
+            statement.execute(update_sql);
+            // Close it
+            DatabaseUtils.closeConnection(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
     public static User checkLogin(String email, String password) {
         //Returns 2 if employee, 3 if admin, 0 if none (in future 1 will be customer)
         try {
