@@ -13,7 +13,7 @@ function index(req,res){
 
 app.use("/scripts",express.static("scripts"));
 app.use("/style",express.static("style"));
-
+app.use(express.static("public"));
 app.listen(port, startServer);
 function startServer(port){
     console.log("Server is running")
