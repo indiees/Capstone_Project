@@ -6,6 +6,8 @@ import dao.UserDAO;
 import io.javalin.http.Handler;
 import model.User;
 
+import java.util.Objects;
+
 public class UserController {
     public static Handler createUser = ctx ->{
         String str_email = ctx.formParam("email");
@@ -32,7 +34,12 @@ public class UserController {
             ctx.json(new Status("No 'last_name' Provided"));
             return;
         }
-        UserDAO.createUser(str_email, str_password, str_first_name, str_last_name);
+        User user = UserDAO.createUser(str_email, str_password, str_first_name, str_last_name);
+        System.out.println(user);
+        if (user == null){
+            ctx.json(new Status("Cannot create account (Likely a database connection issue)"));
+            return;
+        }
         ctx.json(new Status());
     };
 

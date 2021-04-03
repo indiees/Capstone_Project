@@ -32,4 +32,8 @@ public class User {
     public int getUser_id(){
        return this.user_id;
     }
+    @Override
+    public String toString(){
+        return this.first_name + " " + this.last_name + " Owned by " + this.email;
+    }
 }

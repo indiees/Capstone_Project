@@ -23,7 +23,7 @@ public class DatabaseUtils {
 
         try {
             // Prepare the information to connect (hard-coded)
-            String url = "jdbc:mysql://104.197.53.18";
+            String url = "jdbc:mysql://theduggan.online";
             String user = "root";
             String password = "password" ;
 
