@@ -90,3 +90,7 @@ span{
 #register{
     left: 450px;
 }
+.errormsg{
+    color: red;
+    display:block;
+}

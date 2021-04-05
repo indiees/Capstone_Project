@@ -23,8 +23,8 @@ public class DatabaseUtils {
 
         try {
             // Prepare the information to connect (hard-coded)
-            String url = "jdbc:mysql://theduggan.online/agme";
-            String user = "dummy";
+            String url = "jdbc:mysql://theduggan.online";
+            String user = "root";
             String password = "password" ;
 
             // Connect through the Driver
