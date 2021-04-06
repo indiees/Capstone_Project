@@ -22,7 +22,12 @@ public class UserDAO {
             // Execute the query
             Connection connection = DatabaseUtils.connectToDatabase();
             Statement statement = connection.createStatement();
-            statement.execute(update_sql);
+            statement.executeUpdate(update_sql, Statement.RETURN_GENERATED_KEYS);
+            // Extract user_id
+            ResultSet result = statement.getGeneratedKeys();
+            result.next();
+            int user_id = result.getInt(1);
+            user.setUser_id(user_id);
             // Close it
             DatabaseUtils.closeConnection(connection);
         } catch (Exception e) {
@@ -120,8 +125,7 @@ public class UserDAO {
 
     public static boolean removeUser(int user_id) {
         String update_sql;
-        update_sql = "DELETE FROM `rentalux`.`users` WHERE 'user_id' = '" + user_id + "';";
-
+        update_sql = "DELETE FROM `rentalux`.`users` WHERE `user_id` = '" + user_id + "';";
         try {
             // Execute the query
             Connection connection = DatabaseUtils.connectToDatabase();

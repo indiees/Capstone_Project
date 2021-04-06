@@ -14,7 +14,6 @@ public class User {
         this.last_name = last_name;
     }
     public User(String email, String password, String first_name, String last_name){
-        this.user_id = user_id;
         this.email = email;
         this.password = password;
         this.first_name = first_name;
@@ -29,6 +28,7 @@ public class User {
     public String getLast_name(){
         return this.last_name;
     }
+    public void setUser_id(int user_id) { this.user_id = user_id; }
     public int getUser_id(){
        return this.user_id;
     }
