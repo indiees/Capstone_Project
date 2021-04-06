@@ -130,7 +130,7 @@ public class UserDAO {
             // Execute the query
             Connection connection = DatabaseUtils.connectToDatabase();
             Statement statement = connection.createStatement();
-            statement.execute(update_sql);
+            statement.executeUpdate(update_sql);
             // Close it
             DatabaseUtils.closeConnection(connection);
         } catch (Exception e) {
