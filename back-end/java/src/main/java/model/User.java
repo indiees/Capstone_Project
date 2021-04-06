@@ -4,7 +4,7 @@ import controller.util.Status;
 
 public class User {
     private int user_id;
-    public String email, password, first_name, last_name;
+    private String email, password, first_name, last_name;
     public User(){
 
     }
