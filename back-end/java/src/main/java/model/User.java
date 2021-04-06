@@ -4,7 +4,7 @@ import controller.util.Status;
 
 public class User {
     private int user_id;
-    private String email, password, first_name, last_name;
+    public String email, password, first_name, last_name;
     public User(){
 
     }
@@ -49,9 +49,9 @@ public class User {
         }
         User u = (User) o;
         return ((u.user_id == this.user_id)
-                && (u.email == this.email)
-                && (u.password == this.password)
-                && (u.first_name == this.first_name)
-                && (u.last_name == this.last_name));
+                && (u.email.equals(this.email))
+                && (u.password.equals(this.password))
+                && (u.first_name.equals(this.first_name))
+                && (u.last_name.equals(this.last_name)));
     }
 }
