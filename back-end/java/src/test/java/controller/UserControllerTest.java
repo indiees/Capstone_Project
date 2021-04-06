@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 public class UserControllerTest {
     private Context ctx;
 
-    private static final String VALIDUSER = "test123";
+    private static final String VALIDUSER = "test123@gmail.com";
     private static final String VALIDPASS = "test321";
     private static final String INVALIDUSER = "-1";
     private static final String INVALIDPASS = "-1";
