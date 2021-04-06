@@ -54,11 +54,11 @@ public class UserDAO {
                     return getPersonByEmail(result.getString("email"));
                 }
                 else{
-                    System.out.println("Wrong password");
+                    System.err.println("Wrong password");
                 }
             }
             else{
-                System.out.println("no result");
+                System.err.println("no result");
             }
 
             // Close it
