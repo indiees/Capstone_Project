@@ -118,4 +118,21 @@ public class UserDAO {
         return false;
     }
 
+    public static boolean removeUser(int user_id) {
+        String update_sql;
+        update_sql = "DELETE FROM `rentalux`.`users` WHERE 'user_id' = '" + user_id + "';";
+
+        try {
+            // Execute the query
+            Connection connection = DatabaseUtils.connectToDatabase();
+            Statement statement = connection.createStatement();
+            statement.execute(update_sql);
+            // Close it
+            DatabaseUtils.closeConnection(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }
