@@ -12,10 +12,11 @@ import java.util.List;
 
 public class UserDAO {
     public static User createUser(String email, String password,String first_name,String last_name) {
-        User user = new User(email, password, first_name, last_name);
+        int user_id = 0;
+        String hashedPass = Utils.generateHashPassword(password);
         String update_sql;
         update_sql = "INSERT INTO `rentalux`.`Users` ( `email`, `password`, `first_name`,`last_name`) " +
-                "VALUES('" + email + "' ,'" + Utils.generateHashPassword(password)+ "' ,'" + first_name + "','" +
+                "VALUES('" + email + "' ,'" + hashedPass + "' ,'" + first_name + "','" +
                 last_name + "');";
 
         try {
@@ -26,14 +27,15 @@ public class UserDAO {
             // Extract user_id
             ResultSet result = statement.getGeneratedKeys();
             result.next();
-            int user_id = result.getInt(1);
-            user.setUser_id(user_id);
+            user_id = result.getInt(1);
             // Close it
             DatabaseUtils.closeConnection(connection);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
+        // Create the user object
+        User user = new User(user_id, email, hashedPass, first_name, last_name);
         return user;
     }
 
