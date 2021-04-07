@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class UtilsTest {
     @Test
-    void testPasswordValidation() {
+    public void testPasswordValidation() {
         String password = "123example";
         String hash = Utils.generateHashPassword(password);
         Assertions.assertTrue(Utils.passwordIsValid(password, hash));

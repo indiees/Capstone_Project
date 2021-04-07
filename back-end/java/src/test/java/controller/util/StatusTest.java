@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class StatusTest {
     @Test
-    void testToString_givenMessage() {
+    public void testToString_givenMessage() {
         String status = "test";
         String message = "message";
         Status testStatus = new Status(status, message);
@@ -14,7 +14,7 @@ public class StatusTest {
     }
 
     @Test
-    void testToString_givenPayload() {
+    public void testToString_givenPayload() {
         Object payload = new String("payload");
         Status testStatus = new Status(payload);
         String expected = "success: payload";
@@ -22,7 +22,7 @@ public class StatusTest {
     }
 
     @Test
-    void testEquals_givenMessage(){
+    public void testEquals_givenMessage(){
         String status = "test";
         String message = "message";
         Status s1 = new Status(status, message);
@@ -31,7 +31,7 @@ public class StatusTest {
     }
 
     @Test
-    void testEquals_givenPayload(){
+    public void testEquals_givenPayload(){
         Object payload1 = new String("payload");
         Object payload2 = new String("payload");
         Status s1 = new Status(payload1);

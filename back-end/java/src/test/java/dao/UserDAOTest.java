@@ -18,7 +18,7 @@ public class UserDAOTest {
     private static final String DUMMY = "testMissingValue";
 
     @BeforeEach
-    void setup() {
+    public void setup() {
         if (!userExists) {
             testUser = UserDAO.createUser(EMAIL, PASS, FNAME, LNAME);
             userExists = (testUser != null);
@@ -26,17 +26,17 @@ public class UserDAOTest {
     }
 
     @Test
-    void testCreateUser() { Assertions.assertTrue(userExists); }
+    public void testCreateUser() { Assertions.assertTrue(userExists); }
 
     @Test
-    void testRemoveUser() {
+    public void testRemoveUser() {
         Assumptions.assumeTrue(userExists);
         userExists = !UserDAO.removeUser(testUser.getUser_id());
         Assertions.assertFalse(userExists);
     }
 
     @Test
-    void testCheckLogin() {
+    public void testCheckLogin() {
         Assumptions.assumeTrue(userExists);
         User retrievedUser = UserDAO.checkLogin(EMAIL, PASS);
         Assertions.assertNotNull(retrievedUser);
@@ -44,14 +44,14 @@ public class UserDAOTest {
     }
 
     @Test
-    void testCheckLoginFail() {
+    public void testCheckLoginFail() {
         Assumptions.assumeTrue(userExists);
         User retrievedUser = UserDAO.checkLogin(DUMMY, DUMMY);
         Assertions.assertNull(retrievedUser);
     }
 
     @Test
-    void testGetPersonByEmail() {
+    public void testGetPersonByEmail() {
         Assumptions.assumeTrue(userExists);
         User retrievedUser = UserDAO.getPersonByEmail(EMAIL);
         Assertions.assertNotNull(retrievedUser);
@@ -59,28 +59,28 @@ public class UserDAOTest {
     }
 
     @Test
-    void testGetPersonByEmailFail() {
+    public void testGetPersonByEmailFail() {
         Assumptions.assumeTrue(userExists);
         User retrievedUser = UserDAO.getPersonByEmail(DUMMY);
         Assertions.assertNull(retrievedUser);
     }
 
     @Test
-    void testEmailInUse() {
+    public void testEmailInUse() {
         Assumptions.assumeTrue(userExists);
         boolean result = UserDAO.emailInUse(EMAIL);
         Assertions.assertTrue(result);
     }
 
     @Test
-    void testEmailInUseFail() {
+    public void testEmailInUseFail() {
         Assumptions.assumeTrue(userExists);
         boolean result = UserDAO.emailInUse(DUMMY);
         Assertions.assertFalse(result);
     }
 
     @AfterEach
-    void tearDown() {
+    public void tearDown() {
         if (userExists) {
             userExists = !UserDAO.removeUser(testUser.getUser_id());
         }

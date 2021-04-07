@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 
 public class DatabaseUtilsTest {
     @Test
-    void testConnectToDatabase() throws Exception {
+    public void testConnectToDatabase() throws Exception {
         Connection testConnect = DatabaseUtils.connectToDatabase();
         Assertions.assertNotNull(testConnect);
     }
 
     @Test
-    void testCloseConnection() throws Exception {
+    public void testCloseConnection() throws Exception {
         Connection testConnect = DatabaseUtils.connectToDatabase();
         Assertions.assertNotNull(testConnect);
         DatabaseUtils.closeConnection(testConnect);

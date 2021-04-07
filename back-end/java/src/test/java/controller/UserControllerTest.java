@@ -23,12 +23,12 @@ public class UserControllerTest {
     private static final String INVALIDPASS = "-1";
 
     @BeforeEach
-    void setup() {
+    public void setup() {
         ctx = mock(Context.class);
     }
 
     @Test
-    void testValidLoginCredentials() throws Exception {
+    public void testValidLoginCredentials() throws Exception {
         // Set up the mock context with valid credentials
         when(ctx.formParam("username")).thenReturn(VALIDUSER);
         when(ctx.formParam("password")).thenReturn(VALIDPASS);
@@ -42,7 +42,7 @@ public class UserControllerTest {
     }
 
     @Test
-    void testInvalidLoginCredentials() throws Exception {
+    public void testInvalidLoginCredentials() throws Exception {
         // Set up the mock context with invalid credentials
         when(ctx.formParam("username")).thenReturn(INVALIDUSER);
         when(ctx.formParam("password")).thenReturn(INVALIDPASS);
