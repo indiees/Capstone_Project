@@ -12,6 +12,7 @@ public class main {
         app.routes(() -> {
             //Basic resources
             app.post(Web.checkLogin, UserController.checkLogin);
+            app.post(Web.createUser, UserController.createUser);
         });
     }
     public static int getHerokuAssignedPort() {

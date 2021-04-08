@@ -32,8 +32,8 @@ public class Status {
             return false;
         }
         Status s = (Status) o;
-        return ((s.message == this.message)
-        && (s.payload == this.payload)
-        && (s.status == this.status));
+        return ((s.message.equals(this.message))
+        && (s.payload.equals(this.payload))
+        && (s.status.equals(this.status)));
     }
 }

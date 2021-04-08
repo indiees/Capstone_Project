@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Login/Register</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    
+    <div class="main">
+        <div class="form">
+            <div class="button">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+                <button type="button" class="toggle-btn" onclick="register()">Register</button>
+
+            </div>
+            <!--Login Form-->
+            <form id="login" class="input-group">
+                <input type="text" id = "loginEmail" class="input-field" placeholder="Email" required>
+                <input type="text" id = "loginPassword" class="input-field" placeholder="Password" required>
+                <input type="checkbox" class="check-box"><span>Remember Password</span>
+                <label class = "errormsg" id = "login_error"></label>
+                <button type="submit" class="submit-btn">Log In</button>
+            </form>
+            <!--Register Form-->
+            <form id="register" class="input-group">
+                <input type="text" id="first_name" class="input-field" placeholder="First Name" required>
+                <label class = "errormsg" id = "first_name_error"></label>
+                <input type="text" id="last_name" class="input-field" placeholder="Last Name" required>
+                <label class = "errormsg" id = "last_name_error"></label>
+                <input type="text" id="email" class="input-field" placeholder="Email Id" required>
+                <label class = "errormsg" id = "email_error"></label>
+                <input type="text" id="password" class="input-field" placeholder="Enter password" required>
+                <label class = "errormsg" id = "password_error"></label>
+                <label class = "errormsg" id = "generic_error"></label>
+                <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+        </div>>
+    </div>
+
+    <!--Script to toggle between the forms-->
+    <script src="scripts/login-register.js"></script>>
+
+
+</body>
+</html>
