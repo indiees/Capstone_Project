@@ -7,7 +7,7 @@ public class Web {
     public static final String getBookingsByUser = "/api/user/getBookings";
     public static final String getBookingsByCar = "/api/car/getBookings";
     public static final String getCars = "/api/car/search";
-    public static final String getBays = "/api/bays/search";
+    public static final String getBays = "/api/bay/search";
 
 
 }

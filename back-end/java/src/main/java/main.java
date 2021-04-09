@@ -14,6 +14,7 @@ public class main {
             app.post(Web.checkLogin, UserController.checkLogin);
             app.post(Web.createUser, UserController.createUser);
             app.get(Web.getBays, BayController.getBays);
+            app.get(Web.getCars, CarController.getCars);
         });
     }
     public static int getHerokuAssignedPort() {
