@@ -3,14 +3,14 @@ package model;
 import java.sql.Timestamp;
 
 public class Booking {
-    public int bay_id, car_id, user_id, start_bay_id, end_bay_id, duration; //duration is in hours
+    public int booking_id, car_id, user_id, start_bay_id, end_bay_id, duration; //duration is in hours
     public double rate;
     public Timestamp date; //The starting date/time of the booking
     public Booking(){
 
     }
-    public Booking(int bay_id, int car_id, int user_id, int start_bay_id, int end_bay_id, int duration, double rate, Timestamp date){
-        this.bay_id = bay_id;
+    public Booking(int booking_id, int car_id, int user_id, int start_bay_id, int end_bay_id, int duration, double rate, Timestamp date){
+        this.booking_id = booking_id;
         this.car_id = car_id;
         this.user_id = user_id;
         this.start_bay_id = start_bay_id;
@@ -33,8 +33,8 @@ public class Booking {
         return car_id;
     }
 
-    public int getBay_id() {
-        return bay_id;
+    public int getBooking_id() {
+        return booking_id;
     }
 
     public double getRate() {
