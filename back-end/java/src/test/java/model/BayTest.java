@@ -11,25 +11,25 @@ public class BayTest {
     private static final String DUMMYSTR = "dummy";
 
     @Test
-    void testCreateBay() {
+    public void testCreateBay() {
         Bay testBay = new Bay(BAYID, LOCATION, MAX_CAP);
     }
 
     @Test
-    void testToString() {
+    public void testToString() {
         Bay testBay = new Bay(BAYID, LOCATION, MAX_CAP);
         String result = testBay.toString();
     }
 
     @Test
-    void testEqualsPositive() {
+    public void testEqualsPositive() {
         Bay testBay = new Bay(BAYID, LOCATION, MAX_CAP);
         Bay identicalBay = new Bay(BAYID, LOCATION, MAX_CAP);
         Assertions.assertEquals(testBay, identicalBay);
     }
 
     @Test
-    void testEqualsNegative() {
+    public void testEqualsNegative() {
         Bay testBay = new Bay(BAYID, LOCATION, MAX_CAP);
         Bay diffBay = new Bay(DUMMYINT, DUMMYSTR, DUMMYINT);
         Assertions.assertNotEquals(testBay, diffBay);
