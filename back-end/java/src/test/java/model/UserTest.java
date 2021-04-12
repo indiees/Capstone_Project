@@ -24,6 +24,13 @@ public class UserTest {
     }
 
     @Test
+    public void testToString() {
+        String hashedPass = Utils.generateHashPassword(PASS);
+        User testUser = new User(USERID, EMAIL, hashedPass, FNAME, LNAME);
+        String result = testUser.toString();
+    }
+
+    @Test
     public void testComparisonOperator() {
         String hashedPass = Utils.generateHashPassword(PASS);
         User testUser = new User(USERID, EMAIL, hashedPass, FNAME, LNAME);
