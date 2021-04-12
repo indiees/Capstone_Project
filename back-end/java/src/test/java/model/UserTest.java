@@ -31,7 +31,7 @@ public class UserTest {
     }
 
     @Test
-    public void testComparisonOperatorPositive() {
+    public void testEqualsPositive() {
         String hashedPass = Utils.generateHashPassword(PASS);
         User testUser = new User(USERID, EMAIL, hashedPass, FNAME, LNAME);
         User identicalUser = new User(USERID, EMAIL, hashedPass, FNAME, LNAME);
@@ -39,7 +39,7 @@ public class UserTest {
     }
 
     @Test
-    public void testComparisonOperatorNegative() {
+    public void testEqualsNegative() {
         String hashedPass = Utils.generateHashPassword(PASS);
         User testUser = new User(USERID, EMAIL, hashedPass, FNAME, LNAME);
         User diffUser = new User(DUMMYID, DUMMY, DUMMY, DUMMY, DUMMY);
