@@ -31,12 +31,18 @@ public class UserTest {
     }
 
     @Test
-    public void testComparisonOperator() {
+    public void testComparisonOperatorPositive() {
         String hashedPass = Utils.generateHashPassword(PASS);
         User testUser = new User(USERID, EMAIL, hashedPass, FNAME, LNAME);
         User identicalUser = new User(USERID, EMAIL, hashedPass, FNAME, LNAME);
-        User diffUser = new User(DUMMYID, DUMMY, DUMMY, DUMMY, DUMMY);
         Assertions.assertEquals(testUser, identicalUser);
+    }
+
+    @Test
+    public void testComparisonOperatorNegative() {
+        String hashedPass = Utils.generateHashPassword(PASS);
+        User testUser = new User(USERID, EMAIL, hashedPass, FNAME, LNAME);
+        User diffUser = new User(DUMMYID, DUMMY, DUMMY, DUMMY, DUMMY);
         Assertions.assertNotEquals(testUser, diffUser);
     }
 }
