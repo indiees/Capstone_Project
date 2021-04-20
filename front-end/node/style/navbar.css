@@ -1,6 +1,6 @@
 
-nav{
-    font-family: montserrat;
+.navbar-brand{
+  font-size: 30px;
 }
 .navbar-nav{
     margin-left: 850px;
