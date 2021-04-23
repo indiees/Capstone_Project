@@ -1,6 +1,10 @@
 package model;
 
 import controller.util.Status;
+import dao.BookingDAO;
+import dao.CarDAO;
+
+import java.sql.Timestamp;
 
 public class User {
     private int user_id;
@@ -53,5 +57,10 @@ public class User {
                 && (u.password.equals(this.password))
                 && (u.first_name.equals(this.first_name))
                 && (u.last_name.equals(this.last_name)));
+    }
+
+    public void createBooking(int car_id) {
+        Car car = CarDAO.getCar(car_id);
+        BookingDAO.createBooking(car.getCar_id(), this.user_id, car.getBay(),0, new Timestamp(System.currentTimeMillis()),0, car.getCost());
     }
 }
