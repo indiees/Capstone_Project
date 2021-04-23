@@ -2,6 +2,7 @@ const express = require('express');
 const pug =  require('pug');
 const app = express();
 const port = 80;
+const fetch = require ("node-fetch")
 
 app.get('/', index);
 
@@ -27,8 +28,17 @@ function bays(req,res){
                 "location": "oakleigh",
                 "max_capacity": 20
             }
-        ]
-        res.send(pug.renderFile("bays.html", data=data));
+        ] 
+        response=[]
+        url = "http://localhost:7000/api/bay/search"
+        fetch(url)
+            .then(response=>response.json()
+            
+            ) .then(
+                html=> res.send(pug.renderFile("bays.html", data=html.payload))
+            )
+            
+       
     }
 } 
 
