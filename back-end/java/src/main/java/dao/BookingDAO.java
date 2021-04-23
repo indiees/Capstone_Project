@@ -1,12 +1,15 @@
 package dao;
 
+import controller.util.Utils;
 import dao.util.DatabaseUtils;
 import model.Booking;
 import model.Car;
+import model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class BookingDAO {
@@ -67,5 +70,32 @@ public class BookingDAO {
             return bookings;
         }
         return null;
+    }
+
+    public static Booking createBooking(int car_id, int user_id, int start_bay_id, int end_bay_id, Timestamp date, int duration, double rate) {
+        String update_sql;
+        int booking_id = 0;
+        update_sql = "INSERT INTO `rentalux`.`Users` ( `car_id`, `user_id`, `start_bay_id`,`end_bay_id`,`date`,`duration`,`rate`) " +
+                "VALUES('" + car_id + "' ,'" + user_id + "' ,'" + start_bay_id + "','" +
+                end_bay_id + "' ,'" + date + "' ,'" + duration + "' ,'" + rate + "');";
+
+        try {
+            // Execute the query
+            Connection connection = DatabaseUtils.connectToDatabase();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(update_sql, Statement.RETURN_GENERATED_KEYS);
+            // Extract user_id
+            ResultSet result = statement.getGeneratedKeys();
+            result.next();
+            booking_id = result.getInt(1);
+            // Close it
+            DatabaseUtils.closeConnection(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        // Create the user object
+        Booking booking = new Booking(booking_id, car_id, user_id, start_bay_id, end_bay_id, duration, rate, date);
+        return booking;
     }
 }
