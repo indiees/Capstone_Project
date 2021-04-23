@@ -76,6 +76,29 @@ public class BookingController {
 
     };
     public static Handler removeBooking = ctx ->{
+        String str_email = ctx.formParam("email");
+        if (str_email==null) {
+            ctx.json(new Status("No 'email' Provided"));
+            return;
+        }
+        String str_password = ctx.formParam("password");
+        if (str_password==null) {
+            ctx.json(new Status("No 'password' Provided"));
+            return;
+        }
+        User user = UserDAO.checkLogin(str_email, str_password);
+        if (user==null){
+            ctx.json(new Status("Invalid credentials"));
+            return;
+        }
 
+        String str_booking_id = ctx.formParam("booking_id");
+        if (str_booking_id==null) {
+            ctx.json(new Status("No 'booking_id' Provided"));
+            return;
+        }
+        int booking_id = Integer.parseInt(str_booking_id);
+        BookingDAO.removeBooking(booking_id, user.getUser_id());
+        ctx.json(new Status("success","Booking removed"));
     };
 }
