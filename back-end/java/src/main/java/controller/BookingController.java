@@ -70,7 +70,8 @@ public class BookingController {
             return;
         }
         int car_id = Integer.parseInt(str_car_id);
-        user.createBooking(car_id);
+        Booking booking = user.createBooking(car_id);
+        ctx.json(new Status(booking));
 
 
     };

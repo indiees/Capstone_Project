@@ -75,9 +75,9 @@ public class BookingDAO {
     public static Booking createBooking(int car_id, int user_id, int start_bay_id, int end_bay_id, Timestamp date, int duration, double rate) {
         String update_sql;
         int booking_id = 0;
-        update_sql = "INSERT INTO `rentalux`.`bookings` ( `car_id`, `user_id`, `start_bay_id`,`end_bay_id`,`date`,`duration`,`rate`) " +
-                "VALUES('" + car_id + "' ,'" + user_id + "' ,'" + start_bay_id + "','" +
-                end_bay_id + "' ,'" + date + "' ,'" + duration + "' ,'" + rate + "');";
+        update_sql = "INSERT INTO `rentalux`.`bookings` ( `car_id`, `user_id`, `start_bay_id`,`date`,`rate`) " +
+                "VALUES('" + car_id + "' ,'" + user_id + "' ,'" + start_bay_id +
+                "' ,'" + date + "' ,'" + rate + "');";
 
         try {
             // Execute the query

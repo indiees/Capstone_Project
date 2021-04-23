@@ -59,8 +59,8 @@ public class User {
                 && (u.last_name.equals(this.last_name)));
     }
 
-    public void createBooking(int car_id) {
+    public Booking createBooking(int car_id) {
         Car car = CarDAO.getCar(car_id);
-        BookingDAO.createBooking(car.getCar_id(), this.user_id, car.getBay(),0, new Timestamp(System.currentTimeMillis()),0, car.getCost());
+        return BookingDAO.createBooking(car.getCar_id(), this.user_id, car.getBay(),0, new Timestamp(System.currentTimeMillis()),0, car.getCost());
     }
 }
