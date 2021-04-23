@@ -6,10 +6,55 @@ import io.javalin.http.Handler;
 import model.Car;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CarController {
     public static Handler getCars = ctx ->{
-        ArrayList<Car> cars = CarDAO.getCars();
+        HashMap<String, String> props = new HashMap<String, String>();
+
+        String str_car_id;
+        str_car_id = ctx.queryParam("car_id");
+        if (str_car_id!=null){
+            props.put("car_id",str_car_id);
+        }
+
+        String str_cost_min;
+        str_cost_min = ctx.queryParam("cost_min");
+        if (str_cost_min!=null){
+            props.put("cost_min",str_cost_min);
+        }
+
+        String str_cost_max;
+        str_cost_max = ctx.queryParam("cost_max");
+        if (str_cost_max!=null){
+            props.put("cost_max",str_cost_max);
+        }
+
+        String str_color;
+        str_color = ctx.queryParam("color");
+        if (str_color!=null){
+            props.put("color",str_color);
+        }
+
+        String str_make;
+        str_make = ctx.queryParam("make");
+        if (str_make!=null){
+            props.put("make",str_make);
+        }
+
+        String str_year_min;
+        str_year_min = ctx.queryParam("year_min");
+        if (str_year_min!=null){
+            props.put("year_min",str_year_min);
+        }
+
+        String str_year_max;
+        str_year_max = ctx.queryParam("year_max");
+        if (str_year_max!=null){
+            props.put("year_max",str_year_max);
+        }
+
+        ArrayList<Car> cars = CarDAO.getCars(props);
         if (cars!=null){
             ctx.json(new Status(cars));
             return;
