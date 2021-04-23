@@ -45,4 +45,10 @@ public class BookingController {
         ctx.json(new Status("No bookings with those details can be found"));
         return;
     };
+    public static Handler createBooking = ctx ->{
+
+    };
+    public static Handler removeBooking = ctx ->{
+
+    };
 }
