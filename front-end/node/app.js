@@ -11,6 +11,27 @@ function index(req,res){
     }
 } 
 
+
+app.get('/bays', bays);
+
+function bays(req,res){
+    {
+        data = [
+            { 
+                "bay_id": 1,
+                "location": "melbourne",
+                "max_capacity": 15
+            },
+            { 
+                "bay_id": 2,
+                "location": "oakleigh",
+                "max_capacity": 20
+            }
+        ]
+        res.send(pug.renderFile("bays.html", data=data));
+    }
+} 
+
 app.use("/scripts",express.static("scripts"));
 app.use("/style",express.static("style"));
 app.use(express.static("public"));
