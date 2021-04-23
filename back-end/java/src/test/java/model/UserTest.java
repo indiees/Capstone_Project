@@ -24,12 +24,25 @@ public class UserTest {
     }
 
     @Test
-    public void testComparisonOperator() {
+    public void testToString() {
+        String hashedPass = Utils.generateHashPassword(PASS);
+        User testUser = new User(USERID, EMAIL, hashedPass, FNAME, LNAME);
+        String result = testUser.toString();
+    }
+
+    @Test
+    public void testEqualsPositive() {
         String hashedPass = Utils.generateHashPassword(PASS);
         User testUser = new User(USERID, EMAIL, hashedPass, FNAME, LNAME);
         User identicalUser = new User(USERID, EMAIL, hashedPass, FNAME, LNAME);
-        User diffUser = new User(DUMMYID, DUMMY, DUMMY, DUMMY, DUMMY);
         Assertions.assertEquals(testUser, identicalUser);
+    }
+
+    @Test
+    public void testEqualsNegative() {
+        String hashedPass = Utils.generateHashPassword(PASS);
+        User testUser = new User(USERID, EMAIL, hashedPass, FNAME, LNAME);
+        User diffUser = new User(DUMMYID, DUMMY, DUMMY, DUMMY, DUMMY);
         Assertions.assertNotEquals(testUser, diffUser);
     }
 }

@@ -9,16 +9,14 @@ public class StatusTest {
         String status = "test";
         String message = "message";
         Status testStatus = new Status(status, message);
-        String expected = "test: message";
-        Assertions.assertEquals(expected, testStatus.toString());
+        String result = testStatus.toString();
     }
 
     @Test
     public void testToString_givenPayload() {
         Object payload = new String("payload");
         Status testStatus = new Status(payload);
-        String expected = "success: payload";
-        Assertions.assertEquals(expected, testStatus.toString());
+        String result = testStatus.toString();
     }
 
     @Test
