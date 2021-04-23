@@ -27,7 +27,7 @@ public class CarDAO {
                 // 2) Add it to the list we have prepared
                 cars.add(new Car(result.getInt("car_id"), result.getDouble("cost"),
                         result.getString("color"), result.getString("liscence_plate"),
-                        result.getString("make"), result.getInt("year")));
+                        result.getString("make"), result.getInt("year"), result.getInt("bay_id")));
             }
 
             // Close it
@@ -38,6 +38,36 @@ public class CarDAO {
         }
         if(!cars.isEmpty()) {
             return cars;
+        }
+        return null;
+    }
+
+    public static Car getCar(int car_id) {
+        ArrayList<Car> cars = new ArrayList<Car>();
+        try {
+            // Here you prepare your sql statement
+            String sql = "SELECT * FROM `rentalux`.cars where `car_id` = " + car_id;
+            // Execute the query
+            Connection connection = DatabaseUtils.connectToDatabase();
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            // If you have multiple results, you do a while
+            while(result.next()) {
+                // 2) Add it to the list we have prepared
+                cars.add(new Car(result.getInt("car_id"), result.getDouble("cost"),
+                        result.getString("color"), result.getString("liscence_plate"),
+                        result.getString("make"), result.getInt("year"), result.getInt("bay_id")));
+            }
+
+            // Close it
+            DatabaseUtils.closeConnection(connection);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(!cars.isEmpty()) {
+            return cars.get(0);
         }
         return null;
     }
@@ -76,7 +106,7 @@ public class CarDAO {
                 // 2) Add it to the list we have prepared
                 cars.add(new Car(result.getInt("car_id"), result.getDouble("cost"),
                         result.getString("color"), result.getString("liscence_plate"),
-                        result.getString("make"), result.getInt("year")));
+                        result.getString("make"), result.getInt("year"), result.getInt("bay_id")));
             }
 
             // Close it
