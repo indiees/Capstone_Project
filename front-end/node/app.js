@@ -28,10 +28,16 @@ function bays(req,res){
     }
 } 
 
+
+
 app.use("/scripts",express.static("scripts"));
 app.use("/style",express.static("style"));
 app.use(express.static("public"));
 app.listen(port, startServer);
 function startServer(port){
     console.log("Server is running")
+}
+app.get('*',defaultPage);
+function defaultPage(req, res){
+    res.send(pug.renderFile("cannotbefound.html"))
 }
