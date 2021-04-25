@@ -15,6 +15,7 @@
             <th>Bay ID</th>
             <th>Location</th>
             <th>Maximum Capacity</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +24,9 @@
                 td #{bay.bay_id} 
                 td #{bay.location}
                 td #{bay.max_capacity}
+                td
+                    a(href="http://localhost/api/bay?bay_id="+bay.bay_id)
+                        button view bay
 
         </tbody>
     
