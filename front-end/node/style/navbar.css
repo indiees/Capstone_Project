@@ -48,6 +48,26 @@ body{
     background-size: cover;
     position: relative;
 }
+.filter-search-form{
+   padding-top: 40px;
+}
+.button{
+    text-align: center;
+    padding-top: 10px;
+}
+.btn-lg{
+    width: 200px;
+    border-radius: 30px;
+}
+
+.form-select{
+    width: auto;
+    padding: 10px;
+    margin: 5px;
+   
+
+}
+
 /*cars page section hearder*/
 .section-title--special{
     padding: 0.5rem 2rem;
