@@ -12,6 +12,14 @@ function index(req,res){
     }
 } 
 
+app.get('/cars', cars);
+
+function cars(req,res){
+    {
+        res.send(pug.renderFile("cars.html"));
+    }
+} 
+
 
 app.get('/bays', bays);
 

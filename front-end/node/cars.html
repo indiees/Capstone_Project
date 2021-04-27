@@ -1,358 +1,321 @@
-<html>
-    <head>
-        <title></title>
-        <script
-            src="https://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous">
-        </script>
-        <script> 
-            $(function(){
-            $("#header").load("header.html"); 
-            $("#footer").load("footer.html"); 
-            });
-        </script> 
-    </head>
-    <div id="header"></div>
-        <body>
-            <!--Filter section-->
-            <main class="flex-shrink-0">
-                <div class="filter-section">
-                    <div class="filter-search-form ">
-                        <div class="form-top">
-                            <h1 class="col d-flex text-white justify-content-center" >Find your next car</h1>
-                        </div>
-                        <div class="row justify-content-center">
-                            <select class="form-select form-select-sm " aria-label=".form-select-sm example">
-                                <option selected>Make</option>
-                                <option value="1">Ferrari</option>
-                                <option value="2">Aston Martin</option>
-                                <option value="3">Rolls Royce</option>
-                            </select>
-                            <select class="form-select form-select-sm " aria-label=".form-select-sm example">
-                                <option selected>Color</option>
-                                <option value="1">Ferrari</option>
-                                <option value="2">Aston Martin</option>
-                                <option value="3">Rolls Royce</option>
-                            </select>
-                            <select class="form-select form-select-sm " aria-label=".form-select-sm example">
-                                <option selected>Year</option>
-                                <option value="1">Ferrari</option>
-                                <option value="2">Aston Martin</option>
-                                <option value="3">Rolls Royce</option>
-                            </select>
-                        </div>
-                       
-                        <div class="row justify-content-center" id="second-search-row">
-                            <select class="form-select form-select-sm " aria-label=".form-select-sm example">
-                                <option selected>Cost</option>
-                                <option value="1">Ferrari</option>
-                                <option value="2">Aston Martin</option>
-                                <option value="3">Rolls Royce</option>
-                            </select>
-                            <select class="form-select form-select-sm " aria-label=".form-select-sm example">
-                                <option selected>Location</option>
-                                <option value="1">Ferrari</option>
-                                <option value="2">Aston Martin</option>
-                                <option value="3">Rolls Royce</option>
-                            </select>
-                            
-                        </div>
-                        <div class="button">
-                            <button type="button" class="btn btn-primary btn-lg ">Search</button>
-                        </div>
-                        
-                    </div>
-                </div>
-
-            <!--section header
-            <section class="skills py-5" id="skills">
-                <div class="container">
-                    <div class="row mb-5">
-                        <div class="col d-flex flex-wrap text-uppercase justify-content-center"  >
-                            <h1 class="section-title--special mx-1 text-white" style="background-color: #4f7ab3" >Our Inventory</h1>
-                        </div>
-                    </div>
-                </div>
-            </section> 
-            -->
-
-                <div class="row">
-                    <!--single car card-->
-                    <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-                        <div class="card car-card">
-                            <img src="/style/car-img-1.jpeg" class="card-img-top car img" alt="">
-                            <!--card body-->
-                            <div class="card-body">
-                                <div class="car-info d-flex justify-content-between">
-
-                                    <div class="card-text text-uppercase">
-                                        <h6 class="font-weight-bold">car maker</h6>
-                                        <h6>Model</h6>
-                                    </div>
-
-                                    <h5 class="car-value align-self-center py-2 px-3">$
-                                        <span class="car-price">550/day</span>
-                                    </h5>
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Rent</button>
-                                    <!--Modal-->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                              ...
-                                            </div>
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                              <button type="button" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                          </div>
-                                        </div>
-                                    </div>
-                                
-                                </div>
-                            </div>
-                            <div class="card-footer text-capitalized d-flex justify-content-between">
-                                <p><span><i class="fas fa-car"></i></span>sedan</p>
-                                <p><span><i class="fas fa-cogs"></i></span>semi-automatic</p>
-                                <p><span><i class="fas fa-gas-pump"></i></span>15L/100km</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end of card-->
-
-                    <!--single car card-->
-                    <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-                        <div class="card car-card">
-                            <img src="/style/car-img-1.jpeg" class="card-img-top car img" alt="">
-                            <!--card body-->
-                            <div class="card-body">
-                                <div class="car-info d-flex justify-content-between">
-
-                                    <div class="card-text text-uppercase">
-                                        <h6 class="font-weight-bold">car maker</h6>
-                                        <h6>Model</h6>
-                                    </div>
-
-                                    <h5 class="car-value align-self-center py-2 px-3">$
-                                        <span class="car-price">550/day</span>
-                                    </h5>
-                                    <button type="submit" class="btn btn-success">Rent</button>
-                                </div>
-                            </div>
-                            <div class="card-footer text-capitalized d-flex justify-content-between">
-                                <p><span><i class="fas fa-car"></i></span>sedan</p>
-                                <p><span><i class="fas fa-cogs"></i></span>semi-automatic</p>
-                                <p><span><i class="fas fa-gas-pump"></i></span>15L/100km</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end of card-->
-
-                    <!--single car card-->
-                    <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-                        <div class="card car-card">
-                            <img src="/style/car-img-1.jpeg" class="card-img-top car img" alt="">
-                            <!--card body-->
-                            <div class="card-body">
-                                <div class="car-info d-flex justify-content-between">
-
-                                    <div class="card-text text-uppercase">
-                                        <h6 class="font-weight-bold">car maker</h6>
-                                        <h6>Model</h6>
-                                    </div>
-
-                                    <h5 class="car-value align-self-center py-2 px-3">$
-                                        <span class="car-price">550/day</span>
-                                    </h5>
-                                    <button type="submit" class="btn btn-success">Rent</button>
-                                </div>
-                            </div>
-                            <div class="card-footer text-capitalized d-flex justify-content-between">
-                                <p><span><i class="fas fa-car"></i></span>sedan</p>
-                                <p><span><i class="fas fa-cogs"></i></span>semi-automatic</p>
-                                <p><span><i class="fas fa-gas-pump"></i></span>15L/100km</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end of card-->
-
-                    <!--single car card-->
-                    <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-                        <div class="card car-card">
-                            <img src="/style/car-img-1.jpeg" class="card-img-top car img" alt="">
-                            <!--card body-->
-                            <div class="card-body">
-                                <div class="car-info d-flex justify-content-between">
-
-                                    <div class="card-text text-uppercase">
-                                        <h6 class="font-weight-bold">car maker</h6>
-                                        <h6>Model</h6>
-                                    </div>
-
-                                    <h5 class="car-value align-self-center py-2 px-3">$
-                                        <span class="car-price">550/day</span>
-                                    </h5>
-                                    <button type="submit" class="btn btn-success">Rent</button>
-                                </div>
-                            </div>
-                            <div class="card-footer text-capitalized d-flex justify-content-between">
-                                <p><span><i class="fas fa-car"></i></span>sedan</p>
-                                <p><span><i class="fas fa-cogs"></i></span>semi-automatic</p>
-                                <p><span><i class="fas fa-gas-pump"></i></span>15L/100km</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end of card-->
-
-                    <!--single car card-->
-                    <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-                        <div class="card car-card">
-                            <img src="/style/car-img-1.jpeg" class="card-img-top car img" alt="">
-                            <!--card body-->
-                            <div class="card-body">
-                                <div class="car-info d-flex justify-content-between">
-
-                                    <div class="card-text text-uppercase">
-                                        <h6 class="font-weight-bold">car maker</h6>
-                                        <h6>Model</h6>
-                                    </div>
-
-                                    <h5 class="car-value align-self-center py-2 px-3">$
-                                        <span class="car-price">550/day</span>
-                                    </h5>
-                                    <button type="submit" class="btn btn-success">Rent</button>
-                                </div>
-                            </div>
-                            <div class="card-footer text-capitalized d-flex justify-content-between">
-                                <p><span><i class="fas fa-car"></i></span>sedan</p>
-                                <p><span><i class="fas fa-cogs"></i></span>semi-automatic</p>
-                                <p><span><i class="fas fa-gas-pump"></i></span>15L/100km</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end of card-->
-
-                    <!--single car card-->
-                    <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-                        <div class="card car-card">
-                            <img src="/style/car-img-1.jpeg" class="card-img-top car img" alt="">
-                            <!--card body-->
-                            <div class="card-body">
-                                <div class="car-info d-flex justify-content-between">
-
-                                    <div class="card-text text-uppercase">
-                                        <h6 class="font-weight-bold">car maker</h6>
-                                        <h6>Model</h6>
-                                    </div>
-
-                                    <h5 class="car-value align-self-center py-2 px-3">$
-                                        <span class="car-price">550/day</span>
-                                    </h5>
-                                    <button type="submit" class="btn btn-success">Rent</button>
-                                </div>
-                            </div>
-                            <div class="card-footer text-capitalized d-flex justify-content-between">
-                                <p><span><i class="fas fa-car"></i></span>sedan</p>
-                                <p><span><i class="fas fa-cogs"></i></span>semi-automatic</p>
-                                <p><span><i class="fas fa-gas-pump"></i></span>15L/100km</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end of card-->
-
-                    <!--single car card-->
-                    <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-                        <div class="card car-card">
-                            <img src="/style/car-img-1.jpeg" class="card-img-top car img" alt="">
-                            <!--card body-->
-                            <div class="card-body">
-                                <div class="car-info d-flex justify-content-between">
-
-                                    <div class="card-text text-uppercase">
-                                        <h6 class="font-weight-bold">car maker</h6>
-                                        <h6>Model</h6>
-                                    </div>
-
-                                    <h5 class="car-value align-self-center py-2 px-3">$
-                                        <span class="car-price">550/day</span>
-                                    </h5>
-                                    <button type="submit" class="btn btn-success">Rent</button>
-                                </div>
-                            </div>
-                            <div class="card-footer text-capitalized d-flex justify-content-between">
-                                <p><span><i class="fas fa-car"></i></span>sedan</p>
-                                <p><span><i class="fas fa-cogs"></i></span>semi-automatic</p>
-                                <p><span><i class="fas fa-gas-pump"></i></span>15L/100km</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end of card-->
-
-                    <!--single car card-->
-                    <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-                        <div class="card car-card">
-                            <img src="/style/car-img-1.jpeg" class="card-img-top car img" alt="">
-                            <!--card body-->
-                            <div class="card-body">
-                                <div class="car-info d-flex justify-content-between">
-
-                                    <div class="card-text text-uppercase">
-                                        <h6 class="font-weight-bold">car maker</h6>
-                                        <h6>Model</h6>
-                                    </div>
-
-                                    <h5 class="car-value align-self-center py-2 px-3">$
-                                        <span class="car-price">550/day</span>
-                                    </h5>
-                                    <button type="submit" class="btn btn-success">Rent</button>
-                                </div>
-                            </div>
-                            <div class="card-footer text-capitalized d-flex justify-content-between">
-                                <p><span><i class="fas fa-car"></i></span>sedan</p>
-                                <p><span><i class="fas fa-cogs"></i></span>semi-automatic</p>
-                                <p><span><i class="fas fa-gas-pump"></i></span>15L/100km</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end of card-->
-
-                    <!--single car card-->
-                    <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-                        <div class="card car-card">
-                            <img src="/style/car-img-1.jpeg" class="card-img-top car img" alt="">
-                            <!--card body-->
-                            <div class="card-body">
-                                <div class="car-info d-flex justify-content-between">
-
-                                    <div class="card-text text-uppercase">
-                                        <h6 class="font-weight-bold">car maker</h6>
-                                        <h6>Model</h6>
-                                    </div>
-
-                                    <h5 class="car-value align-self-center py-2 px-3">$
-                                        <span class="car-price">550/day</span>
-                                    </h5>
-                                    <button type="submit" class="btn btn-success">Rent</button>
-                                </div>
-                            </div>
-                            <div class="card-footer text-capitalized d-flex justify-content-between">
-                                <p><span><i class="fas fa-car"></i></span>sedan</p>
-                                <p><span><i class="fas fa-cogs"></i></span>semi-automatic</p>
-                                <p><span><i class="fas fa-gas-pump"></i></span>15L/100km</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end of card-->
-                    
-                </div>
-                
-            
-            </main>
-        </body>
-    <div id="footer"></div>
-</html>
+head
+  title Bays
+  include header.html
+link(rel='shortcut icon' href='/assets/favicon.ico')
+link(rel='stylesheet' href='/assets/dcode.css')
+link(rel='stylesheet' href='style/style.css')
+meta(name='viewport' content='width=device-width,initial-scale=1.0')
+// Filter section
+main.flex-shrink-0
+  .filter-section
+    .filter-search-form
+      .form-top
+        h1.col.d-flex.text-white.justify-content-center Find your next car
+      .row.justify-content-center
+        select.form-select.form-select-sm(aria-label='.form-select-sm example')
+          option(selected='') Make
+          option(value='1') Ferrari
+          option(value='2') Aston Martin
+          option(value='3') Rolls Royce
+        select.form-select.form-select-sm(aria-label='.form-select-sm example')
+          option(selected='') Color
+          option(value='1') Ferrari
+          option(value='2') Aston Martin
+          option(value='3') Rolls Royce
+        select.form-select.form-select-sm(aria-label='.form-select-sm example')
+          option(selected='') Year
+          option(value='1') Ferrari
+          option(value='2') Aston Martin
+          option(value='3') Rolls Royce
+      #second-search-row.row.justify-content-center
+        select.form-select.form-select-sm(aria-label='.form-select-sm example')
+          option(selected='') Cost
+          option(value='1') Ferrari
+          option(value='2') Aston Martin
+          option(value='3') Rolls Royce
+        select.form-select.form-select-sm(aria-label='.form-select-sm example')
+          option(selected='') Location
+          option(value='1') Ferrari
+          option(value='2') Aston Martin
+          option(value='3') Rolls Royce
+      a.reset-search-label.text-white(href='cars.html') Clear All
+      .button
+        button.btn.btn-primary.btn-lg(type='button') Search
+  //
+    section header
+    <section class="skills py-5" id="skills">
+    <div class="container">
+    <div class="row mb-5">
+    <div class="col d-flex flex-wrap text-uppercase justify-content-center"  >
+    <h1 class="section-title--special mx-1 text-white" style="background-color: #4f7ab3" >Our Inventory</h1>
+    </div>
+    </div>
+    </div>
+    </section>
+  .row
+    // single car card
+    .col-10.mx-auto.my-3.col-md-6.col-lg-4
+      // loop
+      .card.car-card
+        img.card-img-top.car.img(src='/style/car-img-1.jpeg' alt='')
+        // card body
+        .card-body
+          .car-info.d-flex.justify-content-between
+            .card-text.text-uppercase
+              h6.font-weight-bold car maker
+              h6 Model
+            h5.car-value.align-self-center.py-2.px-3
+              | $550/day
+              span.car-price 
+            button.btn.btn-success(type='button' data-bs-toggle='modal' data-bs-target='#exampleModal') Rent
+            // Modal
+            #exampleModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    h5#exampleModalLabel.modal-title Enter Rental Details
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                  .modal-body
+                    h1 Hell
+                  .modal-footer
+                    button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+                    button.btn.btn-primary(type='button') Save changes
+        .card-footer.text-capitalized.d-flex.justify-content-between
+          p
+            span
+              i.fas.fa-car
+            | sedan
+          p
+            span
+              i.fas.fa-cogs
+            | semi-automatic
+          p
+            span
+              i.fas.fa-gas-pump
+            | 15L/100km
+    // end of card
+    // single car card
+    .col-10.mx-auto.my-3.col-md-6.col-lg-4
+      .card.car-card
+        img.card-img-top.car.img(src='/style/car-img-1.jpeg' alt='')
+        // card body
+        .card-body
+          .car-info.d-flex.justify-content-between
+            .card-text.text-uppercase
+              h6.font-weight-bold car maker
+              h6 Model
+            h5.car-value.align-self-center.py-2.px-3
+              | $
+              span.car-price 550/day
+            button.btn.btn-success(type='submit') Rent
+        .card-footer.text-capitalized.d-flex.justify-content-between
+          p
+            span
+              i.fas.fa-car
+            | sedan
+          p
+            span
+              i.fas.fa-cogs
+            | semi-automatic
+          p
+            span
+              i.fas.fa-gas-pump
+            | 15L/100km
+    // end of card
+    // single car card
+    .col-10.mx-auto.my-3.col-md-6.col-lg-4
+      .card.car-card
+        img.card-img-top.car.img(src='/style/car-img-1.jpeg' alt='')
+        // card body
+        .card-body
+          .car-info.d-flex.justify-content-between
+            .card-text.text-uppercase
+              h6.font-weight-bold car maker
+              h6 Model
+            h5.car-value.align-self-center.py-2.px-3
+              | $
+              span.car-price 550/day
+            button.btn.btn-success(type='submit') Rent
+        .card-footer.text-capitalized.d-flex.justify-content-between
+          p
+            span
+              i.fas.fa-car
+            | sedan
+          p
+            span
+              i.fas.fa-cogs
+            | semi-automatic
+          p
+            span
+              i.fas.fa-gas-pump
+            | 15L/100km
+    // end of card
+    // single car card
+    .col-10.mx-auto.my-3.col-md-6.col-lg-4
+      .card.car-card
+        img.card-img-top.car.img(src='/style/car-img-1.jpeg' alt='')
+        // card body
+        .card-body
+          .car-info.d-flex.justify-content-between
+            .card-text.text-uppercase
+              h6.font-weight-bold car maker
+              h6 Model
+            h5.car-value.align-self-center.py-2.px-3
+              | $
+              span.car-price 550/day
+            button.btn.btn-success(type='submit') Rent
+        .card-footer.text-capitalized.d-flex.justify-content-between
+          p
+            span
+              i.fas.fa-car
+            | sedan
+          p
+            span
+              i.fas.fa-cogs
+            | semi-automatic
+          p
+            span
+              i.fas.fa-gas-pump
+            | 15L/100km
+    // end of card
+    // single car card
+    .col-10.mx-auto.my-3.col-md-6.col-lg-4
+      .card.car-card
+        img.card-img-top.car.img(src='/style/car-img-1.jpeg' alt='')
+        // card body
+        .card-body
+          .car-info.d-flex.justify-content-between
+            .card-text.text-uppercase
+              h6.font-weight-bold car maker
+              h6 Model
+            h5.car-value.align-self-center.py-2.px-3
+              | $
+              span.car-price 550/day
+            button.btn.btn-success(type='submit') Rent
+        .card-footer.text-capitalized.d-flex.justify-content-between
+          p
+            span
+              i.fas.fa-car
+            | sedan
+          p
+            span
+              i.fas.fa-cogs
+            | semi-automatic
+          p
+            span
+              i.fas.fa-gas-pump
+            | 15L/100km
+    // end of card
+    // single car card
+    .col-10.mx-auto.my-3.col-md-6.col-lg-4
+      .card.car-card
+        img.card-img-top.car.img(src='/style/car-img-1.jpeg' alt='')
+        // card body
+        .card-body
+          .car-info.d-flex.justify-content-between
+            .card-text.text-uppercase
+              h6.font-weight-bold car maker
+              h6 Model
+            h5.car-value.align-self-center.py-2.px-3
+              | $
+              span.car-price 550/day
+            button.btn.btn-success(type='submit') Rent
+        .card-footer.text-capitalized.d-flex.justify-content-between
+          p
+            span
+              i.fas.fa-car
+            | sedan
+          p
+            span
+              i.fas.fa-cogs
+            | semi-automatic
+          p
+            span
+              i.fas.fa-gas-pump
+            | 15L/100km
+    // end of card
+    // single car card
+    .col-10.mx-auto.my-3.col-md-6.col-lg-4
+      .card.car-card
+        img.card-img-top.car.img(src='/style/car-img-1.jpeg' alt='')
+        // card body
+        .card-body
+          .car-info.d-flex.justify-content-between
+            .card-text.text-uppercase
+              h6.font-weight-bold car maker
+              h6 Model
+            h5.car-value.align-self-center.py-2.px-3
+              | $
+              span.car-price 550/day
+            button.btn.btn-success(type='submit') Rent
+        .card-footer.text-capitalized.d-flex.justify-content-between
+          p
+            span
+              i.fas.fa-car
+            | sedan
+          p
+            span
+              i.fas.fa-cogs
+            | semi-automatic
+          p
+            span
+              i.fas.fa-gas-pump
+            | 15L/100km
+    // end of card
+    // single car card
+    .col-10.mx-auto.my-3.col-md-6.col-lg-4
+      .card.car-card
+        img.card-img-top.car.img(src='/style/car-img-1.jpeg' alt='')
+        // card body
+        .card-body
+          .car-info.d-flex.justify-content-between
+            .card-text.text-uppercase
+              h6.font-weight-bold car maker
+              h6 Model
+            h5.car-value.align-self-center.py-2.px-3
+              | $
+              span.car-price 550/day
+            button.btn.btn-success(type='submit') Rent
+        .card-footer.text-capitalized.d-flex.justify-content-between
+          p
+            span
+              i.fas.fa-car
+            | sedan
+          p
+            span
+              i.fas.fa-cogs
+            | semi-automatic
+          p
+            span
+              i.fas.fa-gas-pump
+            | 15L/100km
+    // end of card
+    // single car card
+    .col-10.mx-auto.my-3.col-md-6.col-lg-4
+      .card.car-card
+        img.card-img-top.car.img(src='/style/car-img-1.jpeg' alt='')
+        // card body
+        .card-body
+          .car-info.d-flex.justify-content-between
+            .card-text.text-uppercase
+              h6.font-weight-bold car maker
+              h6 Model
+            h5.car-value.align-self-center.py-2.px-3
+              | $
+              span.car-price 550/day
+            button.btn.btn-success(type='submit') Rent
+        .card-footer.text-capitalized.d-flex.justify-content-between
+          p
+            span
+              i.fas.fa-car
+            | sedan
+          p
+            span
+              i.fas.fa-cogs
+            | semi-automatic
+          p
+            span
+              i.fas.fa-gas-pump
+            | 15L/100km
+    // end of card
+include footer.html
