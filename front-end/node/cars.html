@@ -1,6 +1,7 @@
 head
   title Bays
   include header.html
+  script(src="scripts/car.js")
 link(rel='shortcut icon' href='/assets/favicon.ico')
 link(rel='stylesheet' href='/assets/dcode.css')
 link(rel='stylesheet' href='style/style.css')
@@ -65,13 +66,13 @@ main.flex-shrink-0
               h5.car-value.align-self-center.py-2.px-3
                 | $#{car.cost}/day
                 span.car-price 
-              button.btn.btn-success(type='button' data-bs-toggle='modal' data-bs-target='#exampleModal') Rent
+              button.btn.btn-success(type='button' data-bs-toggle='modal' data-bs-target='#exampleModal'+car.car_id) Rent
               // Modal
-              #exampleModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+              .modal.fade(id='exampleModal'+car.car_id tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
                 .modal-dialog
                   .modal-content
                     .modal-header
-                      h5#exampleModalLabel.modal-title Rental Agreement
+                      h5#exampleModalLabel.modal-title Rental Agreement For #{car.make}
                       button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
                     .modal-body
                       p Confirm that you agree to our terms and conditions
@@ -81,16 +82,13 @@ main.flex-shrink-0
                           | I agree to the terms and conditions of Rent-A-Lux
                     .modal-footer
                       button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-                      button.btn.btn-success(type='button') Confirm Booking
+                      button.btn.btn-success(type='button',onClick="makeBooking("+car.car_id+")") Confirm Booking
           .card-footer.text-capitalized.d-flex.justify-content-between
             p
               span
                 i.fas.fa-car
               | sedan
-            p
-              span
-                i.fas.fa-cogs
-              | semi-automatic
+            p #{car.location}
             p
               span
                 i.fas.fa-gas-pump
