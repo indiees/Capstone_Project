@@ -23,13 +23,23 @@ main.flex-shrink-0
           option(value='2') Aston Martin
           option(value='3') Rolls Royce
         select.form-select.form-select-sm(aria-label='.form-select-sm example')
-          option(selected='') Year
+          option(selected='') Year From
+          option(value='1') Ferrari
+          option(value='2') Aston Martin
+          option(value='3') Rolls Royce
+        select.form-select.form-select-sm(aria-label='.form-select-sm example')
+          option(selected='') Year To
           option(value='1') Ferrari
           option(value='2') Aston Martin
           option(value='3') Rolls Royce
       #second-search-row.row.justify-content-center
         select.form-select.form-select-sm(aria-label='.form-select-sm example')
-          option(selected='') Cost
+          option(selected='') Min Cost
+          option(value='1') Ferrari
+          option(value='2') Aston Martin
+          option(value='3') Rolls Royce
+        select#max-cost.form-select.form-select-sm(aria-label='.form-select-sm example')
+          option(selected='') Max Cost
           option(value='1') Ferrari
           option(value='2') Aston Martin
           option(value='3') Rolls Royce
@@ -38,24 +48,14 @@ main.flex-shrink-0
           option(value='1') Ferrari
           option(value='2') Aston Martin
           option(value='3') Rolls Royce
-      a.reset-search-label.text-white(href='cars.html') Clear All
       .button
         button.btn.btn-primary.btn-lg(type='button') Search
-  //
-    section header
-    <section class="skills py-5" id="skills">
-    <div class="container">
-    <div class="row mb-5">
-    <div class="col d-flex flex-wrap text-uppercase justify-content-center"  >
-    <h1 class="section-title--special mx-1 text-white" style="background-color: #4f7ab3" >Our Inventory</h1>
-    </div>
-    </div>
-    </div>
-    </section>
+  
   .row
+
+
     // single car card
     .col-10.mx-auto.my-3.col-md-6.col-lg-4
-      // loop
       .card.car-card
         img.card-img-top.car.img(src='/style/car-img-1.jpeg' alt='')
         // card body
@@ -73,13 +73,17 @@ main.flex-shrink-0
               .modal-dialog
                 .modal-content
                   .modal-header
-                    h5#exampleModalLabel.modal-title Enter Rental Details
+                    h5#exampleModalLabel.modal-title Rental Agreement
                     button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
                   .modal-body
-                    h1 Hell
+                    p Confirm that you agree to our terms and conditions
+                    .form-check
+                      input#flexCheckDefault.form-check-input(type='checkbox' value='')
+                      label.form-check-label(for='flexCheckDefault')
+                        | I agree to the terms and conditions of Rent-A-Lux
                   .modal-footer
                     button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-                    button.btn.btn-primary(type='button') Save changes
+                    button.btn.btn-success(type='button') Confirm Booking
         .card-footer.text-capitalized.d-flex.justify-content-between
           p
             span
@@ -94,6 +98,12 @@ main.flex-shrink-0
               i.fas.fa-gas-pump
             | 15L/100km
     // end of card
+
+
+
+
+
+
     // single car card
     .col-10.mx-auto.my-3.col-md-6.col-lg-4
       .card.car-card
