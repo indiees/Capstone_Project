@@ -14,14 +14,12 @@ main.flex-shrink-0
       .row.justify-content-center
         select.form-select.form-select-sm(aria-label='.form-select-sm example')
           option(selected='') Make
-          option(value='1') Ferrari
-          option(value='2') Aston Martin
-          option(value='3') Rolls Royce
+          each make in data.makes
+            option(value=make) #{make}
         select.form-select.form-select-sm(aria-label='.form-select-sm example')
           option(selected='') Color
-          option(value='1') Ferrari
-          option(value='2') Aston Martin
-          option(value='3') Rolls Royce
+          each color in data.colors
+            option(value=color) #{color}
         select.form-select.form-select-sm(aria-label='.form-select-sm example')
           option(selected='') Year From
           option(value='1') Ferrari
@@ -45,9 +43,8 @@ main.flex-shrink-0
           option(value='3') Rolls Royce
         select.form-select.form-select-sm(aria-label='.form-select-sm example')
           option(selected='') Location
-          option(value='1') Ferrari
-          option(value='2') Aston Martin
-          option(value='3') Rolls Royce
+          each location in data.locations
+            option(value=location) #{location}
       .button
         button.btn.btn-primary.btn-lg(type='button') Search
   
