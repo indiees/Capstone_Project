@@ -20,7 +20,9 @@
     padding: 5px;
     overflow: hidden;
 }
-
+.form-select{
+    padding-right:30px;
+}
 .button{
     width: 220px;
     margin: 35px auto;
