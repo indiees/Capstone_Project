@@ -180,7 +180,7 @@ public class CarDAO {
         ArrayList<String> make = new ArrayList<String>();
         try {
             // Here you prepare your sql statement
-            String sql = "select distinct color from rentalux.cars;";
+            String sql = "select distinct make from rentalux.cars;";
             // Execute the query
             Connection connection = DatabaseUtils.connectToDatabase();
             Statement statement = connection.createStatement();
