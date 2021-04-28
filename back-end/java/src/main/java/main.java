@@ -19,6 +19,9 @@ public class main {
             app.get(Web.getBookingsByUser, BookingController.getBookingsByUser);
             app.post(Web.createBooking, BookingController.createBooking);
             app.post(Web.removeBooking, BookingController.removeBooking);
+            app.get(Web.getCarLocations, CarController.getCarLocations);
+            app.get(Web.getCarColors, CarController.getCarColors);
+            app.get(Web.getCarMakes, CarController.getCarMakes);
         });
     }
     public static int getHerokuAssignedPort() {

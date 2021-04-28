@@ -62,4 +62,31 @@ public class CarController {
         ctx.json(new Status("No cars with those details can be found"));
         return;
     };
+    public static Handler getCarLocations = ctx ->{
+        ArrayList<String> locations = CarDAO.getLocations();
+        if (locations!=null){
+            ctx.json(new Status(locations));
+            return;
+        }
+        ctx.json(new Status("Failure to connect to server"));
+        return;
+    };
+    public static Handler getCarColors = ctx ->{
+        ArrayList<String> colors = CarDAO.getColors();
+        if (colors!=null){
+            ctx.json(new Status(colors));
+            return;
+        }
+        ctx.json(new Status("Failure to connect to server"));
+        return;
+    };
+    public static Handler getCarMakes = ctx ->{
+        ArrayList<String> makes = CarDAO.getMakes();
+        if (makes!=null){
+            ctx.json(new Status(makes));
+            return;
+        }
+        ctx.json(new Status("Failure to connect to server"));
+        return;
+    };
 }
