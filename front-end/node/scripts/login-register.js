@@ -75,6 +75,8 @@ function loginCallback(data){
     }
     else{
         console.log("Logged in")
+        localStorage.setItem("email", $("#loginEmail").val());
+        localStorage.setItem("password",$("#loginPassowrd").val());
         window.location.replace("/logged_in.html"); //Temp page for demo
     }
 }
