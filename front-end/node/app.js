@@ -8,7 +8,7 @@ app.get('/', index);
 
 function index(req,res){
     {
-        res.send(pug.renderFile("login-register.html"));
+        res.send(pug.renderFile("views/login-register.pug"));
     }
 } 
 
@@ -110,7 +110,8 @@ async function cars(req,res){
                     }
                 }
             )
-        res.send(pug.renderFile("cars.html",data=data))
+            
+        res.send(pug.renderFile("views/cars.pug",data=data))
     }
 } 
 
@@ -124,7 +125,7 @@ function bays(req,res){
             .then(response=>response.json()
             ) 
             .then(
-                html=> res.send(pug.renderFile("bays.html", data=html.payload))
+                html=> res.send(pug.renderFile("views/bays.pug", data=html.payload))
             )
     }
 } 
@@ -140,5 +141,5 @@ function startServer(port){
 }
 app.get('*',defaultPage);
 function defaultPage(req, res){
-    res.send(pug.renderFile("cannotbefound.html"))
+    res.send(pug.renderFile("views/cannotbefound.pug"))
 }
