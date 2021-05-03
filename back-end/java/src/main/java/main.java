@@ -16,7 +16,7 @@ public class main {
             app.get(Web.getBays, BayController.getBays);
             app.get(Web.getCars, CarController.getCars);
             app.get(Web.getBookingsByCar, BookingController.getBookingsByCar);
-            app.get(Web.getBookingsByUser, BookingController.getBookingsByUser);
+            app.post(Web.getBookingsByUser, BookingController.getBookingsByUser);
             app.post(Web.createBooking, BookingController.createBooking);
             app.post(Web.removeBooking, BookingController.removeBooking);
             app.get(Web.getCarLocations, CarController.getCarLocations);
