@@ -136,7 +136,7 @@ app.get('/bookings', bookings);
 
 function bookings(req,res){
     {
-        res.send(pug.renderFile("bookings.html"));
+        res.send(pug.renderFile("views/bookings.pug"));
     }
 } 
 
