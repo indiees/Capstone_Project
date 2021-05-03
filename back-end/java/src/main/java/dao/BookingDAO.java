@@ -42,11 +42,11 @@ public class BookingDAO {
         }
         return null;
     }
-    public static ArrayList<Booking> getBookingsByUser(int user_id) {
+    public static ArrayList<Booking> getBookingsByUser(String email) {
         ArrayList<Booking> bookings = new ArrayList<Booking>();
         try {
             // Here you prepare your sql statement
-            String sql = "SELECT * FROM `rentalux`.bookings where `user_id` = " + user_id;
+            String sql = "SELECT * FROM `rentalux`.bookings join `rentalux`.users on users.user_id = bookings.user_id where `email` like '" + email + "'";
             // Execute the query
             Connection connection = DatabaseUtils.connectToDatabase();
             Statement statement = connection.createStatement();

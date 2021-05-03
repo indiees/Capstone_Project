@@ -74,9 +74,8 @@ function loginCallback(data){
         console.log(data.message)
     }
     else{
-        console.log("Logged in")
         localStorage.setItem("email", $("#loginEmail").val());
-        localStorage.setItem("password",$("#loginPassowrd").val());
+        localStorage.setItem("password",$("#loginPassword").val());
         window.location.replace("/cars"); //Temp page for demo
     }
 }

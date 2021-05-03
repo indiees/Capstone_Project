@@ -31,15 +31,22 @@ public class BookingController {
         return;
     };
     public static Handler getBookingsByUser = ctx ->{
-        int user_id;
-        String user_id_str;
-        user_id_str = ctx.queryParam("user_id");
-        if (user_id_str==null){
-            ctx.json(new Status("You are missing `user_id`"));
+        String str_email = ctx.formParam("email");
+        if (str_email==null) {
+            ctx.json(new Status("No 'email' Provided"));
             return;
         }
-        user_id = Integer.parseInt(user_id_str);
-        ArrayList<Booking> bookings = BookingDAO.getBookingsByUser(user_id);
+        String str_password = ctx.formParam("password");
+        if (str_password==null) {
+            ctx.json(new Status("No 'password' Provided"));
+            return;
+        }
+        User user = UserDAO.checkLogin(str_email, str_password);
+        if (user==null){
+            ctx.json(new Status("Invalid credentials"));
+            return;
+        }
+        ArrayList<Booking> bookings = BookingDAO.getBookingsByUser(str_email);
         if (bookings!=null){
             ctx.json(new Status(bookings));
             return;

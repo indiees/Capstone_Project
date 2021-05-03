@@ -117,6 +117,7 @@ function searchCompleteCallback(data){
         //Which has its own inner element
         innerInnerModal = document.createElement("div")
         innerInnerModal.className="modal-content"
+        innerModal.appendChild(innerInnerModal)
         //Which has a header/footer/body
         modalHeader = document.createElement("div")
         modalBody = document.createElement("div")
@@ -124,9 +125,9 @@ function searchCompleteCallback(data){
         modalHeader.className = "modal-header"
         modalBody.className = "modal-body"
         modalFooter.className = "modal-footer"
-        modal.appendChild(modalHeader)
-        modal.appendChild(modalBody)
-        modal.appendChild(modalFooter)
+        innerInnerModal.appendChild(modalHeader)
+        innerInnerModal.appendChild(modalBody)
+        innerInnerModal.appendChild(modalFooter)
         //The header contains some text
         modalTitle = document.createElement("h5")
         modalTitle.className = "modal-title"
