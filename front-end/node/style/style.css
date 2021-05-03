@@ -20,7 +20,9 @@
     padding: 5px;
     overflow: hidden;
 }
-
+.form-select{
+    padding-right:30px;
+}
 .button{
     width: 220px;
     margin: 35px auto;
@@ -93,4 +95,77 @@ span{
 .errormsg{
     color: red;
     display:block;
+}
+
+
+.content-table {
+    margin-left: auto;
+    margin-right: auto;
+}
+.content-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+.content-table button{
+    border-color: #009879;
+    color: black;
+    background-color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 12px;
+    border-width: 4px;
+}
+.content-table button:hover{
+    background-color: #009879;
+    color: white;
+}
+
+.deletebtn{
+    border-color: #ff0000;
+    color: black;
+    background-color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 12px;
+    border-width: 4px;
+}
+.deletebtn:hover{
+    background-color: #ff0000;
+    color:white;
 }

@@ -36,7 +36,7 @@ public class UserDAOTest {
     }
 
     @Test
-    public void testCheckLogin() {
+    public void testCheckLoginPositive() {
         Assumptions.assumeTrue(userExists);
         User retrievedUser = UserDAO.checkLogin(EMAIL, PASS);
         Assertions.assertNotNull(retrievedUser);
@@ -44,14 +44,14 @@ public class UserDAOTest {
     }
 
     @Test
-    public void testCheckLoginFail() {
+    public void testCheckLoginNegative() {
         Assumptions.assumeTrue(userExists);
         User retrievedUser = UserDAO.checkLogin(DUMMY, DUMMY);
         Assertions.assertNull(retrievedUser);
     }
 
     @Test
-    public void testGetPersonByEmail() {
+    public void testGetPersonByEmailPositive() {
         Assumptions.assumeTrue(userExists);
         User retrievedUser = UserDAO.getPersonByEmail(EMAIL);
         Assertions.assertNotNull(retrievedUser);
@@ -59,21 +59,21 @@ public class UserDAOTest {
     }
 
     @Test
-    public void testGetPersonByEmailFail() {
+    public void testGetPersonByEmailNegative() {
         Assumptions.assumeTrue(userExists);
         User retrievedUser = UserDAO.getPersonByEmail(DUMMY);
         Assertions.assertNull(retrievedUser);
     }
 
     @Test
-    public void testEmailInUse() {
+    public void testEmailInUsePositive() {
         Assumptions.assumeTrue(userExists);
         boolean result = UserDAO.emailInUse(EMAIL);
         Assertions.assertTrue(result);
     }
 
     @Test
-    public void testEmailInUseFail() {
+    public void testEmailInUseNegative() {
         Assumptions.assumeTrue(userExists);
         boolean result = UserDAO.emailInUse(DUMMY);
         Assertions.assertFalse(result);

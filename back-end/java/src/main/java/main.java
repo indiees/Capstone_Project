@@ -13,6 +13,15 @@ public class main {
             //Basic resources
             app.post(Web.checkLogin, UserController.checkLogin);
             app.post(Web.createUser, UserController.createUser);
+            app.get(Web.getBays, BayController.getBays);
+            app.get(Web.getCars, CarController.getCars);
+            app.get(Web.getBookingsByCar, BookingController.getBookingsByCar);
+            app.post(Web.getBookingsByUser, BookingController.getBookingsByUser);
+            app.post(Web.createBooking, BookingController.createBooking);
+            app.post(Web.removeBooking, BookingController.removeBooking);
+            app.get(Web.getCarLocations, CarController.getCarLocations);
+            app.get(Web.getCarColors, CarController.getCarColors);
+            app.get(Web.getCarMakes, CarController.getCarMakes);
         });
     }
     public static int getHerokuAssignedPort() {
