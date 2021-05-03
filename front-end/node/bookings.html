@@ -1,104 +1,81 @@
-<html>
- <head>
-    <title></title>
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.js"
-    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous">
-    </script>
-    <script> 
-    $(function(){
-    $("#header").load("header.html"); 
-    $("#footer").load("footer.html"); 
-    });
-    </script> 
-</head>
-    <div id="header"></div>
-    <body>
-        <main class="flex-shrink-0">
+head
+  title Bookings
+  include header.html
+  script(src="scripts/car.js")
+link(rel='shortcut icon' href='/assets/favicon.ico')
+link(rel='stylesheet' href='/assets/dcode.css')
+link(rel='stylesheet' href='style/style.css')
+link(rel='stylesheet' href='node_modules/@fortawesome/fontawesome-free/js/all.js')
+meta(name='viewport' content='width=device-width,initial-scale=1.0')
 
-            
-            <h1 class=" d-flex display-4 justify-content-center">Booking details</h1>
+main.flex-shrink-0
+  h1.d-flex.display-4.justify-content-center Booking details
+  .container
+    table.table
+      thead
+        tr
+          th.table-primary(scope='col') #
+          th.table-primary(scope='col') Booking ID
+          th.table-primary(scope='col') Car ID
+          th.table-primary(scope='col') User ID
+          th.table-primary(scope='col') Start Bay ID
+          th.table-primary(scope='col') End Bay ID
+          th.table-primary(scope='col') Start Date
+          th.table-primary(scope='col') End Date
+          th.table-primary(scope='col') Duration
+          th.table-primary(scope='col') Rate
+          th.table-primary(scope='col') Action
+      tbody
+        tr
+          th(scope='row') 1
+          td 1001
+          td 2352
+          td 2353
+          td 12
+          td 9
+          td 03/12/2020
+          td 03/17/2020
+          td 5 days
+          td $2750
+          td
+            .d-grid.gap-2.d-md-flex.justify-content-md-end
+              button.btn.btn-success.btn-sm(type='button')
+                i.far.fa-edit
+              button.btn.btn-danger.btn-sm(type='button')
+                i.far.fa-trash-alt
+        tr
+          th(scope='row') 2
+          td 1002
+          td 3457
+          td 8476
+          td 12
+          td 9
+          td 03/12/2020
+          td 03/17/2020
+          td 5 days
+          td $2750
+          td
+            .d-grid.gap-2.d-md-flex.justify-content-md-end
+              button.btn.btn-success.btn-sm(type='button')
+                i.far.fa-edit
+              button.btn.btn-danger.btn-sm(type='button')
+                i.far.fa-trash-alt
+        tr
+          th(scope='row') 3
+          td 1003
+          td 0987
+          td 0023
+          td 12
+          td 9
+          td 03/12/2020
+          td 03/17/2020
+          td 5 days
+          td $2750
+          td
+            .d-grid.gap-2.d-md-flex.justify-content-md-end
+              button.btn.btn-success.btn-sm(type='button')
+                i.far.fa-edit
+              button.btn.btn-danger.btn-sm(type='button')
+                i.far.fa-trash-alt
 
-
-
-            <div class="container">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="table-primary" scope="col">#</th>
-                            <th class="table-primary" scope="col">Booking ID</th>
-                            <th class="table-primary" scope="col">Car ID</th>
-                            <th class="table-primary" scope="col">User ID</th>
-                            <th class="table-primary" scope="col">Start Bay ID</th>
-                            <th class="table-primary" scope="col">End Bay ID</th>
-                            <th class="table-primary" scope="col">Start Date</th>
-                            <th class="table-primary" scope="col">End Date</th>
-                            <th class="table-primary" scope="col">Duration</th>
-                            <th class="table-primary" scope="col">Rate</th>
-                            <th class="table-primary" scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>1001</td>
-                            <td>2352</td>
-                            <td>2353</td>
-                            <td>12</td>
-                            <td>9</td>
-                            <td>03/12/2020</td>
-                            <td>03/17/2020</td>
-                            <td>5 days</td>
-                            <td>$2750</td>
-                            <td>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-success btn-sm" type="button"><i class="far fa-edit"></i></button>
-                                    <button class="btn btn-danger btn-sm" type="button"><i class="far fa-trash-alt"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>1002</td>
-                            <td>3457</td>
-                            <td>8476</td>
-                            <td>12</td>
-                            <td>9</td>
-                            <td>03/12/2020</td>
-                            <td>03/17/2020</td>
-                            <td>5 days</td>
-                            <td>$2750</td>
-                            <td>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-success btn-sm" type="button"><i class="far fa-edit"></i></button>
-                                    <button class="btn btn-danger btn-sm" type="button"><i class="far fa-trash-alt"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>1003</td>
-                            <td>0987</td>
-                            <td>0023</td>
-                            <td>12</td>
-                            <td>9</td>
-                            <td>03/12/2020</td>
-                            <td>03/17/2020</td>
-                            <td>5 days</td>
-                            <td>$2750</td>
-                            <td>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-success btn-sm" type="button"><i class="far fa-edit"></i></button>
-                                    <button class="btn btn-danger btn-sm" type="button"><i class="far fa-trash-alt"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        
-        </main>
-    </body>
-    <div id="footer"></div>
-</html>
+include footer.html
