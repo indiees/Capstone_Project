@@ -79,3 +79,20 @@ function getBookings(data){
 
     
 }
+
+function removeBooking(booking_id){
+    formData = {
+        email:      localStorage.getItem("email"), 
+        password:   localStorage.getItem("password"),
+        booking_id: booking_id,
+    }
+    $.ajax({
+    type: 'POST',
+    url: baseURL + 'booking/remove',
+    data: formData,
+    complete: removeBookingCallback
+    });
+}
+function removeBookingCallback(data){
+    window.location.replace("/bookings")
+}
