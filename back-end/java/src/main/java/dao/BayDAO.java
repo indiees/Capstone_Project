@@ -40,4 +40,16 @@ public class BayDAO {
         }
         return null;
     }
+
+    public static Bay getBay(int bay_id) {
+        return null;
+    }
+
+    public static Bay createBay(String location, int maxCap) {
+        return null;
+    }
+
+    public static boolean removeBay(int bay_id) {
+        return false;
+    }
 }
