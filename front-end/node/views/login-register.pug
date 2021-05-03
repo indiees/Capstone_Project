@@ -1,0 +1,34 @@
+head
+  title Login/Register
+  link(rel='stylesheet' href='style/style.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+.main
+  .form
+    .button
+      #btn
+      button.toggle-btn(type='button' onclick='login()') Log In
+      button.toggle-btn(type='button' onclick='register()') Register
+    // Login Form
+    form#login.input-group
+      input#loginEmail.input-field(type='text' placeholder='Email' required='')
+      input#loginPassword.input-field(type='text' placeholder='Password' required='')
+      input.check-box(type='checkbox')
+      span Remember Password
+      label#login_error.errormsg
+      button.submit-btn(type='submit') Log In
+    // Register Form
+    form#register.input-group
+      input#first_name.input-field(type='text' placeholder='First Name' required='')
+      label#first_name_error.errormsg
+      input#last_name.input-field(type='text' placeholder='Last Name' required='')
+      label#last_name_error.errormsg
+      input#email.input-field(type='text' placeholder='Email Id' required='')
+      label#email_error.errormsg
+      input#password.input-field(type='text' placeholder='Enter password' required='')
+      label#password_error.errormsg
+      label#generic_error.errormsg
+      input.check-box(type='checkbox')
+      span I agree to the terms &amp; conditions
+      button.submit-btn(type='submit') Register
+// Script to toggle between the forms
+script(src='scripts/login-register.js')

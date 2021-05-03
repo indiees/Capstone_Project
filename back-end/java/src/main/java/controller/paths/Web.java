@@ -10,5 +10,9 @@ public class Web {
     public static final String getBays = "/api/bay/search";
     public static final String createBooking = "/api/booking/create";
     public static final String removeBooking = "/api/booking/remove";
+    public static final String getCarColors = "/api/car/colors";
+    public static final String getCarMakes = "/api/car/makes";
+    public static final String getCarLocations = "/api/car/locations";
+
 
 }
