@@ -13,41 +13,25 @@ main.flex-shrink-0
       .form-top
         h1.col.d-flex.text-white.justify-content-center Find your next car
       .row.justify-content-center
-        select.form-select.form-select-sm(aria-label='.form-select-sm example')
-          option(selected='') Make
+        select.form-select.form-select-sm#make(aria-label='.form-select-sm example')
+          option(selected='' value = "") Make
           each make in data.makes
             option(value=make) #{make}
-        select.form-select.form-select-sm(aria-label='.form-select-sm example')
-          option(selected='') Color
+        select.form-select.form-select-sm#color(aria-label='.form-select-sm example')
+          option(selected='',value="") Color
           each color in data.colors
             option(value=color) #{color}
-        select.form-select.form-select-sm(aria-label='.form-select-sm example')
-          option(selected='') Year From
-          option(value='1') Ferrari
-          option(value='2') Aston Martin
-          option(value='3') Rolls Royce
-        select.form-select.form-select-sm(aria-label='.form-select-sm example')
-          option(selected='') Year To
-          option(value='1') Ferrari
-          option(value='2') Aston Martin
-          option(value='3') Rolls Royce
+        input#min-year(style="width:100px",placeholder="Min year")
+        input#max-year(style="width:100px",placeholder="Max year")
       #second-search-row.row.justify-content-center
-        select.form-select.form-select-sm(aria-label='.form-select-sm example')
-          option(selected='') Min Cost
-          option(value='1') Ferrari
-          option(value='2') Aston Martin
-          option(value='3') Rolls Royce
-        select#max-cost.form-select.form-select-sm(aria-label='.form-select-sm example')
-          option(selected='') Max Cost
-          option(value='1') Ferrari
-          option(value='2') Aston Martin
-          option(value='3') Rolls Royce
-        select.form-select.form-select-sm(aria-label='.form-select-sm example')
-          option(selected='') Location
+        input#min-cost(style="width:100px",placeholder="Min Cost")
+        input#max-cost(style="width:100px",placeholder="Max Cost")
+        select.form-select.form-select-sm#location(aria-label='.form-select-sm example')
+          option(selected='',value="") Location
           each location in data.locations
             option(value=location) #{location}
       .button
-        button.btn.btn-primary.btn-lg(type='button') Search
+        button.btn.btn-primary.btn-lg#search(type='button') Search
   
   .row
 
