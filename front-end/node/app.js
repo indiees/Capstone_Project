@@ -30,6 +30,14 @@ function bays(req,res){
 
 
 
+app.get('/bookings', bookings);
+
+function bookings(req,res){
+    {
+        res.send(pug.renderFile("bookings.html"));
+    }
+} 
+
 app.use("/scripts",express.static("scripts"));
 app.use("/style",express.static("style"));
 app.use(express.static("public"));

@@ -1,0 +1,81 @@
+head
+  title Bookings
+  include header.html
+  script(src="scripts/car.js")
+link(rel='shortcut icon' href='/assets/favicon.ico')
+link(rel='stylesheet' href='/assets/dcode.css')
+link(rel='stylesheet' href='style/style.css')
+link(rel='stylesheet' href='node_modules/@fortawesome/fontawesome-free/js/all.js')
+meta(name='viewport' content='width=device-width,initial-scale=1.0')
+
+main.flex-shrink-0
+  h1.d-flex.display-4.justify-content-center Booking details
+  .container
+    table.table
+      thead
+        tr
+          th.table-primary(scope='col') #
+          th.table-primary(scope='col') Booking ID
+          th.table-primary(scope='col') Car ID
+          th.table-primary(scope='col') User ID
+          th.table-primary(scope='col') Start Bay ID
+          th.table-primary(scope='col') End Bay ID
+          th.table-primary(scope='col') Start Date
+          th.table-primary(scope='col') End Date
+          th.table-primary(scope='col') Duration
+          th.table-primary(scope='col') Rate
+          th.table-primary(scope='col') Action
+      tbody
+        tr
+          th(scope='row') 1
+          td 1001
+          td 2352
+          td 2353
+          td 12
+          td 9
+          td 03/12/2020
+          td 03/17/2020
+          td 5 days
+          td $2750
+          td
+            .d-grid.gap-2.d-md-flex.justify-content-md-end
+              button.btn.btn-success.btn-sm(type='button')
+                i.far.fa-edit
+              button.btn.btn-danger.btn-sm(type='button')
+                i.far.fa-trash-alt
+        tr
+          th(scope='row') 2
+          td 1002
+          td 3457
+          td 8476
+          td 12
+          td 9
+          td 03/12/2020
+          td 03/17/2020
+          td 5 days
+          td $2750
+          td
+            .d-grid.gap-2.d-md-flex.justify-content-md-end
+              button.btn.btn-success.btn-sm(type='button')
+                i.far.fa-edit
+              button.btn.btn-danger.btn-sm(type='button')
+                i.far.fa-trash-alt
+        tr
+          th(scope='row') 3
+          td 1003
+          td 0987
+          td 0023
+          td 12
+          td 9
+          td 03/12/2020
+          td 03/17/2020
+          td 5 days
+          td $2750
+          td
+            .d-grid.gap-2.d-md-flex.justify-content-md-end
+              button.btn.btn-success.btn-sm(type='button')
+                i.far.fa-edit
+              button.btn.btn-danger.btn-sm(type='button')
+                i.far.fa-trash-alt
+
+include footer.html
