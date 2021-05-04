@@ -3,6 +3,7 @@ package dao;
 import dao.util.DatabaseUtils;
 import model.Bay;
 import model.Car;
+import model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -202,5 +203,29 @@ public class CarDAO {
             return make;
         }
         return null;
+    }
+
+    public static Car addCar(Car new_car) {
+        int car_id=0;
+        String sql = "INSERT INTO `rentalux`.`cars`(`cost`,`color`,`liscence_plate`,`year`, `bay_id`) VALUES(" + new_car.getCost() + ",'" + new_car.getColor()
+                + "','" + new_car.getLiscence_plate() + "','" + new_car.getMake() + "','" + new_car.getYear() + "'," + new_car.getBay() + ");";
+        try {
+            // Execute the query
+            Connection connection = DatabaseUtils.connectToDatabase();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+            // Extract user_id
+            ResultSet result = statement.getGeneratedKeys();
+            result.next();
+            car_id = result.getInt(1);
+            // Close it
+            DatabaseUtils.closeConnection(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        // Create the user object
+        new_car.setCar_id(car_id);
+        return new_car;
     }
 }
