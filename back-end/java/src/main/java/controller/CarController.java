@@ -82,6 +82,30 @@ public class CarController {
             props.put("color",color);
         }
 
+        String liscence_plate;
+        liscence_plate = ctx.formParam("liscence_plate");
+        if (liscence_plate!=null){
+            props.put("liscence_plate",liscence_plate);
+        }
+
+        String make;
+        make = ctx.formParam("make");
+        if (make!=null){
+            props.put("make",make);
+        }
+
+        String year;
+        year = ctx.formParam("year");
+        if (year!=null){
+            props.put("year",year);
+        }
+
+        String bay_id;
+        bay_id = ctx.formParam("bay_id");
+        if (bay_id!=null){
+            props.put("bay_id",bay_id);
+        }
+
 
         CarDAO.updateCar(car_id, props);
 
