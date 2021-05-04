@@ -60,6 +60,30 @@ public class CarController {
         ctx.json(new Status());
     };
     public static Handler editCar = ctx ->{
+        HashMap<String, String> props = new HashMap<String, String>();
+
+        String str_car_id;
+        str_car_id = ctx.formParam("car_id");
+        if (str_car_id==null){
+            ctx.json(new Status("No `car_id` Provided"));
+            return;
+        }
+        int car_id = Integer.parseInt(str_car_id);
+
+        String cost_str;
+        cost_str = ctx.formParam("cost");
+        if (cost_str!=null){
+            props.put("cost",cost_str);
+        }
+
+        String color;
+        color = ctx.formParam("color");
+        if (color!=null){
+            props.put("color",color);
+        }
+
+
+        CarDAO.updateCar(car_id, props);
 
     };
 

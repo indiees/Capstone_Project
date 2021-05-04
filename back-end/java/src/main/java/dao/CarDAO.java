@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class CarDAO {
@@ -228,5 +229,23 @@ public class CarDAO {
         // Create the user object
         new_car.setCar_id(car_id);
         return new_car;
+    }
+
+    public static void updateCar(int car_id, HashMap<String, String> props) {
+        if (props.size()>0) {
+            String sql;
+            sql = "UPDATE `rentalux`.`cars` SET ";
+            Iterator propIterator = props.entrySet().iterator();
+            while (propIterator.hasNext()) {
+                Map.Entry prop = (Map.Entry) propIterator.next();
+                sql += "`" + prop.getKey() + "` = '" + prop.getValue() + "',";
+            }
+            sql = sql.substring(0, sql.length() - 1);
+            sql += " WHERE `car_id` = " + car_id + ";";
+            System.out.println(sql);
+        }
+        else{
+            System.out.println("UpdateCar DAO method was called, but there were no props provided");
+        }
     }
 }
