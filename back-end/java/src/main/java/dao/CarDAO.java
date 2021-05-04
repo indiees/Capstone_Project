@@ -207,8 +207,9 @@ public class CarDAO {
 
     public static Car addCar(Car new_car) {
         int car_id=0;
-        String sql = "INSERT INTO `rentalux`.`cars`(`cost`,`color`,`liscence_plate`,`year`, `bay_id`) VALUES(" + new_car.getCost() + ",'" + new_car.getColor()
+        String sql = "INSERT INTO `rentalux`.`cars`(`cost`,`color`,`liscence_plate`,`make`,`year`, `bay_id`) VALUES(" + new_car.getCost() + ",'" + new_car.getColor()
                 + "','" + new_car.getLiscence_plate() + "','" + new_car.getMake() + "','" + new_car.getYear() + "'," + new_car.getBay() + ");";
+
         try {
             // Execute the query
             Connection connection = DatabaseUtils.connectToDatabase();

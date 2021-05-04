@@ -57,6 +57,7 @@ public class CarController {
 
         Car new_car = new Car(cost, color, liscence_plate, make, year, bay_id);
         CarDAO.addCar(new_car);
+        ctx.json(new Status());
     };
     public static Handler editCar = ctx ->{
 
