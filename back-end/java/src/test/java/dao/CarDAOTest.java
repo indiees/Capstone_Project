@@ -7,6 +7,7 @@ import org.junit.jupiter.api.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CarDAOTest {
     private Car testCar;
     private boolean carExists = false;

@@ -1,35 +1,62 @@
 package dao;
 
+import model.Bay;
 import model.Booking;
-import org.junit.jupiter.api.Assumptions;
+import model.Car;
+import model.User;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.util.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BookingDAOTest {
     private Booking testBooking;
     private boolean bookingExists = false;
 
-    private static final int CARID = 0;
-    private static final int USERID = 0;
-    private static final int STARTBAYID = 0;
-    private static final int ENDBAYID = 0;
     private static final int DURATION = 10;
     private static final int DUMMYINT = -1;
     private static final double RATE = 1.1;
-    private Timestamp ts;
+
+    private static final String LOCATION = "testLocation";
+    private static final int MAX_CAP = 10;
+    private static final double COST = 10.1;
+    private static final String COLOUR = "Brown";
+    private static final String LP = "LET137";
+    private static final String MAKE = "Ford";
+    private static final int YEAR = 2000;
+    private static final String EMAIL = "UserDAO@test.com";
+    private static final String PASS = "TestDAOUser";
+    private static final String FNAME = "UserDAOTest.first.name";
+    private static final String LNAME = "UserDAOTest.last.name";
+
+    private Bay testBay;
+    private Car testCar;
+    private User testUser;
+
+    @BeforeAll
+    public void setUp() {
+        testBay = BayDAO.createBay(LOCATION, MAX_CAP);
+        testCar = CarDAO.createCar(COST, COLOUR, LP, MAKE, YEAR, testBay.getBay_id());
+        testUser = UserDAO.createUser(EMAIL, PASS, FNAME, LNAME);
+    }
 
     @BeforeEach
     public void setup() {
         if (!bookingExists) {
             Date date = new Date();
-            ts = new Timestamp(date.getTime());
-            testBooking = BookingDAO.createBooking(CARID, USERID, STARTBAYID, ENDBAYID, ts, DURATION, RATE);
+            Timestamp ts = new Timestamp(date.getTime());
+            int bay_id = testBay.getBay_id();
+            testBooking = BookingDAO.createBooking(testCar.getCar_id(), testUser.getUser_id(),
+                    bay_id, bay_id+1, ts, DURATION, RATE);
             bookingExists = (testBooking != null);
         }
     }
@@ -40,7 +67,7 @@ public class BookingDAOTest {
     @Test
     public void testGetBookingsByCarPositive() {
         Assumptions.assumeTrue(bookingExists);
-        ArrayList<Booking> retrievedBooking = BookingDAO.getBookingsByCar(CARID);
+        ArrayList<Booking> retrievedBooking = BookingDAO.getBookingsByCar(testCar.getCar_id());
         Assertions.assertNotNull(retrievedBooking);
         Assertions.assertTrue(retrievedBooking.contains(testBooking));
     }
@@ -57,7 +84,7 @@ public class BookingDAOTest {
 //    @Test
 //    public void testGetBookingsByUserPositive() {
 //        Assumptions.assumeTrue(bookingExists);
-//        ArrayList<Booking> retrievedBooking = BookingDAO.getBookingsByUser(USERID);
+//        ArrayList<Booking> retrievedBooking = BookingDAO.getBookingsByUser(testUser.getUser_id());
 //        Assertions.assertNotNull(retrievedBooking);
 //        Assertions.assertTrue(retrievedBooking.contains(testBooking));
 //    }
@@ -73,14 +100,21 @@ public class BookingDAOTest {
     public void testRemoveBooking() {
         Assumptions.assumeTrue(bookingExists);
         // Seems dumb to retrieve the user id here. Should look into it
-        bookingExists = !BookingDAO.removeBooking(testBooking.getBooking_id(), USERID);
+        bookingExists = !BookingDAO.removeBooking(testBooking.getBooking_id(), testUser.getUser_id());
         Assertions.assertFalse(bookingExists);
     }
 
     @AfterEach
-    public void tearDown() {
+    public void teardown() {
         if (bookingExists) {
-            bookingExists = !BookingDAO.removeBooking(testBooking.getBooking_id(), USERID);
+            bookingExists = !BookingDAO.removeBooking(testBooking.getBooking_id(), testUser.getUser_id());
         }
+    }
+
+    @AfterAll
+    public void tearDown() {
+        CarDAO.removeCar(testCar.getCar_id());
+        BayDAO.removeBay(testBay.getBay_id());
+        UserDAO.removeUser(testUser.getUser_id());
     }
 }
