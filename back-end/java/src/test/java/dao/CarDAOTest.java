@@ -1,11 +1,9 @@
 package dao;
 
+import model.Bay;
 import model.Car;
-import org.junit.jupiter.api.Assumptions;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,15 +16,23 @@ public class CarDAOTest {
     private static final String LP = "LET137";
     private static final String MAKE = "Ford";
     private static final int YEAR = 2000;
-    private static final int BAYID = 0;
     private static final int DUMMYINT = -1;
     private static final double DUMMYCOST = 1.1;
     private static final String DUMMY = "dummy";
+    private static final String LOCATION = "testLocation";
+    private static final int MAX_CAP = 10;
+
+    private Bay testBay;
+
+    @BeforeAll
+    public void setUp() {
+        testBay = BayDAO.createBay(LOCATION, MAX_CAP);
+    }
 
     @BeforeEach
     public void setup() {
         if (!carExists) {
-            testCar = CarDAO.createCar(COST, COLOUR, LP, MAKE, YEAR, BAYID);
+            testCar = CarDAO.createCar(COST, COLOUR, LP, MAKE, YEAR, testBay.getBay_id());
             carExists = (testCar != null);
         }
     }
@@ -89,9 +95,14 @@ public class CarDAOTest {
     }
 
     @AfterEach
-    public void tearDown() {
+    public void teardown() {
         if (carExists) {
             carExists = !CarDAO.removeCar(testCar.getCar_id());
         }
+    }
+
+    @AfterAll
+    public void tearDown() {
+        BayDAO.removeBay(testBay.getBay_id());
     }
 }
