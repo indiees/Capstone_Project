@@ -2,6 +2,7 @@ package dao;
 
 import dao.util.DatabaseUtils;
 import model.Bay;
+import model.Booking;
 import model.Car;
 import model.User;
 
@@ -206,10 +207,10 @@ public class CarDAO {
         return null;
     }
 
-    public static Car addCar(Car new_car) {
+    public static Car createCar(double cost, String color, String liscence_plate, String make, int year, int bay_id) {
         int car_id=0;
-        String sql = "INSERT INTO `rentalux`.`cars`(`cost`,`color`,`liscence_plate`,`make`,`year`, `bay_id`) VALUES(" + new_car.getCost() + ",'" + new_car.getColor()
-                + "','" + new_car.getLiscence_plate() + "','" + new_car.getMake() + "','" + new_car.getYear() + "'," + new_car.getBay() + ");";
+        String sql = "INSERT INTO `rentalux`.`cars`(`cost`,`color`,`liscence_plate`,`make`,`year`, `bay_id`) VALUES(" + cost + ",'" + color
+                + "','" + liscence_plate + "','" + make + "','" + year + "'," + bay_id + ");";
 
         try {
             // Execute the query
@@ -227,7 +228,7 @@ public class CarDAO {
             return null;
         }
         // Create the user object
-        new_car.setCar_id(car_id);
+        Car new_car = new Car(car_id, cost, color, liscence_plate, make, year, bay_id);
         return new_car;
     }
 
@@ -259,5 +260,9 @@ public class CarDAO {
             System.out.println("UpdateCar DAO method was called, but there were no props provided");
         }
         return true;
+    }
+
+    public static boolean removeCar(int car_id) {
+        return false;
     }
 }
