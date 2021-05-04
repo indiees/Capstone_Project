@@ -74,7 +74,7 @@ public class BayDAO {
 
     public static boolean removeBay(int bay_id) {
         String delete_sql;
-        delete_sql= "DELETE FROM `rentalux`.`bookings` WHERE `bay_id` = '" + bay_id + "';";
+        delete_sql= "DELETE FROM `rentalux`.`bays` WHERE `bay_id` = '" + bay_id + "';";
 
         try {
             // Execute the sql

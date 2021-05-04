@@ -263,6 +263,20 @@ public class CarDAO {
     }
 
     public static boolean removeCar(int car_id) {
-        return false;
+        String delete_sql;
+        delete_sql= "DELETE FROM `rentalux`.`cars` WHERE `car_id` = '" + car_id + "';";
+
+        try {
+            // Execute the sql
+            Connection connection = DatabaseUtils.connectToDatabase();
+            Statement statement = connection.createStatement();
+            statement.execute(delete_sql);
+            // Close it
+            DatabaseUtils.closeConnection(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }
