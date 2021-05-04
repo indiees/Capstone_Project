@@ -54,9 +54,8 @@ public class CarController {
             return;
         }
         int bay_id = Integer.parseInt(bay_id_str);
-
-        Car new_car = new Car(cost, color, liscence_plate, make, year, bay_id);
-        CarDAO.addCar(new_car);
+        
+        CarDAO.createCar(cost, color, liscence_plate, make, year, bay_id);
         ctx.json(new Status());
     };
     public static Handler editCar = ctx ->{
