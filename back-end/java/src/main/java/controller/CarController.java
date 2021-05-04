@@ -107,7 +107,11 @@ public class CarController {
         }
 
 
-        CarDAO.updateCar(car_id, props);
+        if (CarDAO.updateCar(car_id, props)) {
+            ctx.json(new Status());
+            return;
+        }
+        ctx.json(new Status("An unexpected error has occurred"));
 
     };
 

@@ -231,7 +231,7 @@ public class CarDAO {
         return new_car;
     }
 
-    public static void updateCar(int car_id, HashMap<String, String> props) {
+    public static boolean updateCar(int car_id, HashMap<String, String> props) {
         if (props.size()>0) {
             String sql;
             sql = "UPDATE `rentalux`.`cars` SET ";
@@ -243,9 +243,21 @@ public class CarDAO {
             sql = sql.substring(0, sql.length() - 1);
             sql += " WHERE `car_id` = " + car_id + ";";
             System.out.println(sql);
+            try {
+                // Execute the query
+                Connection connection = DatabaseUtils.connectToDatabase();
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(sql);
+                // Close it
+                DatabaseUtils.closeConnection(connection);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
         }
         else{
             System.out.println("UpdateCar DAO method was called, but there were no props provided");
         }
+        return true;
     }
 }
