@@ -10,7 +10,53 @@ import java.util.HashMap;
 
 public class CarController {
     public static Handler addCar = ctx ->{
+        String cost_str;
+        cost_str = ctx.formParam("cost");
+        if (cost_str==null){
+            ctx.json(new Status("No `cost` provided"));
+            return;
+        }
+        int cost = Integer.parseInt(cost_str);
 
+        String color;
+        color = ctx.formParam("color");
+        if (color==null){
+            ctx.json(new Status("No `color` provided"));
+            return;
+        }
+
+        String liscence_plate;
+        liscence_plate = ctx.formParam("liscence_plate");
+        if (liscence_plate==null){
+            ctx.json(new Status("No `liscence_plate` provided"));
+            return;
+        }
+
+        String make;
+        make = ctx.formParam("make");
+        if (make==null){
+            ctx.json(new Status("No `make` provided"));
+            return;
+        }
+
+        String year_str;
+        year_str = ctx.formParam("year");
+        if (year_str==null){
+            ctx.json(new Status("No `year` provided"));
+            return;
+        }
+        int year = Integer.parseInt(year_str);
+
+        String bay_id_str;
+        bay_id_str = ctx.formParam("bay_id");
+        if (bay_id_str==null){
+            ctx.json(new Status("No `bay_id` provided"));
+            return;
+        }
+        int bay_id = Integer.parseInt(bay_id_str);
+
+        Car new_car = new Car(cost, color, liscence_plate, make, year, bay_id);
+        CarDAO.addCar(new_car);
     };
     public static Handler editCar = ctx ->{
 
