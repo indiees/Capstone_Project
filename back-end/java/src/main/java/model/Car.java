@@ -53,4 +53,8 @@ public class Car {
     public int getBay() {
         return this.bay_id;
     }
+
+    public void setCar_id(int car_id) {
+        this.car_id = car_id;
+    }
 }

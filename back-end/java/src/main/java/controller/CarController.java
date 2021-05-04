@@ -9,6 +9,111 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CarController {
+    public static Handler addCar = ctx ->{
+        String cost_str;
+        cost_str = ctx.formParam("cost");
+        if (cost_str==null){
+            ctx.json(new Status("No `cost` provided"));
+            return;
+        }
+        int cost = Integer.parseInt(cost_str);
+
+        String color;
+        color = ctx.formParam("color");
+        if (color==null){
+            ctx.json(new Status("No `color` provided"));
+            return;
+        }
+
+        String liscence_plate;
+        liscence_plate = ctx.formParam("liscence_plate");
+        if (liscence_plate==null){
+            ctx.json(new Status("No `liscence_plate` provided"));
+            return;
+        }
+
+        String make;
+        make = ctx.formParam("make");
+        if (make==null){
+            ctx.json(new Status("No `make` provided"));
+            return;
+        }
+
+        String year_str;
+        year_str = ctx.formParam("year");
+        if (year_str==null){
+            ctx.json(new Status("No `year` provided"));
+            return;
+        }
+        int year = Integer.parseInt(year_str);
+
+        String bay_id_str;
+        bay_id_str = ctx.formParam("bay_id");
+        if (bay_id_str==null){
+            ctx.json(new Status("No `bay_id` provided"));
+            return;
+        }
+        int bay_id = Integer.parseInt(bay_id_str);
+        
+        CarDAO.createCar(cost, color, liscence_plate, make, year, bay_id);
+        ctx.json(new Status());
+    };
+    public static Handler editCar = ctx ->{
+        HashMap<String, String> props = new HashMap<String, String>();
+
+        String str_car_id;
+        str_car_id = ctx.formParam("car_id");
+        if (str_car_id==null){
+            ctx.json(new Status("No `car_id` Provided"));
+            return;
+        }
+        int car_id = Integer.parseInt(str_car_id);
+
+        String cost_str;
+        cost_str = ctx.formParam("cost");
+        if (cost_str!=null){
+            props.put("cost",cost_str);
+        }
+
+        String color;
+        color = ctx.formParam("color");
+        if (color!=null){
+            props.put("color",color);
+        }
+
+        String liscence_plate;
+        liscence_plate = ctx.formParam("liscence_plate");
+        if (liscence_plate!=null){
+            props.put("liscence_plate",liscence_plate);
+        }
+
+        String make;
+        make = ctx.formParam("make");
+        if (make!=null){
+            props.put("make",make);
+        }
+
+        String year;
+        year = ctx.formParam("year");
+        if (year!=null){
+            props.put("year",year);
+        }
+
+        String bay_id;
+        bay_id = ctx.formParam("bay_id");
+        if (bay_id!=null){
+            props.put("bay_id",bay_id);
+        }
+
+
+        if (CarDAO.updateCar(car_id, props)) {
+            ctx.json(new Status());
+            return;
+        }
+        ctx.json(new Status("An unexpected error has occurred"));
+
+    };
+
     public static Handler getCars = ctx ->{
         HashMap<String, String> props = new HashMap<String, String>();
 

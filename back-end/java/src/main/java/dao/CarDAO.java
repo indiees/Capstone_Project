@@ -2,13 +2,16 @@ package dao;
 
 import dao.util.DatabaseUtils;
 import model.Bay;
+import model.Booking;
 import model.Car;
+import model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class CarDAO {
@@ -204,8 +207,59 @@ public class CarDAO {
         return null;
     }
 
-    public static Car createCar(double cost, String colour, String lp, String make, int year, int bayid) {
-        return null;
+    public static Car createCar(double cost, String color, String liscence_plate, String make, int year, int bay_id) {
+        int car_id=0;
+        String sql = "INSERT INTO `rentalux`.`cars`(`cost`,`color`,`liscence_plate`,`make`,`year`, `bay_id`) VALUES(" + cost + ",'" + color
+                + "','" + liscence_plate + "','" + make + "','" + year + "'," + bay_id + ");";
+
+        try {
+            // Execute the query
+            Connection connection = DatabaseUtils.connectToDatabase();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+            // Extract user_id
+            ResultSet result = statement.getGeneratedKeys();
+            result.next();
+            car_id = result.getInt(1);
+            // Close it
+            DatabaseUtils.closeConnection(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        // Create the user object
+        Car new_car = new Car(car_id, cost, color, liscence_plate, make, year, bay_id);
+        return new_car;
+    }
+
+    public static boolean updateCar(int car_id, HashMap<String, String> props) {
+        if (props.size()>0) {
+            String sql;
+            sql = "UPDATE `rentalux`.`cars` SET ";
+            Iterator propIterator = props.entrySet().iterator();
+            while (propIterator.hasNext()) {
+                Map.Entry prop = (Map.Entry) propIterator.next();
+                sql += "`" + prop.getKey() + "` = '" + prop.getValue() + "',";
+            }
+            sql = sql.substring(0, sql.length() - 1);
+            sql += " WHERE `car_id` = " + car_id + ";";
+            System.out.println(sql);
+            try {
+                // Execute the query
+                Connection connection = DatabaseUtils.connectToDatabase();
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(sql);
+                // Close it
+                DatabaseUtils.closeConnection(connection);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        else{
+            System.out.println("UpdateCar DAO method was called, but there were no props provided");
+        }
+        return true;
     }
 
     public static boolean removeCar(int car_id) {
