@@ -55,7 +55,7 @@ public class BookingDAO {
             // If you have multiple results, you do a while
             while(result.next()) {
                 // 2) Add it to the list we have prepared
-                bookings.add(new Booking(result.getInt("booking_id"), result.getInt("user_id"), result.getInt("car_id"),
+                bookings.add(new Booking(result.getInt("booking_id"), result.getInt("car_id"), result.getInt("user_id"),
                         result.getInt("start_bay_id"), result.getInt("end_bay_id"),result.getInt("duration"),
                         result.getDouble("rate"), result.getTimestamp("date")));
             }
@@ -99,7 +99,7 @@ public class BookingDAO {
         return booking;
     }
 
-    public static void removeBooking(int booking_id, int user_id) {
+    public static Boolean removeBooking(int booking_id, int user_id) {
         System.out.println("trying to remove " + booking_id);
         String delete_sql;
         delete_sql= "DELETE FROM `rentalux`.`bookings` WHERE `booking_id` = '" + booking_id + "' and `user_id` = " + user_id + ";";
@@ -113,7 +113,9 @@ public class BookingDAO {
             DatabaseUtils.closeConnection(connection);
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
+        return true;
     }
 }
 

@@ -203,4 +203,12 @@ public class CarDAO {
         }
         return null;
     }
+
+    public static Car createCar(double cost, String colour, String lp, String make, int year, int bayid) {
+        return null;
+    }
+
+    public static boolean removeCar(int car_id) {
+        return false;
+    }
 }
