@@ -9,6 +9,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CarController {
+    public static Handler addCar = ctx ->{
+
+    };
+    public static Handler editCar = ctx ->{
+
+    };
+
     public static Handler getCars = ctx ->{
         HashMap<String, String> props = new HashMap<String, String>();
 
