@@ -62,6 +62,12 @@ public class Booking {
     }
 
     @Override
+    public String toString(){
+        return "Car:" + this.car_id + " Start:" + this.start_bay_id + " End:" + this.end_bay_id
+                + " Duration:" + this.duration + " Rate:" + this.rate + " Made by:"
+                + this.user_id + " at Time:" + this.date.toString();
+    }
+    @Override
     public boolean equals(Object o){
         if (this == o){
             return true;
