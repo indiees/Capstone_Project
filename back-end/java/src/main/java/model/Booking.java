@@ -60,4 +60,23 @@ public class Booking {
     public Timestamp getDate() {
         return date;
     }
+
+    @Override
+    public boolean equals(Object o){
+        if (this == o){
+            return true;
+        }
+        if (!(o instanceof Booking)){
+            return false;
+        }
+        Booking b = (Booking) o;
+        return ((b.booking_id == this.booking_id)
+                && (b.car_id == this.car_id)
+                && (b.user_id == this.user_id)
+                && (b.start_bay_id == this.start_bay_id)
+                && (b.end_bay_id == this.end_bay_id)
+                && (b.duration == this.duration)
+                && (b.rate == this.rate)
+                && (b.date.equals(this.date)));
+    }
 }

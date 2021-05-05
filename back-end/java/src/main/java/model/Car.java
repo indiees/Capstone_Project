@@ -57,4 +57,22 @@ public class Car {
     public void setCar_id(int car_id) {
         this.car_id = car_id;
     }
+
+    @Override
+    public boolean equals(Object o){
+        if (this == o){
+            return true;
+        }
+        if (!(o instanceof Car)){
+            return false;
+        }
+        Car c = (Car) o;
+        return ((c.car_id == this.car_id)
+                && (c.cost == this.cost)
+                && (c.color.equals(this.color))
+                && (c.liscence_plate.equals(this.liscence_plate))
+                && (c.make.equals(this.make))
+                && (c.year == this.year)
+                && (c.bay_id == this.bay_id));
+    }
 }
