@@ -55,7 +55,7 @@ public class BookingDAO {
             // If you have multiple results, you do a while
             while(result.next()) {
                 // 2) Add it to the list we have prepared
-                bookings.add(new Booking(result.getInt("booking_id"), result.getInt("user_id"), result.getInt("car_id"),
+                bookings.add(new Booking(result.getInt("booking_id"), result.getInt("car_id"), result.getInt("user_id"),
                         result.getInt("start_bay_id"), result.getInt("end_bay_id"),result.getInt("duration"),
                         result.getDouble("rate"), result.getTimestamp("date")));
             }
