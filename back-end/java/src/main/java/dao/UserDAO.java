@@ -14,7 +14,7 @@ public class UserDAO {
         int user_id = 0;
         String hashedPass = Utils.generateHashPassword(password);
         String update_sql;
-        update_sql = "INSERT INTO `rentalux`.`Users` ( `email`, `password`, `first_name`,`last_name`) " +
+        update_sql = "INSERT INTO `rentalux`.`Users` ( `email`, `password`, `first_name`,`last_name`,`account_type`) " +
                 "VALUES('" + email + "' ,'" + hashedPass + "' ,'" + first_name + "','" +
                 last_name + "'," + account_type + ");";
 

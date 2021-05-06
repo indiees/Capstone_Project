@@ -59,7 +59,8 @@ public class User {
                 && (u.email.equals(this.email))
                 && (u.password.equals(this.password))
                 && (u.first_name.equals(this.first_name))
-                && (u.last_name.equals(this.last_name)));
+                && (u.last_name.equals(this.last_name))
+                && (u.account_type == this.account_type));
     }
 
     public Booking createBooking(int car_id) {

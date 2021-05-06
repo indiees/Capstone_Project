@@ -36,6 +36,9 @@ public class UserDAOTest {
         Assertions.assertFalse(userExists);
     }
 
+    // TODO
+    // Create test for UserDAO.editUser()
+
     @Test
     public void testCheckLoginPositive() {
         Assumptions.assumeTrue(userExists);
