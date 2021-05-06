@@ -7,8 +7,7 @@ import model.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class UserDAO {
     public static User createUser(String email, String password,String first_name,String last_name, int account_type) {
@@ -37,6 +36,36 @@ public class UserDAO {
         // Create the user object
         User user = new User(user_id, email, hashedPass, first_name, last_name, account_type);
         return user;
+    }
+
+    public static boolean editUser(int user_id, HashMap<String, String> props) {
+        if (props.size()>0) {
+            String sql;
+            sql = "UPDATE `rentalux`.`users` SET ";
+            Iterator propIterator = props.entrySet().iterator();
+            while (propIterator.hasNext()) {
+                Map.Entry prop = (Map.Entry) propIterator.next();
+                sql += "`" + prop.getKey() + "` = '" + prop.getValue() + "',";
+            }
+            sql = sql.substring(0, sql.length() - 1);
+            sql += " WHERE `user_id` = " + user_id + ";";
+            System.out.println(sql);
+            try {
+                // Execute the query
+                Connection connection = DatabaseUtils.connectToDatabase();
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(sql);
+                // Close it
+                DatabaseUtils.closeConnection(connection);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        else{
+            System.out.println("UpdateUser DAO method was called, but there were no props provided");
+        }
+        return true;
     }
 
     public static User checkLogin(String email, String password) {

@@ -2,6 +2,7 @@ package controller;
 
 
 import controller.util.Status;
+import dao.BayDAO;
 import dao.UserDAO;
 import io.javalin.http.Handler;
 import model.User;
@@ -85,7 +86,13 @@ public class UserController {
             props.put("account_type",str_account_type);
         }
 
-        ctx.json(new Status("This has not been implemented"));
+        if (UserDAO.editUser(user_id, props)){
+            ctx.json(new Status());
+            return;
+        }
+
+        ctx.json(new Status("An unexpected error has occurred"));
+        return;
 
     };
 
