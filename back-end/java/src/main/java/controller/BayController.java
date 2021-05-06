@@ -8,6 +8,7 @@ import model.Bay;
 import model.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BayController {
     public static Handler getBays = ctx ->{
@@ -42,7 +43,33 @@ public class BayController {
     };
 
     public static Handler editBay = ctx ->{
-        ctx.json(new Status("Not yet Implemented"));
+        HashMap<String, String> props = new HashMap<String, String>();
+        String str_bay_id;
+        str_bay_id = ctx.formParam("bay_id");
+        if (str_bay_id==null){
+            ctx.json(new Status("No `bay_id` Provided"));
+            return;
+        }
+        int bay_id = Integer.parseInt(str_bay_id);
+
+        String location;
+        location = ctx.formParam("location");
+        if (location!=null){
+            props.put("location",location);
+        }
+
+        String max_capacity_str;
+        max_capacity_str = ctx.formParam("max_capacity");
+        if (max_capacity_str!=null){
+            props.put("max_capactiy",max_capacity_str);
+        }
+
+        if (BayDAO.editBay(bay_id, props)){
+            ctx.json(new Status());
+            return;
+        }
+
+        ctx.json(new Status("An unexpected error has occurred"));
         return;
     };
 }
