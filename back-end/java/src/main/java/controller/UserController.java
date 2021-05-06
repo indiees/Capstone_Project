@@ -7,6 +7,7 @@ import io.javalin.http.Handler;
 import model.User;
 
 import javax.print.attribute.standard.NumberOfInterveningJobs;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class UserController {
@@ -48,6 +49,44 @@ public class UserController {
             return;
         }
         ctx.json(new Status());
+    };
+
+    public static Handler editUser = ctx ->{
+        HashMap<String, String> props = new HashMap<String, String>();
+        String str_user_id = ctx.formParam("user_id");
+        if (str_user_id == null){
+            ctx.json(new Status("No `user_id` Provided"));
+            return;
+        }
+        int user_id = Integer.parseInt(str_user_id);
+
+        String email = ctx.formParam("email");
+        if (email!=null){
+            props.put("email",email);
+        }
+
+        String password = ctx.formParam("password");
+        if (password != null){
+            props.put("password",password);
+        }
+
+        String first_name = ctx.formParam("first_name");
+        if (first_name !=null){
+            props.put("first_name",first_name);
+        }
+
+        String last_name = ctx.formParam("first_name");
+        if (last_name!=null){
+            props.put("last_name",last_name);
+        }
+
+        String str_account_type = ctx.formParam("account_type");
+        if (str_account_type != null){
+            props.put("account_type",str_account_type);
+        }
+
+        ctx.json(new Status("This has not been implemented"));
+
     };
 
     public static Handler checkLogin = ctx ->{
