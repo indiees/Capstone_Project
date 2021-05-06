@@ -3,12 +3,16 @@ package dao;
 import dao.util.DatabaseUtils;
 import model.Bay;
 import model.Booking;
+import model.Car;
 import model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class BayDAO {
 
@@ -70,6 +74,36 @@ public class BayDAO {
         // Create the bay object
         Bay bay = new Bay(bay_id, location, maxCap);
         return bay;
+    }
+
+    public static boolean editBay(int bay_id, HashMap<String, String> props) {
+        if (props.size()>0) {
+            String sql;
+            sql = "UPDATE `rentalux`.`bays` SET ";
+            Iterator propIterator = props.entrySet().iterator();
+            while (propIterator.hasNext()) {
+                Map.Entry prop = (Map.Entry) propIterator.next();
+                sql += "`" + prop.getKey() + "` = '" + prop.getValue() + "',";
+            }
+            sql = sql.substring(0, sql.length() - 1);
+            sql += " WHERE `bay_id` = " + bay_id + ";";
+            System.out.println(sql);
+            try {
+                // Execute the query
+                Connection connection = DatabaseUtils.connectToDatabase();
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(sql);
+                // Close it
+                DatabaseUtils.closeConnection(connection);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        else{
+            System.out.println("UpdateBay DAO method was called, but there were no props provided");
+        }
+        return true;
     }
 
     public static boolean removeBay(int bay_id) {
