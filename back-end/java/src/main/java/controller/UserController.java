@@ -61,6 +61,24 @@ public class UserController {
         }
         int user_id = Integer.parseInt(str_user_id);
 
+        //Authentication
+        String loginEmail = ctx.formParam("loginEmail");
+        if (loginEmail==null){
+            ctx.json(new Status("No `loginEmail` Provided (The email of the user making the changes)"));
+            return;
+        }
+        String loginPassword = ctx.formParam("loginPassword");
+        if (loginPassword==null){
+            ctx.json(new Status("No `loginPassword` Provided (The password of the user making the changes)"));
+            return;
+        }
+        User user = UserDAO.checkLogin(loginEmail, loginPassword);
+        if (user==null){
+            ctx.json(new Status("Incorrect authentication provided"));
+            return;
+        }
+
+
         String email = ctx.formParam("email");
         if (email!=null){
             props.put("email",email);
@@ -76,7 +94,7 @@ public class UserController {
             props.put("first_name",first_name);
         }
 
-        String last_name = ctx.formParam("first_name");
+        String last_name = ctx.formParam("last_name");
         if (last_name!=null){
             props.put("last_name",last_name);
         }
@@ -84,6 +102,14 @@ public class UserController {
         String str_account_type = ctx.formParam("account_type");
         if (str_account_type != null){
             props.put("account_type",str_account_type);
+        }
+
+        //They can make changes by either being the user that is being changed or being an admin, however they need to be an admin to change AccountType or email
+        if ((user.getUser_id() != user_id && user.getAccount_type() <2) ||
+                (user.getAccount_type()<2 &&
+                        (props.containsKey("account_type") || props.containsKey("email")))){
+            ctx.json(new Status("You are not authorised to make those changes"));
+            return;
         }
 
         if (UserDAO.editUser(user_id, props)){
