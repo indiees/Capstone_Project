@@ -28,6 +28,11 @@ public class CarController {
             ctx.json(new Status("Incorrect authentication provided"));
             return;
         }
+        //needs to be a seperate check otherwise nullpointerexception
+        if (user.getAccount_type()<2){
+            ctx.json(new Status("Incorrect Authentication provided"));
+            return;
+        }
         String cost_str;
         cost_str = ctx.formParam("cost");
         if (cost_str==null){
@@ -91,6 +96,11 @@ public class CarController {
         User user = UserDAO.checkLogin(loginEmail, loginPassword);
         if (user==null){
             ctx.json(new Status("Incorrect authentication provided"));
+            return;
+        }
+        //needs to be a seperate check otherwise nullpointerexception
+        if (user.getAccount_type()<2){
+            ctx.json(new Status("Incorrect Authentication provided"));
             return;
         }
         HashMap<String, String> props = new HashMap<String, String>();

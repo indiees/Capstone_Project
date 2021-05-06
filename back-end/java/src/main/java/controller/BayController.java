@@ -39,6 +39,11 @@ public class BayController {
             ctx.json(new Status("Incorrect authentication provided"));
             return;
         }
+        //needs to be a seperate check otherwise nullpointerexception
+        if (user.getAccount_type()<2){
+            ctx.json(new Status("Incorrect Authentication provided"));
+            return;
+        }
 
         String location;
         location = ctx.formParam("location");
@@ -75,6 +80,11 @@ public class BayController {
         User user = UserDAO.checkLogin(loginEmail, loginPassword);
         if (user==null){
             ctx.json(new Status("Incorrect authentication provided"));
+            return;
+        }
+        //needs to be a seperate check otherwise nullpointerexception
+        if (user.getAccount_type()<2){
+            ctx.json(new Status("Incorrect Authentication provided"));
             return;
         }
         HashMap<String, String> props = new HashMap<String, String>();
