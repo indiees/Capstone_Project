@@ -19,4 +19,14 @@ public class BayController {
         ctx.json(new Status("No bays with those details can be found"));
         return;
     };
+
+    public static Handler addBay = ctx ->{
+        ctx.json(new Status("Not yet Implemented"));
+        return;
+    };
+
+    public static Handler editBay = ctx ->{
+        ctx.json(new Status("Not yet Implemented"));
+        return;
+    };
 }
