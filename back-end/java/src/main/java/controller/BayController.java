@@ -21,7 +21,23 @@ public class BayController {
     };
 
     public static Handler addBay = ctx ->{
-        ctx.json(new Status("Not yet Implemented"));
+        String location;
+        location = ctx.formParam("location");
+        if (location==null){
+            ctx.json(new Status("No `location` provided"));
+            return;
+        }
+
+        String max_capacity_str;
+        max_capacity_str = ctx.formParam("max_capacity");
+        if (max_capacity_str==null){
+            ctx.json(new Status("No `max_capacity` provided"));
+            return;
+        }
+        int max_cap = Integer.parseInt(max_capacity_str);
+        BayDAO.createBay(location, max_cap);
+
+        ctx.json(new Status());
         return;
     };
 
