@@ -36,7 +36,7 @@ public class User {
     public String getLast_name(){
         return this.last_name;
     }
-    public int getAccount_type(){return this.account_type}
+    public int getAccount_type(){return this.account_type;}
     public void setUser_id(int user_id) { this.user_id = user_id; }
     // Careful using the getter, make sure the user actually has an ID
     public int getUser_id(){
