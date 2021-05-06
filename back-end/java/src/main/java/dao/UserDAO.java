@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-    public static User createUser(String email, String password,String first_name,String last_name) {
+    public static User createUser(String email, String password,String first_name,String last_name, int account_type) {
         int user_id = 0;
         String hashedPass = Utils.generateHashPassword(password);
         String update_sql;
         update_sql = "INSERT INTO `rentalux`.`Users` ( `email`, `password`, `first_name`,`last_name`) " +
                 "VALUES('" + email + "' ,'" + hashedPass + "' ,'" + first_name + "','" +
-                last_name + "');";
+                last_name + "'," + account_type + ");";
 
         try {
             // Execute the query
@@ -35,7 +35,7 @@ public class UserDAO {
             return null;
         }
         // Create the user object
-        User user = new User(user_id, email, hashedPass, first_name, last_name);
+        User user = new User(user_id, email, hashedPass, first_name, last_name, account_type);
         return user;
     }
 
@@ -86,7 +86,7 @@ public class UserDAO {
             if(result.next()) {
                 // 2) Add it to the list we have prepared
                 users.add(new User(result.getInt("user_id"),result.getString("email"),result.getString("password"),
-                                    result.getString("first_name"),result.getString("last_name")));
+                                    result.getString("first_name"),result.getString("last_name"), result.getInt("account_type")));
             }
 
             // Close it
