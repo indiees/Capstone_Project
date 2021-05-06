@@ -6,6 +6,7 @@ import dao.UserDAO;
 import io.javalin.http.Handler;
 import model.User;
 
+import javax.print.attribute.standard.NumberOfInterveningJobs;
 import java.util.Objects;
 
 public class UserController {
@@ -34,7 +35,13 @@ public class UserController {
             ctx.json(new Status("No 'last_name' Provided"));
             return;
         }
-        User user = UserDAO.createUser(str_email, str_password, str_first_name, str_last_name);
+        String str_account_type = ctx.formParam("account_type");
+        if (str_account_type==null) {
+            str_account_type = "1";
+        }
+        int account_type = Integer.parseInt(str_account_type);
+
+        User user = UserDAO.createUser(str_email, str_password, str_first_name, str_last_name, account_type);
         System.out.println(user);
         if (user == null){
             ctx.json(new Status("Cannot create account (Likely a database connection issue)"));
