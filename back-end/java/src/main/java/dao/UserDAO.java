@@ -7,17 +7,16 @@ import model.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class UserDAO {
-    public static User createUser(String email, String password,String first_name,String last_name) {
+    public static User createUser(String email, String password,String first_name,String last_name, int account_type) {
         int user_id = 0;
         String hashedPass = Utils.generateHashPassword(password);
         String update_sql;
         update_sql = "INSERT INTO `rentalux`.`Users` ( `email`, `password`, `first_name`,`last_name`) " +
                 "VALUES('" + email + "' ,'" + hashedPass + "' ,'" + first_name + "','" +
-                last_name + "');";
+                last_name + "'," + account_type + ");";
 
         try {
             // Execute the query
@@ -35,8 +34,38 @@ public class UserDAO {
             return null;
         }
         // Create the user object
-        User user = new User(user_id, email, hashedPass, first_name, last_name);
+        User user = new User(user_id, email, hashedPass, first_name, last_name, account_type);
         return user;
+    }
+
+    public static boolean editUser(int user_id, HashMap<String, String> props) {
+        if (props.size()>0) {
+            String sql;
+            sql = "UPDATE `rentalux`.`users` SET ";
+            Iterator propIterator = props.entrySet().iterator();
+            while (propIterator.hasNext()) {
+                Map.Entry prop = (Map.Entry) propIterator.next();
+                sql += "`" + prop.getKey() + "` = '" + prop.getValue() + "',";
+            }
+            sql = sql.substring(0, sql.length() - 1);
+            sql += " WHERE `user_id` = " + user_id + ";";
+            System.out.println(sql);
+            try {
+                // Execute the query
+                Connection connection = DatabaseUtils.connectToDatabase();
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(sql);
+                // Close it
+                DatabaseUtils.closeConnection(connection);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        else{
+            System.out.println("UpdateUser DAO method was called, but there were no props provided");
+        }
+        return true;
     }
 
     public static User checkLogin(String email, String password) {
@@ -86,7 +115,7 @@ public class UserDAO {
             if(result.next()) {
                 // 2) Add it to the list we have prepared
                 users.add(new User(result.getInt("user_id"),result.getString("email"),result.getString("password"),
-                                    result.getString("first_name"),result.getString("last_name")));
+                                    result.getString("first_name"),result.getString("last_name"), result.getInt("account_type")));
             }
 
             // Close it

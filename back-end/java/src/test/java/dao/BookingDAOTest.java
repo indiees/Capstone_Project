@@ -37,6 +37,7 @@ public class BookingDAOTest {
     private static final String PASS = "TestDAOUser";
     private static final String FNAME = "UserDAOTest.first.name";
     private static final String LNAME = "UserDAOTest.last.name";
+    private static final int ACCTYPE = 1;
 
     private Bay testBay;
     private Car testCar;
@@ -46,7 +47,7 @@ public class BookingDAOTest {
     public void setUp() {
         testBay = BayDAO.createBay(LOCATION, MAX_CAP);
         testCar = CarDAO.createCar(COST, COLOUR, LP, MAKE, YEAR, testBay.getBay_id());
-        testUser = UserDAO.createUser(EMAIL, PASS, FNAME, LNAME);
+        testUser = UserDAO.createUser(EMAIL, PASS, FNAME, LNAME, ACCTYPE);
     }
 
     @BeforeEach
