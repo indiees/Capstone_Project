@@ -65,6 +65,7 @@ public class User {
 
     public Booking createBooking(int car_id) {
         Car car = CarDAO.getCar(car_id);
-        return BookingDAO.createBooking(car.getCar_id(), this.user_id, car.getBay(),0, new Timestamp(System.currentTimeMillis()),0, car.getCost());
+        return BookingDAO.createBooking(car.getCar_id(), this.user_id, car.getBay(),
+                new Timestamp((System.currentTimeMillis() / 1000) * 1000), car.getCost());
     }
 }

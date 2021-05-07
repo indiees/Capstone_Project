@@ -26,7 +26,7 @@ public class BookingDAO {
             // If you have multiple results, you do a while
             while(result.next()) {
                 // 2) Add it to the list we have prepared
-                bookings.add(new Booking(result.getInt("booking_id"), result.getInt("user_id"), result.getInt("car_id"),
+                bookings.add(new Booking(result.getInt("booking_id"), result.getInt("car_id"), result.getInt("user_id"),
                         result.getInt("start_bay_id"), result.getInt("end_bay_id"),result.getInt("duration"),
                         result.getDouble("rate"), result.getTimestamp("date")));
             }
@@ -72,7 +72,7 @@ public class BookingDAO {
         return null;
     }
 
-    public static Booking createBooking(int car_id, int user_id, int start_bay_id, int end_bay_id, Timestamp date, int duration, double rate) {
+    public static Booking createBooking(int car_id, int user_id, int start_bay_id, Timestamp date, double rate) {
         String update_sql;
         int booking_id = 0;
         update_sql = "INSERT INTO `rentalux`.`bookings` ( `car_id`, `user_id`, `start_bay_id`,`date`,`rate`) " +
@@ -95,7 +95,7 @@ public class BookingDAO {
             return null;
         }
         // Create the user object
-        Booking booking = new Booking(booking_id, car_id, user_id, start_bay_id, end_bay_id, duration, rate, date);
+        Booking booking = new Booking(booking_id, car_id, user_id, start_bay_id, rate, date);
         return booking;
     }
 

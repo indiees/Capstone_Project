@@ -13,7 +13,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.util.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -22,7 +21,6 @@ public class BookingDAOTest {
     private Booking testBooking;
     private boolean bookingExists = false;
 
-    private static final int DURATION = 10;
     private static final int DUMMYINT = -1;
     private static final double RATE = 1.1;
 
@@ -53,11 +51,10 @@ public class BookingDAOTest {
     @BeforeEach
     public void setup() {
         if (!bookingExists) {
-            Date date = new Date();
-            Timestamp ts = new Timestamp(date.getTime());
+            Timestamp ts = new Timestamp((System.currentTimeMillis() / 1000) * 1000);
             int bay_id = testBay.getBay_id();
             testBooking = BookingDAO.createBooking(testCar.getCar_id(), testUser.getUser_id(),
-                    bay_id, bay_id+1, ts, DURATION, RATE);
+                    bay_id, ts, RATE);
             bookingExists = (testBooking != null);
         }
     }
@@ -69,6 +66,9 @@ public class BookingDAOTest {
     public void testGetBookingsByCarPositive() {
         Assumptions.assumeTrue(bookingExists);
         ArrayList<Booking> retrievedBooking = BookingDAO.getBookingsByCar(testCar.getCar_id());
+        System.out.println(retrievedBooking.get(0).toString());
+        System.out.println(testBooking.toString());
+        System.out.println(testBooking.getDate());
         Assertions.assertNotNull(retrievedBooking);
         Assertions.assertTrue(retrievedBooking.contains(testBooking));
     }
