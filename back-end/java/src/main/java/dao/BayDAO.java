@@ -47,6 +47,31 @@ public class BayDAO {
     }
 
     public static Bay getBay(int bay_id) {
+        ArrayList<Bay> bays = new ArrayList<Bay>();
+        try {
+            // Here you prepare your sql statement
+            String sql = "SELECT * FROM `rentalux`.bays where `bay_id` = " + bay_id;
+            // Execute the query
+            Connection connection = DatabaseUtils.connectToDatabase();
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            // If you have multiple results, you do a while
+            while(result.next()) {
+                // 2) Add it to the list we have prepared
+                bays.add(new Bay(result.getInt("bay_id"), result.getString("location"),
+                        result.getInt("max_capacity")));
+            }
+
+            // Close it
+            DatabaseUtils.closeConnection(connection);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(!bays.isEmpty()) {
+            return bays.get(0);
+        }
         return null;
     }
 
