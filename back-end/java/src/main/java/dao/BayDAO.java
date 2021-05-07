@@ -29,7 +29,6 @@ public class BayDAO {
             // If you have multiple results, you do a while
             while(result.next()) {
                 // 2) Add it to the list we have prepared
-                System.out.println(result.getInt("bay_id"));
                 bays.add(new Bay(result.getInt("bay_id"), result.getString("location"), result.getInt("max_capacity")));
             }
 
@@ -39,7 +38,6 @@ public class BayDAO {
         catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(bays.size());
         if(!bays.isEmpty()) {
             return bays;
         }

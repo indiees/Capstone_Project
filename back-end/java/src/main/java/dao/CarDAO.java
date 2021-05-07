@@ -97,7 +97,6 @@ public class CarDAO {
                 }
                 sql = sql.replaceAll(" and $",";");
             }
-            System.out.println(sql);
 
             // Execute the query
             Connection connection = DatabaseUtils.connectToDatabase();

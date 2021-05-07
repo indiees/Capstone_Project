@@ -66,9 +66,6 @@ public class BookingDAOTest {
     public void testGetBookingsByCarPositive() {
         Assumptions.assumeTrue(bookingExists);
         ArrayList<Booking> retrievedBooking = BookingDAO.getBookingsByCar(testCar.getCar_id());
-        System.out.println(retrievedBooking.get(0).toString());
-        System.out.println(testBooking.toString());
-        System.out.println(testBooking.getDate());
         Assertions.assertNotNull(retrievedBooking);
         Assertions.assertTrue(retrievedBooking.contains(testBooking));
     }

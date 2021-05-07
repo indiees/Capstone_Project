@@ -100,7 +100,6 @@ public class BookingDAO {
     }
 
     public static Boolean removeBooking(int booking_id, int user_id) {
-        System.out.println("trying to remove " + booking_id);
         String delete_sql;
         delete_sql= "DELETE FROM `rentalux`.`bookings` WHERE `booking_id` = '" + booking_id + "' and `user_id` = " + user_id + ";";
 
