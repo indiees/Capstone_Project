@@ -1,0 +1,65 @@
+head
+  meta(charset='utf-8')
+  title Admin-cars
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js' integrity='sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf' crossorigin='anonymous')
+  script(src='/node_modules/@fortawesome/fontawesome-free/js/all.js')
+  link(rel='stylesheet' href='/../../style/admin.css')
+header
+  a.navbar-brand(href='#')
+    img.d-inline-block.align-text-top(src='/style/L.png' alt='' width='100' height='95')
+  a#label.navbar-brand(href='#') Rent-A-Lux
+  ul.nav
+    li
+      a(href='#')
+        i.fa.fa-user
+                                 Admin
+        i.fa.fa-chevron-down(style='font-size: .8em')
+      ul
+        li
+          a.logout(href='#') Logout
+// Admins wrapper
+.admin-wrapper
+  // Sidebar
+  .left-sidebar
+    ul
+      li
+        a(href='../users/') Manage Users
+      li
+        a(href='../bookings/index.html') Manage Bookings
+      li
+        a(href='index.html') Manage Cars
+      li
+        a(href='../bays/index.html') Manage Bays
+  // Admin content
+  .admin-content
+    .button-group
+      a.btn.btn-success.btn-lg(href='create.html') Create New Car
+    .content
+      h2.page-title.d-flex.justify-content-center Manage Cars
+      table.table
+        thead
+          tr
+            th.table-primary(scope='col') #
+            th.table-primary(scope='col') Car_ID
+            th.table-primary(scope='col') Cost
+            th.table-primary(scope='col') Color
+            th.table-primary(scope='col') License Plate
+            th.table-primary(scope='col') Make
+            th.table-primary(scope='col') Year
+            th.table-primary(scope='col') Action
+        tbody
+          tr
+            th(scope='row') 1
+            td
+            td
+            td
+            td
+            td
+            td
+            td
+              .d-grid.gap-2.d-md-flex.justify-content-center
+                button.btn.btn-danger.btn-md(type='button')
+                  i.far.fa-trash-alt
+                   Delete
