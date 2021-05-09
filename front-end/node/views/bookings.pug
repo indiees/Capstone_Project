@@ -1,0 +1,31 @@
+head
+  title Bookings
+  include components/header.pug
+  script(src="scripts/car.js")
+link(rel='shortcut icon' href='/assets/favicon.ico')
+link(rel='stylesheet' href='/assets/dcode.css')
+link(rel='stylesheet' href='style/style.css')
+link(rel='stylesheet' href='node_modules/@fortawesome/fontawesome-free/js/all.js')
+meta(name='viewport' content='width=device-width,initial-scale=1.0')
+script(src="scripts/bookings.js")
+main.flex-shrink-0
+  h1.d-flex.display-4.justify-content-center Booking detail
+  .container
+    
+    table.table
+      thead
+        tr
+          th.table-primary(scope='col') Booking ID
+          th.table-primary(scope='col') Car ID
+          th.table-primary(scope='col') Start Bay ID
+          th.table-primary(scope='col') End Bay ID
+          th.table-primary(scope='col') Start Date
+          th.table-primary(scope='col') End Date
+          th.table-primary(scope='col') Duration
+          th.table-primary(scope='col') Rate
+          th.table-primary(scope='col') Action
+      tbody#bookingsTable
+    div#loading(style="text-align:center")
+      img(src="images/Spinner.gif")
+
+include components/footer.pug

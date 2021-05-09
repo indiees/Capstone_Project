@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,600&display=swap');
+*{
+    font-family: 'montserrat', sans-serif;
+}
+body{
+    padding: 0px;
+    margin: 0px;
+    background: #f6f6f6;
+}
+
+header{
+    background-color: #004aad;
+    
+}
+
+header *{
+    color: #f6f6f6;
+}
+
+header #label{
+    position: absolute;
+    margin-top: 30px;
+}
+
+header ul{
+    float: right;
+    margin-top: 13.5px;
+    padding: 0px;
+    list-style: none;
+}
+
+header ul li{
+    float: left;
+   
+}
+
+header ul li ul{
+    position: absolute;
+    top: 66px;
+    width:180px;
+    
+}
+header ul li:hover ul{
+   
+}
+
+header ul li ul li{
+    width: 100%;
+}
+
+header ul li ul li a{
+    padding-top: 20px;
+    
+}
+header ul li ul li a:hover{
+    background: #cbcbcc;
+    color: red;
+}
+
+header ul li a{
+    display: block;
+    padding: 21px;
+    font-size: 1.1em;
+    text-decoration: none;
+}
+
+header ul li a:hover{
+    background:#d8d8d8;
+    transition: 0.5s;
+}
+
+.admin-wrapper{
+    display: flex;
+    height: calc(100% - 66px);
+    
+}
+
+.admin-wrapper .left-sidebar{
+    flex: 2;
+    height: 100%;
+    background: #0c2d58;
+}
+
+.admin-wrapper .left-sidebar ul{
+    list-style: none;
+    
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+.admin-wrapper .left-sidebar ul li a{
+    padding: 18px;
+    display: block;
+    border-bottom: 1px solid #a2a2a3;
+    color: white;
+    text-decoration: none;
+}
+
+.admin-wrapper .left-sidebar ul li a:hover{
+    background: #51739e;
+}
+
+.admin-wrapper .admin-content{
+    flex: 8;
+    height: 100%;
+    padding: 40px 100px 100px;
+    overflow-y: scroll;
+}

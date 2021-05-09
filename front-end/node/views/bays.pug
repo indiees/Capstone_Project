@@ -1,0 +1,24 @@
+head
+  title Bays
+  include components/header.pug
+link(rel='shortcut icon' href='/assets/favicon.ico')
+link(rel='stylesheet' href='/assets/dcode.css')
+link(rel='stylesheet' href='style/style.css')
+meta(name='viewport' content='width=device-width,initial-scale=1.0')
+table.content-table
+  thead
+    tr
+      th Bay ID
+      th Location
+      th Maximum Capacity
+      th
+  tbody
+    each bay in data
+      tr
+        td #{bay.bay_id}
+        td #{bay.location}
+        td #{bay.max_capacity}
+        td
+          a(href="http://localhost/api/bay?bay_id="+bay.bay_id)
+            button view bay
+include components/footer.pug
