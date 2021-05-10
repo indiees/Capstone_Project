@@ -175,16 +175,18 @@ function showModal(id){
     
     if (id==0){
         $("#heading")[0].innerHTML = "New Bay"
-        $("#submi")[0].innerHTML = "Create new Bay"
+        $("#submitBay")[0].innerHTML = "Create new Bay"
         $("#bay_id")[0].value = "";
         $("#bay_id")[0].placeholder = "Automatic";
         $("#location")[0].value=""
         $("#max_capacity")[0].value=""
         $("#bayModal")[0].style.display="block";
+        $("#submitBay")[0].setAttribute("tg","create");
     }
     else{
         $("#heading")[0].innerHTML = "Editing Bay " + id
-        $("#submi")[0].innerHTML = "Update Existing Bay"
+        $("#submitBay")[0].innerHTML = "Update Existing Bay"
+        $("#submitBay")[0].setAttribute("tg","update");
         $("#bay_id")[0].value = id;
         $.ajax({
             type: 'GET',
@@ -208,6 +210,22 @@ function singleBayCallback(data){
     $("#max_capacity")[0].value=data.max_capacity
     $("#bayModal")[0].style.display="block";
 }
+
+$(document).on("click", "#submitBay", function(data){
+    console.log("Submitting bay")
+    opp = data.target.getAttribute("tg")
+    console.log("Operation: " + opp)
+    formData = {
+        email:      localStorage.getItem("email"), 
+        password:   localStorage.getItem("password"),
+        bay_id:     $("#bay_id")[0].value,
+        location:   $("#location")[0].value,
+        max_capacity:$("#max_capacity")[0].value
+        
+    }
+
+    
+});
 
 $(document).on("click", ".close", function(data){
     console.log("Loading bay Modal")
