@@ -35,6 +35,8 @@ function carCallback(data){
         theadh.innerHTML = field;
         theadr.appendChild(theadh);
     }
+    theadh = document.createElement("th");
+    theadr.appendChild(theadh);
     oldHeader = $("#carsHeader")[0];
     oldHeader.parentNode.replaceChild(thead, oldHeader)
 
@@ -48,6 +50,13 @@ function carCallback(data){
             td.innerHTML = rawCars[i][j];
             tr.appendChild(td);
         }
+        td = document.createElement("td");
+        editBtn = document.createElement("button")
+        editBtn.innerHTML="Edit";
+        editBtn.className="editCarBtn";
+        editBtn.setAttribute("tg",rawCars[i].car_id)
+        td.appendChild(editBtn);
+        tr.appendChild(td);
         tbody.appendChild(tr);
     }
     oldBody = $("#carsBody")[0];
@@ -163,16 +172,16 @@ $(document).on("click", ".editBayBtn", function(data){
     console.log("Loading bay Modal")
     id = data.target.getAttribute("tg")
     console.log("ID is: " + id)
-    showModal(id)
+    showBayModal(id)
 });
 
 $(document).on("click", "#addBay", function(data){
     console.log("Loading bay Modal")
-    showModal(0)
+    showBayModal(0)
 });
 
-function showModal(id){
-    
+function showBayModal(id){
+    $("#submitCar")[0].removeAttribute("disabled");
     if (id==0){
         $("#heading")[0].innerHTML = "New Bay"
         $("#submitBay")[0].innerHTML = "Create new Bay"
@@ -216,17 +225,120 @@ $(document).on("click", "#submitBay", function(data){
     opp = data.target.getAttribute("tg")
     console.log("Operation: " + opp)
     formData = {
-        email:      localStorage.getItem("email"), 
-        password:   localStorage.getItem("password"),
+        loginEmail:      localStorage.getItem("email"), 
+        loginPassword:   localStorage.getItem("password"),
         bay_id:     $("#bay_id")[0].value,
         location:   $("#location")[0].value,
         max_capacity:$("#max_capacity")[0].value
-        
     }
+    $("#submitBay")[0].setAttribute("disabled","disabled");
+    $.ajax({
+        type: 'POST',
+        data: formData,
+        url: baseURL + 'bay/' + opp,
+        complete: bayOppDone
+    });
     console.log(formData)
 
     
 });
+
+function bayOppDone(data){
+    console.log(data.responseJSON)
+    console.log("updated bays?");
+    hideModals();
+    $("#bayBtn")[0].click()
+}
+
+$(document).on("click", ".editCarBtn", function(data){
+    console.log("Loading car Modal")
+    id = data.target.getAttribute("tg")
+    console.log("ID is: " + id)
+    showCarModal(id)
+});
+
+$(document).on("click", "#addCar", function(data){
+    console.log("Loading Car Modal")
+    showCarModal(0)
+});
+
+function showCarModal(id){
+    $("#submitBay")[0].removeAttribute("disabled");
+    if (id==0){
+        $("#heading")[0].innerHTML = "New Car"
+        $("#submitCar")[0].innerHTML = "Create new Car"
+        $("#car_id")[0].value = "";
+        $("#car_id")[0].placeholder = "Automatic";
+        $("#carModal")[0].style.display="block";
+        $("#submitCar")[0].setAttribute("tg","create");
+
+        $("#year")[0].value=""
+        $("#cost")[0].value=""
+        $("#color")[0].value=""
+        $("#liscence_plate")[0].value=""
+        $("#make")[0].value=""
+        $("#bay")[0].value=""
+    }
+    else{
+        $("#heading")[0].innerHTML = "Editing Car " + id
+        $("#submitCar")[0].innerHTML = "Update Existing Bay"
+        $("#submitCar")[0].setAttribute("tg","update");
+        $("#car_id")[0].value = id;
+        $.ajax({
+            type: 'GET',
+            url: baseURL + 'car/search?car_id=' + id,
+            complete: singleCarCallback
+        });
+    }
+}
+
+function singleCarCallback(data){
+    id = $("#bay_id")[0].value
+    data=data.responseJSON.payload[0]
+    console.log(data)
+    $("#carModal")[0].style.display="block";
+    $("#year")[0].value=data.year
+    $("#cost")[0].value=data.cost
+    $("#color")[0].value=data.color
+    $("#liscence_plate")[0].value=data.liscence_plate
+    $("#make")[0].value=data.make
+    $("#bay")[0].value=data.bay
+}
+
+$(document).on("click", "#submitCar", function(data){
+    console.log("Submitting Car")
+    opp = data.target.getAttribute("tg")
+    console.log("Operation: " + opp)
+    formData = {
+        loginEmail:      localStorage.getItem("email"), 
+        loginPassword:   localStorage.getItem("password"),
+        car_id:     $("#car_id")[0].value,
+        year:       $("#year")[0].value,
+        cost:       $("#cost")[0].value,
+        color:      $("#color")[0].value,
+        liscence_plate:  $("#liscence_plate")[0].value,
+        make:       $("#make")[0].value,
+        bay_id:     $("#bay")[0].value
+    }
+    console.log(formData)
+    $("#submitCar")[0].setAttribute("disabled","disabled");
+    $.ajax({
+        type: 'POST',
+        data: formData,
+        url: baseURL + 'car/' + opp,
+        complete: carOppDone
+    });
+
+    
+});
+
+function carOppDone(data){
+    console.log(data.responseJSON)
+    console.log("updated cars?");
+    hideModals();
+    $("#carBtn")[0].click()
+}
+
 
 $(document).on("click", ".close", function(data){
     console.log("Loading bay Modal")
