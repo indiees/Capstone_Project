@@ -40,3 +40,15 @@ div(id="baysDiv" class="sectionDiv")
     div#bayLoading(style="text-align:center")
         img(src="images/Spinner.gif")
     button.create#addBay Add Bay
+
+div#bayModal.modals
+    div.mContent
+        span.close &times;
+        H1#heading
+        label ID
+        input(type="text" disabled)#bay_id
+        label Location
+        input(type="text")#location
+        label max_capacity
+        input(type="text")#max_capacity
+        button#submi

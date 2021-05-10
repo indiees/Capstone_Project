@@ -129,6 +129,8 @@ function bayCallback(data){
         theadh.innerHTML = field;
         theadr.appendChild(theadh);
     }
+    theadh = document.createElement("th");
+    theadr.appendChild(theadh);
     oldHeader = $("#baysHeader")[0];
     oldHeader.parentNode.replaceChild(thead, oldHeader)
 
@@ -142,10 +144,86 @@ function bayCallback(data){
             td.innerHTML = rawBays[i][j];
             tr.appendChild(td);
         }
+        td = document.createElement("td");
+        editBtn = document.createElement("button")
+        editBtn.innerHTML="Edit";
+        editBtn.className="editBayBtn";
+        editBtn.setAttribute("tg",rawBays[i].bay_id)
+        td.appendChild(editBtn);
+        tr.appendChild(td);
         tbody.appendChild(tr);
     }
     oldBody = $("#baysBody")[0];
     oldBody.parentNode.replaceChild(tbody, oldBody)
     $("#bayLoading").hide();
     $(".content-table").show();
+}
+
+$(document).on("click", ".editBayBtn", function(data){
+    console.log("Loading bay Modal")
+    id = data.target.getAttribute("tg")
+    console.log("ID is: " + id)
+    showModal(id)
+});
+
+$(document).on("click", "#addBay", function(data){
+    console.log("Loading bay Modal")
+    showModal(0)
+});
+
+function showModal(id){
+    
+    if (id==0){
+        $("#heading")[0].innerHTML = "New Bay"
+        $("#submi")[0].innerHTML = "Create new Bay"
+        $("#bay_id")[0].value = "";
+        $("#bay_id")[0].placeholder = "Automatic";
+        $("#location")[0].value=""
+        $("#max_capacity")[0].value=""
+        $("#bayModal")[0].style.display="block";
+    }
+    else{
+        $("#heading")[0].innerHTML = "Editing Bay " + id
+        $("#submi")[0].innerHTML = "Update Existing Bay"
+        $("#bay_id")[0].value = id;
+        $.ajax({
+            type: 'GET',
+            url: baseURL + 'bay/search',
+            complete: singleBayCallback
+        });
+    }
+}
+
+function singleBayCallback(data){
+    id = $("#bay_id")[0].value
+    data=data.responseJSON.payload
+    index=0
+    for (var i in data){
+        if (data[i].bay_id == id){
+            index = i
+        }
+    }
+    data=data[index]
+    $("#location")[0].value=data.location
+    $("#max_capacity")[0].value=data.max_capacity
+    $("#bayModal")[0].style.display="block";
+}
+
+$(document).on("click", ".close", function(data){
+    console.log("Loading bay Modal")
+    hideModals();
+});
+window.onclick = function(event) {
+    modals = $(".modals");
+    for (var i=0;i<modals.length;i++){
+        if (event.target==modals[i]){
+            hideModals();
+        }
+    }
+  }
+function hideModals(){
+    modals = $(".modals");
+    for (var i=0;i<modals.length;i++){
+        modals[i].style.display="none"
+    }
 }
