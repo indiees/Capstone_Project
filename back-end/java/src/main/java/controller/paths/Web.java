@@ -16,6 +16,6 @@ public class Web {
     public static final String editCar = "/api/car/update";
     public static final String addCar = "/api/car/create";
     public static final String editBay = "/api/bay/update";
-    public static final String addBay = "/api/bay/add";
+    public static final String addBay = "/api/bay/create";
 
 }
