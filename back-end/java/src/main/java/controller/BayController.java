@@ -105,7 +105,7 @@ public class BayController {
         String max_capacity_str;
         max_capacity_str = ctx.formParam("max_capacity");
         if (max_capacity_str!=null){
-            props.put("max_capactiy",max_capacity_str);
+            props.put("max_capacity",max_capacity_str);
         }
 
         if (BayDAO.editBay(bay_id, props)){
