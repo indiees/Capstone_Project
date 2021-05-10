@@ -223,6 +223,7 @@ $(document).on("click", "#submitBay", function(data){
         max_capacity:$("#max_capacity")[0].value
         
     }
+    console.log(formData)
 
     
 });
