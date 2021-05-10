@@ -73,17 +73,7 @@
 #blank{
     background-color:rgb(186, 213, 238)
 }
-#usersDiv{
-    background-color:red;
-}
 
-#carsDiv{
-    background-color:green;
-}
-
-#baysDiv{
-    background-color:yellow;
-}
 
 .adminNav{
     height:100%;
