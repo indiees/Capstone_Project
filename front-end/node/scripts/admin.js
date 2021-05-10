@@ -263,7 +263,7 @@ $(document).on("click", "#addCar", function(data){
 });
 
 function showCarModal(id){
-    $("#submitBay")[0].removeAttribute("disabled");
+    $("#submitCar")[0].removeAttribute("disabled");
     if (id==0){
         $("#heading")[0].innerHTML = "New Car"
         $("#submitCar")[0].innerHTML = "Create new Car"
