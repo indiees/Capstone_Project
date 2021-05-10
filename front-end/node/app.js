@@ -12,6 +12,14 @@ function index(req,res){
     }
 } 
 
+app.get('/admin', admin);
+
+function admin(req,res){
+    {
+        res.send(pug.renderFile("views/admin.pug"));
+    }
+} 
+
 app.get('/cars', cars);
 
 async function cars(req,res){
