@@ -22,6 +22,29 @@ public class BayController {
     };
 
     public static Handler addBay = ctx ->{
+
+        //Authentication
+        String loginEmail = ctx.formParam("loginEmail");
+        if (loginEmail==null){
+            ctx.json(new Status("No `loginEmail` Provided (The email of the user making the changes)"));
+            return;
+        }
+        String loginPassword = ctx.formParam("loginPassword");
+        if (loginPassword==null){
+            ctx.json(new Status("No `loginPassword` Provided (The password of the user making the changes)"));
+            return;
+        }
+        User user = UserDAO.checkLogin(loginEmail, loginPassword);
+        if (user==null){
+            ctx.json(new Status("Incorrect authentication provided"));
+            return;
+        }
+        //needs to be a seperate check otherwise nullpointerexception
+        if (user.getAccount_type()<2){
+            ctx.json(new Status("Incorrect Authentication provided"));
+            return;
+        }
+
         String location;
         location = ctx.formParam("location");
         if (location==null){
@@ -43,6 +66,27 @@ public class BayController {
     };
 
     public static Handler editBay = ctx ->{
+        //Authentication
+        String loginEmail = ctx.formParam("loginEmail");
+        if (loginEmail==null){
+            ctx.json(new Status("No `loginEmail` Provided (The email of the user making the changes)"));
+            return;
+        }
+        String loginPassword = ctx.formParam("loginPassword");
+        if (loginPassword==null){
+            ctx.json(new Status("No `loginPassword` Provided (The password of the user making the changes)"));
+            return;
+        }
+        User user = UserDAO.checkLogin(loginEmail, loginPassword);
+        if (user==null){
+            ctx.json(new Status("Incorrect authentication provided"));
+            return;
+        }
+        //needs to be a seperate check otherwise nullpointerexception
+        if (user.getAccount_type()<2){
+            ctx.json(new Status("Incorrect Authentication provided"));
+            return;
+        }
         HashMap<String, String> props = new HashMap<String, String>();
         String str_bay_id;
         str_bay_id = ctx.formParam("bay_id");

@@ -2,14 +2,37 @@ package controller;
 
 import controller.util.Status;
 import dao.CarDAO;
+import dao.UserDAO;
 import io.javalin.http.Handler;
 import model.Car;
+import model.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CarController {
     public static Handler addCar = ctx ->{
+        //Authentication
+        String loginEmail = ctx.formParam("loginEmail");
+        if (loginEmail==null){
+            ctx.json(new Status("No `loginEmail` Provided (The email of the user making the changes)"));
+            return;
+        }
+        String loginPassword = ctx.formParam("loginPassword");
+        if (loginPassword==null){
+            ctx.json(new Status("No `loginPassword` Provided (The password of the user making the changes)"));
+            return;
+        }
+        User user = UserDAO.checkLogin(loginEmail, loginPassword);
+        if (user==null){
+            ctx.json(new Status("Incorrect authentication provided"));
+            return;
+        }
+        //needs to be a seperate check otherwise nullpointerexception
+        if (user.getAccount_type()<2){
+            ctx.json(new Status("Incorrect Authentication provided"));
+            return;
+        }
         String cost_str;
         cost_str = ctx.formParam("cost");
         if (cost_str==null){
@@ -59,6 +82,27 @@ public class CarController {
         ctx.json(new Status());
     };
     public static Handler editCar = ctx ->{
+        //Authentication
+        String loginEmail = ctx.formParam("loginEmail");
+        if (loginEmail==null){
+            ctx.json(new Status("No `loginEmail` Provided (The email of the user making the changes)"));
+            return;
+        }
+        String loginPassword = ctx.formParam("loginPassword");
+        if (loginPassword==null){
+            ctx.json(new Status("No `loginPassword` Provided (The password of the user making the changes)"));
+            return;
+        }
+        User user = UserDAO.checkLogin(loginEmail, loginPassword);
+        if (user==null){
+            ctx.json(new Status("Incorrect authentication provided"));
+            return;
+        }
+        //needs to be a seperate check otherwise nullpointerexception
+        if (user.getAccount_type()<2){
+            ctx.json(new Status("Incorrect Authentication provided"));
+            return;
+        }
         HashMap<String, String> props = new HashMap<String, String>();
 
         String str_car_id;

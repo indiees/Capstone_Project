@@ -32,6 +32,10 @@ public class Bay {
     }
 
     @Override
+    public String toString(){
+        return "Location:" + this.location + " Max_cap:" + this.max_capacity;
+    }
+    @Override
     public boolean equals(Object o){
         if (this == o){
             return true;

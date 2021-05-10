@@ -59,6 +59,11 @@ public class Car {
     }
 
     @Override
+    public String toString(){
+        return "Cost:" + this.cost + " Color:" + this.color + " LP:" + this.liscence_plate
+                + " Make:" + this.make + " Year:" + this.year + " Bay:" + this.bay_id;
+    }
+    @Override
     public boolean equals(Object o){
         if (this == o){
             return true;
