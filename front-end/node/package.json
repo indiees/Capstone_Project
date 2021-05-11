@@ -5,13 +5,16 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
+    "start:client": "nodemon app.js",
+    "start:server": "mvn -f ../../back-end/java/ clean compile exec:java",
+    "start": "concurrently \"npm:start:client\" \"npm:start:server\"",
     "check port": "lsof -i :80"
   },
   "author": "Mush",
   "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
+    "concurrently": "^6.1.0",
     "express": "^4.17.1",
     "node-fetch": "^2.6.1",
     "pug": "^3.0.2"
