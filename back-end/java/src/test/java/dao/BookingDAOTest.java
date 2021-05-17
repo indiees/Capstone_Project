@@ -4,14 +4,7 @@ import model.Bay;
 import model.Booking;
 import model.Car;
 import model.User;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -63,6 +56,7 @@ public class BookingDAOTest {
     public void testCreateBooking() { Assertions.assertTrue(bookingExists); }
 
     @Test
+    @Disabled
     public void testGetBookingsByCarPositive() {
         Assumptions.assumeTrue(bookingExists);
         ArrayList<Booking> retrievedBooking = BookingDAO.getBookingsByCar(testCar.getCar_id());
@@ -71,6 +65,7 @@ public class BookingDAOTest {
     }
 
     @Test
+    @Disabled
     public void testGetBookingsByCarNegative() {
         Assumptions.assumeTrue(bookingExists);
         ArrayList<Booking> retrievedBooking = BookingDAO.getBookingsByCar(DUMMYINT);
