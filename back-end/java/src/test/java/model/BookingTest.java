@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Date;
 import java.sql.Timestamp;
 
 public class BookingTest {
@@ -21,8 +20,7 @@ public class BookingTest {
 
     @BeforeEach
     public void setup() {
-        Date date = new Date();
-        ts = new Timestamp(date.getTime());
+        ts = new Timestamp((System.currentTimeMillis() / 1000) * 1000);
     }
 
     @Test

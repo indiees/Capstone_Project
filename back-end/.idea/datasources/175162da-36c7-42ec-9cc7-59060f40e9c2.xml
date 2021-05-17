@@ -4604,34 +4604,47 @@ SELECT|sys.sys_config:null
       <Position>6</Position>
       <DataType>int|0s</DataType>
     </column>
-    <key id="1124" parent="364" name="PRIMARY">
+    <column id="1124" parent="364" name="bay_id">
+      <Position>7</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <index id="1125" parent="364" name="bay_id_idx">
+      <ColNames>bay_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="1126" parent="364" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>car_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="1125" parent="365" name="user_id">
+    <foreign-key id="1127" parent="364" name="bay_id">
+      <ColNames>bay_id</ColNames>
+      <RefTableName>bays</RefTableName>
+      <RefColNames>bay_id</RefColNames>
+    </foreign-key>
+    <column id="1128" parent="365" name="user_id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="1126" parent="365" name="email">
+    <column id="1129" parent="365" name="email">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
     </column>
-    <column id="1127" parent="365" name="password">
+    <column id="1130" parent="365" name="password">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="1128" parent="365" name="first_name">
+    <column id="1131" parent="365" name="first_name">
       <Position>4</Position>
       <DataType>varchar(45)|0s</DataType>
     </column>
-    <column id="1129" parent="365" name="last_name">
+    <column id="1132" parent="365" name="last_name">
       <Position>5</Position>
       <DataType>varchar(45)|0s</DataType>
     </column>
-    <key id="1130" parent="365" name="PRIMARY">
+    <key id="1133" parent="365" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_id</ColNames>
       <Primary>1</Primary>

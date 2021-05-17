@@ -16,11 +16,12 @@ public class UserDAOTest {
     private static final String FNAME = "UserDAOTest.first.name";
     private static final String LNAME = "UserDAOTest.last.name";
     private static final String DUMMY = "testMissingValue";
+    private static final int ACCTYPE = 1;
 
     @BeforeEach
     public void setup() {
         if (!userExists) {
-            testUser = UserDAO.createUser(EMAIL, PASS, FNAME, LNAME);
+            testUser = UserDAO.createUser(EMAIL, PASS, FNAME, LNAME, ACCTYPE);
             userExists = (testUser != null);
         }
     }
@@ -34,6 +35,9 @@ public class UserDAOTest {
         userExists = !UserDAO.removeUser(testUser.getUser_id());
         Assertions.assertFalse(userExists);
     }
+
+    // TODO
+    // Create test for UserDAO.editUser()
 
     @Test
     public void testCheckLoginPositive() {

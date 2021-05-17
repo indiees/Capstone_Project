@@ -53,4 +53,31 @@ public class Car {
     public int getBay() {
         return this.bay_id;
     }
+
+    public void setCar_id(int car_id) {
+        this.car_id = car_id;
+    }
+
+    @Override
+    public String toString(){
+        return "Cost:" + this.cost + " Color:" + this.color + " LP:" + this.liscence_plate
+                + " Make:" + this.make + " Year:" + this.year + " Bay:" + this.bay_id;
+    }
+    @Override
+    public boolean equals(Object o){
+        if (this == o){
+            return true;
+        }
+        if (!(o instanceof Car)){
+            return false;
+        }
+        Car c = (Car) o;
+        return ((c.car_id == this.car_id)
+                && (c.cost == this.cost)
+                && (c.color.equals(this.color))
+                && (c.liscence_plate.equals(this.liscence_plate))
+                && (c.make.equals(this.make))
+                && (c.year == this.year)
+                && (c.bay_id == this.bay_id));
+    }
 }

@@ -13,6 +13,10 @@ public class Web {
     public static final String getCarColors = "/api/car/colors";
     public static final String getCarMakes = "/api/car/makes";
     public static final String getCarLocations = "/api/car/locations";
-
+    public static final String editCar = "/api/car/update";
+    public static final String addCar = "/api/car/create";
+    public static final String editBay = "/api/bay/update";
+    public static final String addBay = "/api/bay/create";
+    public static final String editUser = "/api/user/update";
 
 }

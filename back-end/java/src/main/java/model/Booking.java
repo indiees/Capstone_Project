@@ -29,6 +29,17 @@ public class Booking {
         this.date = date;
     }
 
+    public Booking(int booking_id, int car_id, int user_id, int start_bay_id, double rate, Timestamp date){
+        this.booking_id = booking_id;
+        this.car_id = car_id;
+        this.user_id = user_id;
+        this.start_bay_id = start_bay_id;
+        this.end_bay_id = 0;
+        this.duration = 0;
+        this.rate = rate;
+        this.date = date;
+    }
+
     public int getCar_id() {
         return car_id;
     }
@@ -59,5 +70,30 @@ public class Booking {
 
     public Timestamp getDate() {
         return date;
+    }
+
+    @Override
+    public String toString(){
+        return "Car:" + this.car_id + " Start:" + this.start_bay_id + " End:" + this.end_bay_id
+                + " Duration:" + this.duration + " Rate:" + this.rate + " Made by:"
+                + this.user_id + " at Time:" + this.date.toString();
+    }
+    @Override
+    public boolean equals(Object o){
+        if (this == o){
+            return true;
+        }
+        if (!(o instanceof Booking)){
+            return false;
+        }
+        Booking b = (Booking) o;
+        return ((b.booking_id == this.booking_id)
+                && (b.car_id == this.car_id)
+                && (b.user_id == this.user_id)
+                && (b.start_bay_id == this.start_bay_id)
+                && (b.end_bay_id == this.end_bay_id)
+                && (b.duration == this.duration)
+                && (b.rate == this.rate)
+                && (b.date.equals(this.date)));
     }
 }

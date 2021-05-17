@@ -22,6 +22,11 @@ public class main {
             app.get(Web.getCarLocations, CarController.getCarLocations);
             app.get(Web.getCarColors, CarController.getCarColors);
             app.get(Web.getCarMakes, CarController.getCarMakes);
+            app.post(Web.addCar, CarController.addCar);
+            app.post(Web.editCar, CarController.editCar);
+            app.post(Web.addBay, BayController.addBay);
+            app.post(Web.editBay, BayController.editBay);
+            app.post(Web.editUser, UserController.editUser);
         });
     }
     public static int getHerokuAssignedPort() {
