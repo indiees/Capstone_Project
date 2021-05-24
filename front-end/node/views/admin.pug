@@ -16,58 +16,95 @@ div( class= "adminNav")
 div(id="blank" class="sectionDiv")
     p Chose a category on the left
 div(id="carsDiv" class="sectionDiv")
-    H1 Cars
+    H1.page-title.d-flex.justify-content-center Cars
     table.content-table
         thead(id="carsHeader")
         tbody(id="carsBody")
     div#carLoading(style="text-align:center")
         img(src="images/Spinner.gif")
-    button.create#addCar Add Car
+    button.create.btn.btn-success.btn-m#addCar Add Car
 
 div(id="usersDiv" class="sectionDiv")
-    H1 Users
+    H1.page-title.d-flex.justify-content-center Users
     table.content-table
         thead(id="usersHeader")
         tbody(id="usersBody")
     div#userLoading(style="text-align:center")
         img(src="images/Spinner.gif")
+    button.create.btn.btn-success.btn-m#createUser Create User
         
 div(id="baysDiv" class="sectionDiv")
-    H1 Bays
+    H1.page-title.d-flex.justify-content-center Bays
     table.content-table
         thead(id="baysHeader")
         tbody(id="baysBody")
     div#bayLoading(style="text-align:center")
         img(src="images/Spinner.gif")
-    button.create#addBay Add Bay
+    button.create.btn.btn-success.btn-m#addBay Add Bay
 
 div#bayModal.modals
     div.mContent
         span.close &times;
         H1#heading
-        label ID
-        input(type="text" disabled)#bay_id
-        label Location
-        input(type="text")#location
-        label max_capacity
-        input(type="text")#max_capacity
-        button#submitBay
+        .mb-3
+            label.form-label ID
+            input.form-control(type="text" disabled)#bay_id
+        .mb-3
+            label.form-label Location
+            input.form-control(type="text")#location
+        .mb-3
+            label.form-label Max_capacity
+            input.form-control(type="text")#max_capacity
+        button.btn.btn-success.btn-lg#submitBay
 div#carModal.modals
     div.mContent
         span.close &times;
         H1#heading
-        label ID
-        input(type="text" disabled)#car_id
-        label Year
-        input(type="text")#year
-        label cost
-        input(type="text")#cost
-        label color
-        input(type="text")#color
-        label liscence_plate
-        input(type="text")#liscence_plate
-        label make
-        input(type="text")#make
-        label bay
-        input(type="text")#bay
-        button#submitCar
+        .mb-3
+            label.form-label ID
+            input.form-control(type="text" disabled)#car_id
+        .mb-3
+            label.form-label Year
+            input.form-control(type="text")#year 
+        .mb-3
+            label.form-label cost
+            input.form-control(type="text")#cost
+        .mb-3
+            label.form-label color
+            input.form-control(type="text")#color
+        .mb-3
+            label.form-label liscence_plate
+            input.form-control(type="text")#liscence_plate
+        .mb-3
+            label.form-label make
+            input.form-control(type="text")#make
+        .mb-3
+            label.form-label bay
+            input.form-control(type="text")#bay
+        button.btn.btn-success.btn-lg#submitCar
+
+div#userModal.modals
+    div.mContent
+        span.close &times;
+        H1#heading
+        .mb-3
+            label.form-label Year
+            input.form-control(type="text")#year 
+        .mb-3
+            label.form-label cost
+            input.form-control(type="text")#cost
+        .mb-3
+            label.form-label color
+            input.form-control(type="text")#color
+        .mb-3
+            label.form-label liscence_plate
+            input.form-control(type="text")#liscence_plate
+        .mb-3
+            label.form-label make
+            input.form-control(type="text")#make
+        .mb-3
+            label.form-label bay
+            input.form-control(type="text")#bay
+        button.btn.btn-success.btn-lg#submitUser
+        
+    

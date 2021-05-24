@@ -21,11 +21,11 @@ main.flex-shrink-0
           option(selected='',value="") Color
           each color in data.colors
             option(value=color) #{color}
-        input#min-year(style="width:100px",placeholder="Min year")
-        input#max-year(style="width:100px",placeholder="Max year")
+        input.form-control#min-year(style="margin-top: 3px; height: 45px; margin-right: 4px; width:100px;", placeholder="Min year")
+        input.form-control#max-year(style="margin-top: 3px; height: 45px; margin-right: 4px; width:100px;", placeholder="Max year")
       #second-search-row.row.justify-content-center
-        input#min-cost(style="width:100px",placeholder="Min Cost")
-        input#max-cost(style="width:100px",placeholder="Max Cost")
+        input.form-contro#min-cost(style="margin-top: 3px; height: 45px; margin-right: 4px; width:100px;",placeholder="Min Cost")
+        input.form-contro#max-cost(style="margin-top: 3px; height: 45px; margin-right: 4px; width:100px;",placeholder="Max Cost")
         select.form-select.form-select-sm#location(aria-label='.form-select-sm example')
           option(selected='',value="") Location
           each location in data.locations
