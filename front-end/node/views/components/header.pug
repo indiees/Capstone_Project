@@ -39,23 +39,24 @@ div
                   h5#exampleModalLabel.modal-title Change profile details
                   button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
                 .modal-body
-                  form.was-validated
+                  form.needs-validation(novalidate='')
                     .mb-3
                       label.form-label(for='Username' placeholder='Enter User Name') User Name
                       input#Userid.form-control(type='text is-invalid' aria-describedby='InputGroup1' required='')
                       .invalid-feedback
-                        | Enter a valid username
+                        Enter a valid username
                     .mb-3
                       label.form-label(for='Email' placeholder='name@example.com') Email address
                       input.form-control(type='email is-invalid' required='')
-                      #emailHelp.form-text We&apos;ll never share your email with anyone else.
                       .invalid-feedback
-                        | Enter a valid Email
+                        Enter a valid Email
                     .mb-3
                       label.form-label(for='exampleInputPassword1' placeholder='Password') Password
-                      input#exampleInputPassword1.form-control(type='password')
+                      input#exampleInputPassword1.form-control(type='password' required='')
+                    .mb-3
+                      label.form-label(for='exampleInputPassword1' placeholder='Password') Confirm Password
+                      input#exampleInputPassword1.form-control(type='password' required='')
                 .modal-footer
                   button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
                   button.btn.btn-primary(type='submit') Save changes
-
 script(src='scripts/navbar.js')
