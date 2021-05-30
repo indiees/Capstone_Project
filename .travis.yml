@@ -1,5 +1,43 @@
-language: java
-sudo: false
-before_script: cd back-end/java
-script: mvn clean verify
+---
 
+language: generic
+
+notifications:
+    email: false
+
+stages:
+  - name: "[backend] unit tests"
+  - name: "[frontend] unit tests"
+
+jobs:
+  include:
+    - stage: "[backend] unit tests"
+      language: java
+      jdk:
+        - openjdk10
+      before_install: if .travis/build-check.sh $TRAVIS_COMMIT_RANGE back-end/java; then echo "Testing"; else echo "NOT testing" && travis_terminate 0; fi
+      install:
+        - cd back-end/java
+        - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+        - cd ../..
+      script:
+        - cd back-end/java
+        - mvn test -B
+    - stage: "[frontend] unit tests"
+      language: node_js
+      node_js:
+        - 15
+      before_install: if .travis/build-check.sh $TRAVIS_COMMIT_RANGE front-end/node; then echo "Testing"; else echo "NOT testing" && travis_terminate 0; fi
+      install:
+        - cd front-end/node
+        - npm install
+        - cd ../..
+      script:
+        - cd front-end/node
+        - npm run test
+      cache:
+        npm: true
+        directories:
+          - front-end/node/node_modules
+
+      
