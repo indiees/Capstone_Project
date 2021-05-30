@@ -7,7 +7,6 @@ const email = document.querySelector("#loginEmail");
 const RegEmail = document.querySelector("#registerEmail");
 const error = document.querySelector(".error-text");
 const RegError = document.querySelector(".error-text-two");
-const btn = document.querySelector("submit-btn");
 let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
 function register(){

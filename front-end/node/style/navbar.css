@@ -49,7 +49,26 @@ body{
 .footer {
     position: fixed;
 }
-
+.error-text{
+    position: relative;
+    margin: 15px 0 -5px 0;
+    background: #e74c3c;
+    color: #fceae8;
+    padding: 3px;
+    border-radius: 3px;
+    display: none;
+}
+.error-text:before{
+    position: absolute;
+    content: '';
+    height: 15px;
+    width: 15px;
+    background: #000;
+    background: #e74c3c;
+    right: 20px;
+    top: -7px;
+    transform: rotate(45deg)
+}
 
 
 /*cars page section hearder

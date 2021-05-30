@@ -42,7 +42,7 @@ div
                   .form
                     .mb-3
                       label.form-label(for='exampleInputEmail1') Email address
-                      input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp')
+                      input#exampleInputEmail1.form-control(onkeyup='check()' type='email' aria-describedby='emailHelp')
                       .error-text Please enter a valid email Id
                     .mb-3
                       label.form-label(for='first_name' placeholder='name') First Name

@@ -1,3 +1,23 @@
+const email = document.querySelector("#exampleInputEmail1");
+const error = document.querySelector(".error-text");
+//email validation
+function check(){
+    if(email.value.match(regExp)){
+        email.style.borderColor = "green";
+        error.style.display = "none";
+
+    }else{
+        email.style.borderColor = "#e74c3c";
+        error.style.display = "block";
+    }
+    if(email.value == ""){
+        email.style.borderColor = "rgb(72, 158, 238)";
+        error.style.display = "none";
+
+    }
+
+}
+
 if (localStorage.getItem("email")!=null){
     $("#login").hide()
 }
