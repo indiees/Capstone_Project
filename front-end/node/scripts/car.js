@@ -1,4 +1,4 @@
-baseURL = "http://localhost:7000/api/"
+baseURL = "http://172.31.50.0:7000/api/"
 function makeBooking(car_id){
     console.log("Trying to make booking for car: " + car_id + " with user " + localStorage.getItem("email"))
     formData = {

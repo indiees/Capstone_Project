@@ -23,6 +23,32 @@ jobs:
       script:
         - cd back-end/java
         - mvn test -B
+      before_deploy:
+        - zip -r latest *
+        - mkdir -p dpl_cd_upload
+        - mv latest.zip dpl_cd_upload/latest.zip
+      deploy:
+        - provider: s3
+          access_key_id: AKIA2C2UQVNM5LCRKAMV
+          secret_access_key: &1
+              secure: "L0Ypihu/tkZ3sYI70RKQbRwRraoiT/wTNQJe2MpI7hx6heInHRKJenuXEb4zwggG+5X+ffwIyQAOF9hHAjsGNWJIpjjz5ywqFWhiH+Im4xLVf3LVo25iBf/Ec+ToEUXwQexp6C1VUZz600V/e3NoupiwvVX2q80y0rBiK86WYZdiSrvzNPZTmpbuw+oYAjNLY3mbJjLeM1BMVWk7nphELJvp61w5Ny5jnEaKORXuIiWTTnOldd6TQY7LjQ5Lb2NHGkzhXA+V9scA0TOANZk8WTr06Ij0YUvkWodN8L6CQOGtsS+WzywkQgJrEtz74GHUOmxzpltGPbcMv21fj3jM85rhCSlB3xl5UQatB5dRFApOl9MQEAxTnj4OSHlX03aH6kj3TrKbwNftCUovenKuRb4h+2j/ektC48wKrlxR0AiAbEXfibrjFus8x08WlWnQapP/kF6Cm0VWRhWsnLqMT6vDvXihHVWDNnHrmCuHH1agURbfQ4xVl9woDilGkhb6ox3k4ROBHAwRoaK+l4zCfxYoaqUsEYITx79QxP08bsvX60GjlYWz8ECLJfbRjFVASEReYnqpOMK6Sk7AN//he2Q5XsWNvNtpf7kNMCfT2B089iGLCppzyt4eKGuxGUNnX38Kis5+d+MC1ZcCkfc3epR+C3SZQZHjX6ZdlaeWxQM="
+          local_dir: dpl_cd_upload
+          skip_cleanup: true
+          on: &2
+            repo: s3716883/Rent-A-Lux
+            branch: main
+          bucket: ral-api-s3
+          region: us-east-1
+        - provider: codedeploy
+          access_key_id: AKIA2C2UQVNM5LCRKAMV
+          secret_access_key: *1
+          bucket: ral-api-s3
+          key: latest.zip
+          bundle_type: zip
+          application: ral-web
+          deployment_group: Rent-A-Lux-API
+          region: us-east-1
+          on: *2
     - stage: "[frontend] unit tests"
       language: node_js
       node_js:
@@ -46,23 +72,23 @@ jobs:
       deploy:
         - provider: s3
           access_key_id: AKIA2C2UQVNM5LCRKAMV
-          secret_access_key: &1
+          secret_access_key: &3
               secure: "L0Ypihu/tkZ3sYI70RKQbRwRraoiT/wTNQJe2MpI7hx6heInHRKJenuXEb4zwggG+5X+ffwIyQAOF9hHAjsGNWJIpjjz5ywqFWhiH+Im4xLVf3LVo25iBf/Ec+ToEUXwQexp6C1VUZz600V/e3NoupiwvVX2q80y0rBiK86WYZdiSrvzNPZTmpbuw+oYAjNLY3mbJjLeM1BMVWk7nphELJvp61w5Ny5jnEaKORXuIiWTTnOldd6TQY7LjQ5Lb2NHGkzhXA+V9scA0TOANZk8WTr06Ij0YUvkWodN8L6CQOGtsS+WzywkQgJrEtz74GHUOmxzpltGPbcMv21fj3jM85rhCSlB3xl5UQatB5dRFApOl9MQEAxTnj4OSHlX03aH6kj3TrKbwNftCUovenKuRb4h+2j/ektC48wKrlxR0AiAbEXfibrjFus8x08WlWnQapP/kF6Cm0VWRhWsnLqMT6vDvXihHVWDNnHrmCuHH1agURbfQ4xVl9woDilGkhb6ox3k4ROBHAwRoaK+l4zCfxYoaqUsEYITx79QxP08bsvX60GjlYWz8ECLJfbRjFVASEReYnqpOMK6Sk7AN//he2Q5XsWNvNtpf7kNMCfT2B089iGLCppzyt4eKGuxGUNnX38Kis5+d+MC1ZcCkfc3epR+C3SZQZHjX6ZdlaeWxQM="
           local_dir: dpl_cd_upload
           skip_cleanup: true
-          on: &2
+          on: &4
             repo: s3716883/Rent-A-Lux
             branch: main
           bucket: ral-web-s3
           region: us-east-1
         - provider: codedeploy
           access_key_id: AKIA2C2UQVNM5LCRKAMV
-          secret_access_key: *1
+          secret_access_key: *3
           bucket: ral-web-s3
           key: latest.zip
           bundle_type: zip
           application: ral-web
           deployment_group: Rent-A-Lux
           region: us-east-1
-          on: *2
+          on: *4
       
