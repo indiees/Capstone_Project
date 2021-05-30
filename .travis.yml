@@ -51,6 +51,7 @@ jobs:
           cleanup: false
           on: &2
             repo: s3716883/Rent-A-Lux
+            branch: main
           bucket: ral-web-s3
           region: us-east-1
         - provider: codedeploy
