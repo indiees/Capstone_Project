@@ -35,15 +35,17 @@ jobs:
       script:
         - cd front-end/node
         - npm run test
+        - ls
       cache:
         npm: true
         directories:
           - front-end/node/node_modules
       before_deploy:
+        - ls
         - zip -r latest *
         - mkdir -p dpl_cd_upload
         - mv latest.zip dpl_cd_upload/latest.zip
-        - echo $TRAVIS_BUILD_DIR
+        - ls
       deploy:
         - provider: s3
           access_key_id: AKIA2C2UQVNM5LCRKAMV
