@@ -23,7 +23,8 @@ head
       label#first_name_error.errormsg
       input#last_name.input-field(type='text' placeholder='Last Name' required)
       label#last_name_error.errormsg
-      input#registerEmail.input-field(type='text' placeholder='Email Id' required)
+      input#registerEmail.input-field(onkeyup='checkReg()' type='text' placeholder='Email Id' required)
+      .error-text-two Please enter a valid email Id
       label#email_error.errormsg
       input#password.input-field(type='password' placeholder='Enter password' required)
       label#password_error.errormsg
