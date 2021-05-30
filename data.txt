@@ -1,0 +1,36 @@
+Database information:
+There is a running database located at:
+theduggan.online:3306
+username: root
+password: password
+
+The database contains tables as follows:
+	users:
+		user_id			Auto increment int
+		email			String
+		password		Salted+hashed String
+		first_name		String
+		last_name		String
+		account_Type		int (0 - no user, 1 - user, 2 - admin)
+	cars
+		car_id			Auto increment int
+		cost			double
+		color			String
+		liscence_plate		String
+		make			String
+		year			int
+		bay_id*			forign key from `bays` table
+	bays
+		bay_id			Auto increment int
+		location			String
+		max_capacity		int
+	bookings
+		booking_id		Auto increment int
+		car_id*			forign key from `cars` table
+		user_id*		forign key from `users` table
+		start_bay_id*		forign key from `bays` table
+		end_bay_id*		forign key from `bays` table
+		date			datetime
+		duration		int, duration of booking in milliseconds
+		rate			double, independent from car cost, in case of specials, or changing car costs
+		
