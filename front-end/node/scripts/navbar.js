@@ -1,5 +1,6 @@
 const email = document.querySelector("#emailnb");
 const error = document.querySelector(".error-text");
+const baseURL = "http://localhost:7000/api/";
 let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 //email validation
 function check(){
@@ -43,7 +44,7 @@ $(function() {
 
 $(document).on("click", "#profile", function(data){
     console.log("clicked profile button");
-    $("#email")[0].setAttribute("disabled", "disabled")
+    $("#emailnb")[0].setAttribute("disabled", "disabled")
     $.ajax({
         type: 'POST',
         data: {
