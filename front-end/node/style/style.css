@@ -88,6 +88,9 @@
     top: -7px;
     transform: rotate(45deg)
 }
+#register{
+    border: 1px solid red;
+}
 
 
 
