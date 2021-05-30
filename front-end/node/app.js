@@ -12,6 +12,14 @@ function index(req,res){
     }
 } 
 
+app.get('/landing', landing);
+
+function landing(req,res){
+    {
+        res.send(pug.renderFile("views/landing.pug"));
+    }
+} 
+
 app.get('/admin', admin);
 
 function admin(req,res){
