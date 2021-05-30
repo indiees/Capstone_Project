@@ -10,7 +10,8 @@ head
       button.toggle-btn(type='button' onclick='register()') Register
     // Login Form
     form#login.input-group
-      input#loginEmail.input-field(type='text' placeholder='Email' required)
+      input#loginEmail.input-field(onkeyup='check()' type='text' placeholder='Email' required)
+      .error-text Please enter a valid email Id
       input#loginPassword.input-field(type='password' placeholder='Password' required)
       input.check-box(type='checkbox')
       span Remember Password
@@ -22,7 +23,7 @@ head
       label#first_name_error.errormsg
       input#last_name.input-field(type='text' placeholder='Last Name' required)
       label#last_name_error.errormsg
-      input#email.input-field(type='text' placeholder='Email Id' required)
+      input#registerEmail.input-field(type='text' placeholder='Email Id' required)
       label#email_error.errormsg
       input#password.input-field(type='password' placeholder='Enter password' required)
       label#password_error.errormsg
