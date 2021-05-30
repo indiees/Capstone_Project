@@ -1,0 +1,72 @@
+head
+  title Rent-A-Lux
+  link(rel='stylesheet' href='style/landing.css')
+include components/header.pug 
+
+
+main.flex-shrink-0
+  .section-one
+    .content
+      h1 Accelerate into the future.
+      p
+        Description Rent-A-Lux is a user-centric company, which allows its users to rent fast and exclusive luxury cars in Australia.  
+      img.car-img(src='style/car-1.png')
+  .section-two
+    .content-two
+      h1 Ridiculously simple pick-up and drop-off
+      p With our Rent-A-Lux Web App, you'll be able to easily book your desired luxury car.
+      img.rounded(src='/style/booking.jpg')
+      button.submit-btn( href='/cars') Book now!
+  .section-three
+    .content-three
+      h1 Quality Vehicles just for you
+      p Our wide range of new vehicles, from 2-seaters to SUVs, means you have lots of options to book the perfect car for you.
+      img.rounded(src='/style/four_cars.jpg')
+      button.submit-btn( href='/cars') Check our cars!
+  .section-four
+    .content-four
+      img.rounded(src='/style/seb.jpg')
+      h1 Plan in advance, explore our pick-up and drop-off zones.
+      p Easily pick-up and drop-off cars from our bays, all around the city.
+
+      .card#ryan
+        .card-body(style='padding-right: 5px;')
+          p I feel safe hiring from Rent-A-Lux. I've booked with Rent-A-Lux well over 20 occasions. Every time every part of the pick-up through to drop-off is hassle free.
+          h5.card-title -Ryan Wilson
+          h6.card-subtitle.mb-2.text-muted Australia
+      .card-two
+        .card-body(style='padding-right: 5px;')
+          p We've hired cars with other companies we've been stuck in a queue and taken 2hrs to get our car. With Rent-A-Lux it took barely 5 mins as we could give a lot of our info in advanced.
+          h5.card-title -Indie Sreeram 
+          h6.card-subtitle.mb-2.text-muted Australia
+      .card-three
+        img.card-img-top(src='/style/Car-In-Parking-Lot.jpg')
+        .card-body(style='padding-right: 5px;')
+          h5.card-title Instructions 
+          h6.card-subtitle.mb-2.text-muted Return
+          p
+            | > Confirm your booking from our website
+            br
+            | > Pick up car from available bay
+            br
+            | > Drop off car in the bay most nearest to you
+      .card-four
+        .card-body(style='padding-right: 5px;')
+          p Excellent friendly service and super easy to pick up and drop-off with no drawn out paperwork, all done via website. Super convienient.
+          h5.card-title -Christian Della Rosa
+          h6.card-subtitle.mb-2.text-muted Australia
+          
+      button.submit-btn( onclick="document.location='bays.pug'") View available bays!
+  .section-five
+  
+    .content-five
+      h1 About us.
+      p
+        Description Rent-A-Lux is a user-centric company, which allows its users to rent fast and exclusive luxury cars in Australia. The company is proudly Australian-owned, upholding the qualities of honesty, hard work and unmitigated effort from upper management right down to customer interaction level. With Rent-A-Lux, arragements and booking processes are efficient and easy to use.  
+   
+      img.rounded(src='/style/back-cars.jpg')
+      
+          
+      
+      
+include components/footer.pug

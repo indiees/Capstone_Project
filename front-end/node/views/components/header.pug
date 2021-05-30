@@ -10,9 +10,9 @@ div
     link(rel='stylesheet' href='style/navbar.css')
   nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #004aad;')
     .container-fluid
-      a.navbar-brand(href='#')
+      a.navbar-brand(href='/landing')
         img.d-inline-block.align-text-top(src='/style/L.png' alt='' width='100' height='95')
-      a.navbar-brand.text-white(href='#') Rent-A-Lux
+      a.navbar-brand.text-white(href='/landing') Rent-A-Lux
       button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
         span.navbar-toggler-icon.text-white
       #navbarSupportedContent.collapse.navbar-collapse
@@ -26,9 +26,47 @@ div
           li.nav-item
             a.nav-link.text-white.btn-outline-info(href='/bays') Bays
           li.nav-item
-            a.nav-link.text-white.btn-outline-info(href='/admin') Admin
+            a.nav-link.text-white.btn-outline-info#admin(href='/admin') Admin
           li.nav-item
             a.nav-link.text-white.btn-outline-info(href='/bookings') Bookings
           li.nav-item
-            a.nav-link.text-white.btn-outline-info(href='#') About
-script(src="scripts/navbar.js")
+          button.btn.btn-primary#profile(type='button' data-bs-toggle='modal' data-bs-target='#exampleModal') Profile
+          // Modal
+          #exampleModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+            .modal-dialog
+              .modal-content
+                .modal-header
+                  h5#exampleModalLabel.modal-title Change profile details
+                  button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-body
+                  .form
+                    .mb-3
+                      label.form-label(for='emailnb') Email address
+                      input#emailnb.form-control(onkeyup='check()' type='email' aria-describedby='emailHelp')
+                      .error-text Please enter a valid email Id
+                    input#user_idnb.form-control(hidden)
+                    .mb-3
+                      label.form-label(for='first_namenb' placeholder='name') First Name
+                      input#first_namenb.form-control(type='text' required)
+                      .invalid-feedback
+                        Enter a valid name
+                    .mb-3
+                      label.form-label(for='last_name' placeholder='name') Last Name
+                      input#last_namenb.form-control(type='text' required)
+                      .invalid-feedback
+                        Enter a valid name
+                .modal-footer
+                  button.btn.btn-secondary#close(type='button' data-bs-dismiss='modal') Close
+                  button.btn.btn-danger(type='button' data-bs-toggle='modal' data-bs-target='#confirmModal') Delete User
+                  button.btn.btn-primary#save(type='submit') Save changes  
+          // confirm delete modal
+          #confirmModal.modal.fade(tabindex='-' aria-labelledby='confirmModalLabel' aria-hidden='true')
+            .modal-dialog
+              .modal-content
+                .modal-header
+                  h5#exampleModalLabel.modal-title Are you sure you want to delete this user?
+                  button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                .modal-footer
+                  button.btn.btn-secondary(type='button' data-bs-dismiss='modal') No
+                  button.btn.btn-primary(type='submit') Yes
+script(src='scripts/navbar.js')
