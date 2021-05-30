@@ -1,7 +1,7 @@
 var x = document.getElementById("login");
 var y = document.getElementById("register");
 var z = document.getElementById("btn");
-const baseURL = "http://172.31.50.0:7000/api/";
+const baseURL = "http://ec2-35-168-2-168.compute-1.amazonaws.com:7000/api/";
 function register(){
     x.style.left = "-400px";
     y.style.left = "50px";
