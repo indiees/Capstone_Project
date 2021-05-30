@@ -34,7 +34,7 @@ async function cars(req,res){
     {
         data={};
         //We feed in the URL of the request we want
-        url = "http://localhost:7000/api/car/colors"
+        url = "http://ec2-35-168-2-168.compute-1.amazonaws.com:7000/api/car/colors"
         await fetch(url)
             .then(response=>response.json() //Always use this line (it just converts from raw HTML into a json object)
             ) 
@@ -53,7 +53,7 @@ async function cars(req,res){
                 }
             )
         //We feed in the URL of the request we want
-        url = "http://localhost:7000/api/car/makes"
+        url = "http://ec2-35-168-2-168.compute-1.amazonaws.com:7000/api/car/makes"
         await fetch(url)
             .then(response=>response.json() //Always use this line (it just converts from raw HTML into a json object)
             ) 
@@ -72,7 +72,7 @@ async function cars(req,res){
                 }
             )
         //We feed in the URL of the request we want
-        url = "http://localhost:7000/api/car/locations"
+        url = "http://ec2-35-168-2-168.compute-1.amazonaws.com:7000/api/car/locations"
         await fetch(url)
             .then(response=>response.json() //Always use this line (it just converts from raw HTML into a json object)
             ) 
@@ -90,7 +90,7 @@ async function cars(req,res){
                     }
                 }
             )
-        url = "http://localhost:7000/api/car/locations"
+        url = "http://ec2-35-168-2-168.compute-1.amazonaws.com:7000/api/car/locations"
         await fetch(url)
             .then(response=>response.json() //Always use this line (it just converts from raw HTML into a json object)
             ) 
@@ -108,7 +108,6 @@ async function cars(req,res){
                     }
                 }
             )
-            
         res.send(pug.renderFile("views/cars.pug",data=data))
     }
 } 
@@ -118,7 +117,7 @@ app.get('/bays', bays);
 
 function bays(req,res){
     {
-        url = "http://localhost:7000/api/bay/search"
+        url = "http://ec2-35-168-2-168.compute-1.amazonaws.com:7000/api/bay/search"
         fetch(url)
             .then(response=>response.json()
             ) 

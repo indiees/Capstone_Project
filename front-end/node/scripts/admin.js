@@ -7,7 +7,7 @@ $(document).on("click", ".adminNav button", function(data){
     show(data.target.getAttribute("tg"))
 });
 
-const baseURL = "http://localhost:7000/api/";
+const baseURL = "http://ec2-35-168-2-168.compute-1.amazonaws.com:7000/api/";
 
 $(document).on("click", "#carBtn", function(data){
     console.log("refreshing cars page")

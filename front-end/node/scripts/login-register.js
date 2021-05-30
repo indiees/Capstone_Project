@@ -1,7 +1,8 @@
 var x = document.getElementById("login");
 var y = document.getElementById("register");
 var z = document.getElementById("btn");
-const baseURL = "http://localhost:7000/api/";
+
+const baseURL = "http://ec2-35-168-2-168.compute-1.amazonaws.com:7000/api/";
 //email validation
 const email = document.querySelector("#loginEmail");
 const RegEmail = document.querySelector("#registerEmail");
