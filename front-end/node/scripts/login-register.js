@@ -2,6 +2,27 @@ var x = document.getElementById("login");
 var y = document.getElementById("register");
 var z = document.getElementById("btn");
 const baseURL = "http://localhost:7000/api/";
+const email = document.querySelector("#loginEmail");
+const error = document.querySelector(".error-text");
+const btn = document.querySelector("submit-btn");
+let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+function check(){
+    if(email.value.match(regExp)){
+        email.style.borderColor = "green";
+        error.style.display = "none";
+
+    }else{
+        email.style.borderColor = "#e74c3c";
+        error.style.display = "block";
+    }
+    if(email.value == ""){
+        email.style.borderColor = "rgb(72, 158, 238)";
+        error.style.display = "none";
+
+    }
+}
+
 function register(){
     x.style.left = "-400px";
     y.style.left = "50px";
