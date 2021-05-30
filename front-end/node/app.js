@@ -12,6 +12,14 @@ function index(req,res){
     }
 } 
 
+app.get('/landing', landing);
+
+function landing(req,res){
+    {
+        res.send(pug.renderFile("views/landing.pug"));
+    }
+} 
+
 app.get('/admin', admin);
 
 function admin(req,res){
@@ -100,25 +108,6 @@ async function cars(req,res){
                     }
                 }
             )
-        url = "http://ec2-35-168-2-168.compute-1.amazonaws.com:7000/api/car/search"
-        await fetch(url)
-            .then(response=>response.json() //Always use this line (it just converts from raw HTML into a json object)
-            ) 
-            .then(
-                html=> {
-                    //We check if the request succeeded
-                    if (html.status=="success"){
-                        //If it did then save it into data
-                        data['cars']=html.payload
-                    }
-                    else{
-                        //If it didnt work then write the error into the console
-                        console.log("Error Detected: ")
-                        console.log(html.message)
-                    }
-                }
-            )
-            
         res.send(pug.renderFile("views/cars.pug",data=data))
     }
 } 

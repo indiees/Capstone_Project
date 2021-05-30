@@ -1,7 +1,15 @@
 var x = document.getElementById("login");
 var y = document.getElementById("register");
 var z = document.getElementById("btn");
+
 const baseURL = "http://ec2-35-168-2-168.compute-1.amazonaws.com:7000/api/";
+//email validation
+const email = document.querySelector("#loginEmail");
+const RegEmail = document.querySelector("#registerEmail");
+const error = document.querySelector(".error-text");
+const RegError = document.querySelector(".error-text-two");
+let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
 function register(){
     x.style.left = "-400px";
     y.style.left = "50px";
@@ -11,6 +19,41 @@ function login(){
     x.style.left = "50px";
     y.style.left = "450px";
     z.style.left = "0px";
+}
+
+//email validation
+function check(){
+    if(email.value.match(regExp)){
+        email.style.borderColor = "green";
+        error.style.display = "none";
+
+    }else{
+        email.style.borderColor = "#e74c3c";
+        error.style.display = "block";
+    }
+    if(email.value == ""){
+        email.style.borderColor = "rgb(72, 158, 238)";
+        error.style.display = "none";
+
+    }
+
+}
+//validation in register email id
+function checkReg(){
+    if(RegEmail.value.match(regExp)){
+        RegEmail.style.borderColor = "green";
+        RegError .style.display = "none";
+
+    }else{
+        RegEmail.style.borderColor = "#e74c3c";
+        RegError .style.display = "block";
+    }
+    if(RegEmail.value == ""){
+        RegEmail.style.borderColor = "rgb(72, 158, 238)";
+        RegError .style.display = "none";
+
+    }
+
 }
 
 //This function pretty much says 'hey run this when someone pushes submit on the "Register" form'
@@ -69,6 +112,7 @@ $(function() {
 
 function loginCallback(data){
     data = data.responseJSON
+    console.log(data)
     if (data.status == "failed"){
         $("#login_error")[0].innerHTML = data.message;
         console.log(data.message)
@@ -76,6 +120,7 @@ function loginCallback(data){
     else{
         localStorage.setItem("email", $("#loginEmail").val());
         localStorage.setItem("password",$("#loginPassword").val());
-        window.location.replace("/cars"); //Temp page for demo
+        localStorage.setItem("account_type",data.payload.account_type);
+        window.location.replace("/landing"); //Temp page for demo
     }
 }

@@ -27,6 +27,8 @@ public class main {
             app.post(Web.addBay, BayController.addBay);
             app.post(Web.editBay, BayController.editBay);
             app.post(Web.editUser, UserController.editUser);
+            app.post(Web.getUsers, UserController.getUsers);
+            app.post(Web.getUser, UserController.getUser);
         });
     }
     public static int getHerokuAssignedPort() {

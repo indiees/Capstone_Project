@@ -18,5 +18,7 @@ public class Web {
     public static final String editBay = "/api/bay/update";
     public static final String addBay = "/api/bay/create";
     public static final String editUser = "/api/user/update";
+    public static final String getUsers = "/api/users/get";
+    public static final String getUser = "/api/user/get";
 
 }
