@@ -31,7 +31,6 @@ div(id="usersDiv" class="sectionDiv")
         tbody(id="usersBody")
     div#userLoading(style="text-align:center")
         img(src="images/Spinner.gif")
-    button.create.btn.btn-success.btn-m#createUser Create User
         
 div(id="baysDiv" class="sectionDiv")
     H1.page-title.d-flex.justify-content-center Bays
@@ -88,23 +87,23 @@ div#userModal.modals
         span.close &times;
         H1#heading
         .mb-3
-            label.form-label Year
-            input.form-control(type="text")#year 
+            label.form-label ID
+            input.form-control(type="text" disabled)#user_id 
         .mb-3
-            label.form-label cost
-            input.form-control(type="text")#cost
+            label.form-label Email
+            input.form-control(type="text")#email
         .mb-3
-            label.form-label color
-            input.form-control(type="text")#color
+            label.form-label First_Name
+            input.form-control(type="text")#first_name
         .mb-3
-            label.form-label liscence_plate
-            input.form-control(type="text")#liscence_plate
+            label.form-label Last_Name
+            input.form-control(type="text")#last_name
         .mb-3
-            label.form-label make
-            input.form-control(type="text")#make
-        .mb-3
-            label.form-label bay
-            input.form-control(type="text")#bay
+            label.form-label Account_Type
+            select.form-control#account_type
+                option(value="1") User
+                option(value="2") Admin 
+            
         button.btn.btn-success.btn-lg#submitUser
         
     

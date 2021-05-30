@@ -143,5 +143,62 @@ public class UserController {
         return;
 
     };
+    public static Handler getUsers = ctx ->{
+        HashMap<String, String> props = new HashMap<String, String>();
+        //Authentication
+        String loginEmail = ctx.formParam("loginEmail");
+        if (loginEmail==null){
+            ctx.json(new Status("No `loginEmail` Provided (The email of the user making the changes)"));
+            return;
+        }
+        String loginPassword = ctx.formParam("loginPassword");
+        if (loginPassword==null){
+            ctx.json(new Status("No `loginPassword` Provided (The password of the user making the changes)"));
+            return;
+        }
+        User user = UserDAO.checkLogin(loginEmail, loginPassword);
+        if (user==null){
+            ctx.json(new Status("Incorrect authentication provided"));
+            return;
+        }
+        if (user.getAccount_type() <2){
+            ctx.json(new Status("Your account is not autherised to make that request"));
+            return;
+        }
+
+        ctx.json(new Status(UserDAO.getUsers()));
+    };
+    public static Handler getUser = ctx ->{
+        HashMap<String, String> props = new HashMap<String, String>();
+        //Authentication
+        String loginEmail = ctx.formParam("loginEmail");
+        if (loginEmail==null){
+            ctx.json(new Status("No `loginEmail` Provided (The email of the user making the changes)"));
+            return;
+        }
+        String loginPassword = ctx.formParam("loginPassword");
+        if (loginPassword==null){
+            ctx.json(new Status("No `loginPassword` Provided (The password of the user making the changes)"));
+            return;
+        }
+        User user = UserDAO.checkLogin(loginEmail, loginPassword);
+        if (user==null){
+            ctx.json(new Status("Incorrect authentication provided"));
+            return;
+        }
+        if (user.getAccount_type() <2){
+            ctx.json(new Status("Your account is not autherised to make that request"));
+            return;
+        }
+
+        String str_user_id = ctx.formParam("user_id");
+        if (str_user_id == null){
+            ctx.json(new Status("No `user_id` Provided"));
+            return;
+        }
+        int user_id = Integer.parseInt(str_user_id);
+
+        ctx.json(new Status(UserDAO.getUser(user_id)));
+    };
 }
 

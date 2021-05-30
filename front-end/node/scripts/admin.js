@@ -69,11 +69,13 @@ $(document).on("click", "#userBtn", function(data){
     console.log("refreshing user page")
     $("#userLoading").show();
     $(".content-table").hide();
-    formData = {email:      $("#loginEmail").val(), 
-                password:   $("#loginPassword").val()}
+    formData = {
+        loginEmail:      localStorage.getItem("email"), 
+        loginPassword:   localStorage.getItem("password"),
+    }
     $.ajax({
-        type: 'GET',
-        url: baseURL + 'car/search',
+        type: 'POST',
+        url: baseURL + 'users/get',
         data: formData,
         complete: userCallback
     });
@@ -81,7 +83,7 @@ $(document).on("click", "#userBtn", function(data){
 function userCallback(data){
     data=data.responseJSON
     rawUsers = data.payload
-
+    console.log(data)
     //First we make header
     thead = document.createElement("thead");
     thead.id="usersHeader"
@@ -92,6 +94,8 @@ function userCallback(data){
         theadh.innerHTML = field;
         theadr.appendChild(theadh);
     }
+    theadh = document.createElement("th");
+    theadr.appendChild(theadh);
     oldHeader = $("#usersHeader")[0];
     oldHeader.parentNode.replaceChild(thead, oldHeader)
 
@@ -102,9 +106,26 @@ function userCallback(data){
         tr = document.createElement("tr");
         for (var j in rawUsers[i]){
             td = document.createElement("td");
-            td.innerHTML = rawUsers[i][j];
+            if (j=="account_type"){
+                if (rawUsers[i][j]==1){
+                    td.innerHTML = "User"
+                }
+                else{
+                    td.innerHTML = "Admin"
+                }
+            }
+            else{
+                td.innerHTML = rawUsers[i][j];
+            }
             tr.appendChild(td);
         }
+        td = document.createElement("td");
+        editBtn = document.createElement("button")
+        editBtn.innerHTML="Edit";
+        editBtn.className="editUserBtn";
+        editBtn.setAttribute("tg",rawUsers[i].user_id)
+        td.appendChild(editBtn);
+        tr.appendChild(td);
         tbody.appendChild(tr);
     }
     oldBody = $("#usersBody")[0];
@@ -113,6 +134,95 @@ function userCallback(data){
     $(".content-table").show();
 }
 
+$(document).on("click", ".editUserBtn", function(data){
+    console.log("Loading User Modal")
+    id = data.target.getAttribute("tg")
+    console.log("ID is: " + id)
+    showUserModal(id)
+});
+
+$(document).on("click", "#addUser", function(data){
+    console.log("Loading UJser Modal")
+    showUserModal(0)
+});
+
+function showUserModal(id){
+    $("#submitUser")[0].removeAttribute("disabled");
+    if (id==0){
+        $("#heading")[0].innerHTML = "New User"
+        $("#submitUser")[0].innerHTML = "Create new User"
+        $("#user_id")[0].value = "";
+        $("#user_id")[0].placeholder = "Automatic";
+
+        $("#email")[0].value=""
+        $("#first_name")[0].value=""
+        $("#last_name")[0].value=""
+        $("#account_type")[0].selectedIndex=0
+
+        $("#userModal")[0].style.display="block";
+        $("#submitUser")[0].setAttribute("tg","create");
+    }
+    else{
+        $("#heading")[0].innerHTML = "Editing User " + id
+        $("#submitUser")[0].innerHTML = "Update Existing User"
+        $("#submitUser")[0].setAttribute("tg","update");
+        $("#user_id")[0].value = id;
+        $.ajax({
+            type: 'POST',
+            data: {
+                loginEmail: localStorage.getItem("email"),
+                loginPassword: localStorage.getItem("password"),
+                user_id: id
+            },
+            url: baseURL + 'user/get',
+            complete: singleUserCallback
+        });
+    }
+}
+
+function singleUserCallback(data){
+    id = $("#bay_id")[0].value
+    data=data.responseJSON.payload
+    console.log(data)
+    $("#email")[0].value=data.email
+    $("#first_name")[0].value=data.first_name
+    $("#last_name")[0].value = data.last_name
+    $("#account_type")[0].selectedIndex = data.account_type-1
+    $("#userModal")[0].style.display="block";
+}
+
+$(document).on("click", "#submitUser", function(data){
+    console.log("Submitting user")
+    opp = data.target.getAttribute("tg")
+    console.log("Operation: " + opp)
+    formData = {
+        loginEmail:      localStorage.getItem("email"), 
+        loginPassword:   localStorage.getItem("password"),
+        user_id:        $("#user_id")[0].value,
+        first_name:     $("#first_name")[0].value,
+        last_name:      $("#last_name")[0].value,
+        account_type:   $("#account_type")[0].selectedIndex+1,
+        email:          $("#email")[0].value
+    }
+    $("#submitUser")[0].setAttribute("disabled","disabled");
+    $.ajax({
+        type: 'POST',
+        data: formData,
+        url: baseURL + 'user/' + opp,
+        complete: userOppDone
+    });
+    console.log(formData)
+
+    
+});
+
+function userOppDone(data){
+    console.log(data.responseJSON)
+    console.log("updated users?");
+    hideModals();
+    $("#userBtn")[0].click()
+}
+//Start of Bay Stuff
 $(document).on("click", "#bayBtn", function(data){
     console.log("refreshing bay page")
     $("#bayLoading").show();
