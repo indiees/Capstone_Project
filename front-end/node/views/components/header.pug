@@ -42,7 +42,7 @@ div
                   .form
                     .mb-3
                       label.form-label(for='emailnb') Email address
-                      input#emailnb.form-control(type='email' aria-describedby='emailHelp')
+                      input#emailnb.form-control(onkeyup='check()' type='email' aria-describedby='emailHelp')
                       .error-text Please enter a valid email Id
                     .mb-3
                       label.form-label(for='first_namenb' placeholder='name') First Name
@@ -59,7 +59,7 @@ div
                   button.btn.btn-danger(type='button' data-bs-toggle='modal' data-bs-target='#confirmModal') Delete User
                   button.btn.btn-primary(type='submit') Save changes
             
-              confirm delete modal
+            //  confirm delete modal
               #confirmModal.modal.fade(tabindex='-' aria-labelledby='confirmModalLabel' aria-hidden='true')
               .modal-dialog
                 .modal-content

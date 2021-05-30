@@ -1,7 +1,9 @@
-const email = document.querySelector("#exampleInputEmail1");
+const email = document.querySelector("#emailnb");
 const error = document.querySelector(".error-text");
+let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 //email validation
 function check(){
+
     if(email.value.match(regExp)){
         email.style.borderColor = "green";
         error.style.display = "none";
