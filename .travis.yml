@@ -50,7 +50,7 @@ jobs:
           local_dir: dpl_cd_upload
           cleanup: false
           on: &2
-            repo: s3716882/Rent-A-Lux
+            repo: s3716883/Rent-A-Lux
           bucket: ral-web-s3
           region: us-east-1
         - provider: codedeploy
