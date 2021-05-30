@@ -54,10 +54,10 @@ $(document).on("click", "#profile", function(data){
 })
 function profileCallback(data){
     data=data.responseJSON.payload
-    $("#email")[0].value = data.email
-    $("#user_id")[0].value = data.user_id
-    $("#first_name")[0].value = data.first_name
-    $("#last_name")[0].value = data.last_name
+    $("#emailnb")[0].value = data.email
+    $("#user_idnb")[0].value = data.user_id
+    $("#first_namenb")[0].value = data.first_name
+    $("#last_namenb")[0].value = data.last_name
     console.log(data)
 }
 
@@ -67,9 +67,9 @@ $(document).on("click", "#save", function(data){
         data: {
             loginEmail: localStorage.getItem("email"),
             loginPassword: localStorage.getItem("password"),
-            user_id:        $("#user_id")[0].value,
-            first_name:     $("#first_name")[0].value,
-            last_name:      $("#last_name")[0].value
+            user_id:        $("#user_idnb")[0].value,
+            first_name:     $("#first_namenb")[0].value,
+            last_name:      $("#last_namenb")[0].value
         },
         url: baseURL + 'user/update',
         complete: updateCallback
