@@ -4,7 +4,7 @@
   "description": "learning how to node",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "init": "nodemon app.js",
     "start:client": "nodemon app.js",
     "start:server": "mvn -f ../../back-end/java/ clean compile exec:java",
