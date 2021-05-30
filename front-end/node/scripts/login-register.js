@@ -104,6 +104,7 @@ $(function() {
 
 function loginCallback(data){
     data = data.responseJSON
+    console.log(data)
     if (data.status == "failed"){
         $("#login_error")[0].innerHTML = data.message;
         console.log(data.message)
@@ -111,6 +112,7 @@ function loginCallback(data){
     else{
         localStorage.setItem("email", $("#loginEmail").val());
         localStorage.setItem("password",$("#loginPassword").val());
+        localStorage.setItem("account_type",data.payload.account_type);
         window.location.replace("/cars"); //Temp page for demo
     }
 }

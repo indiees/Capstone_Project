@@ -154,6 +154,66 @@ public class UserDAO {
         return false;
     }
 
+    public static ArrayList<User> getUsers() {
+        ArrayList<User> users = new ArrayList<User>();
+        try {
+            // Here you prepare your sql statement
+            String sql = "SELECT * FROM `rentalux`.Users";
+
+            // Execute the query
+            Connection connection = DatabaseUtils.connectToDatabase();
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            // If there is a result, that means that the email matches.
+            while(result.next()) {
+                users.add(new User(result.getInt("user_id"),result.getString("email"),result.getString("password"),result.getString("first_name"),result.getString("last_name"),result.getInt("account_type")));
+            }
+
+            // Close it
+            DatabaseUtils.closeConnection(connection);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (users.size()>0){
+            return users;
+        }
+        else{
+            return null;
+        }
+    }
+
+    public static User getUser(int user_id) {
+        ArrayList<User> users = new ArrayList<User>();
+        try {
+            // Here you prepare your sql statement
+            String sql = "SELECT * FROM `rentalux`.Users WHERE `user_id` = " + user_id;
+
+            // Execute the query
+            Connection connection = DatabaseUtils.connectToDatabase();
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            // If there is a result, that means that the email matches.
+            while(result.next()) {
+                users.add(new User(result.getInt("user_id"),result.getString("email"),result.getString("password"),result.getString("first_name"),result.getString("last_name"),result.getInt("account_type")));
+            }
+
+            // Close it
+            DatabaseUtils.closeConnection(connection);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (users.size()>0){
+            return users.get(0);
+        }
+        else{
+            return null;
+        }
+    }
+
     public static boolean removeUser(int user_id) {
         String update_sql;
         update_sql = "DELETE FROM `rentalux`.`users` WHERE `user_id` = '" + user_id + "';";

@@ -26,11 +26,11 @@ div
           li.nav-item
             a.nav-link.text-white.btn-outline-info(href='/bays') Bays
           li.nav-item
-            a.nav-link.text-white.btn-outline-info(href='/admin') Admin
+            a.nav-link.text-white.btn-outline-info#admin(href='/admin') Admin
           li.nav-item
             a.nav-link.text-white.btn-outline-info(href='/bookings') Bookings
           li.nav-item
-          button.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#exampleModal') Profile
+          button.btn.btn-primary#profile(type='button' data-bs-toggle='modal' data-bs-target='#exampleModal') Profile
           // Modal
           #exampleModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
             .modal-dialog
@@ -41,22 +41,30 @@ div
                 .modal-body
                   .form
                     .mb-3
-                      label.form-label(for='Username' placeholder='Enter User Name') User Name
-                      input#Userid.form-control(type='text is-invalid' aria-describedby='InputGroup1' required)
-                      .invalid-feedback
-                        Enter a valid username
-                    .mb-3
                       label.form-label(for='Email' placeholder='name@example.com') Email address
-                      input.form-control(type='email is-invalid' required)
+                      input#email.form-control(type='email is-invalid' required='')
                       .invalid-feedback
                         Enter a valid Email
+                      input#user_id.form-control(disabled hidden)
+                    //
+                      .mb-3
+                        label.form-label(for='exampleInputPassword1' placeholder='Password') Password
+                        input#password1.form-control(type='password' required='')
+                      .mb-3
+                        label.form-label(for='exampleInputPassword1' placeholder='Password') Confirm Password
+                        input#exampleInputPassword1.form-control(type='password' required='')
                     .mb-3
-                      label.form-label(for='exampleInputPassword1' placeholder='Password') Password
-                      input#exampleInputPassword1.form-control(type='password' required)
+                      label.form-label(for='first_name' placeholder='name') First Name
+                      input#first_name.form-control(type='text is-invalid' required)
+                      .invalid-feedback
+                        Enter a valid name
                     .mb-3
-                      label.form-label(for='exampleInputPassword1' placeholder='Password') Confirm Password
-                      input#exampleInputPassword1.form-control(type='password' required)
+                      label.form-label(for='last_name' placeholder='name') Last Name
+                      input#last_name.form-control(type='text is-invalid' required)
+                      .invalid-feedback
+                        Enter a valid name
                 .modal-footer
+<<<<<<< HEAD
                   button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
                   button.btn.btn-danger(type='button' data-bs-toggle='modal' data-bs-target='#confirmModal') Delete User
                   button.btn.btn-primary(type='submit') Save changes
@@ -71,4 +79,8 @@ div
                     button.btn.btn-secondary(type='button' data-bs-dismiss='modal') No
                     button.btn.btn-primary(type='submit') Yes
                 
+=======
+                  button#close.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+                  submit#save.btn.btn-primary(type='submit') Save changes
+>>>>>>> 22ab09a3a000b5ecf4956a1bde538cdbd365fd88
 script(src='scripts/navbar.js')
