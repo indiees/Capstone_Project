@@ -3,3 +3,10 @@ os: linux
 files:
   - source: ./
     destination: /home/ec2-user/ral
+hooks:
+  AfterInstall:
+    - location: scripts/after_install.sh
+      runas: root
+  ApplicationStart:
+    - location: scripts/application_start.sh
+      runas: root
