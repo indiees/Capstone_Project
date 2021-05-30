@@ -1,6 +1,6 @@
 const email = document.querySelector("#emailnb");
 const error = document.querySelector(".error-text");
-const baseURL = "http://localhost:7000/api/";
+const baseURL = "http://ec2-35-168-2-168.compute-1.amazonaws.com:7000/api/";
 let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 //email validation
 function check(){
