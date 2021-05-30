@@ -391,7 +391,7 @@ function showCarModal(id){
     }
     else{
         $("#heading")[0].innerHTML = "Editing Car " + id
-        $("#submitCar")[0].innerHTML = "Update Existing Bay"
+        $("#submitCar")[0].innerHTML = "Update Existing Car"
         $("#submitCar")[0].setAttribute("tg","update");
         $("#car_id")[0].value = id;
         $.ajax({

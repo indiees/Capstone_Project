@@ -13,8 +13,6 @@ head
       input#loginEmail.input-field(onkeyup='check()' type='text' placeholder='Email' required)
       .error-text Please enter a valid email Id
       input#loginPassword.input-field(type='password' placeholder='Password' required)
-      input.check-box(type='checkbox')
-      span Remember Password
       label#login_error.errormsg
       button.submit-btn(type='submit') Log In
     // Register Form
@@ -29,8 +27,10 @@ head
       input#password.input-field(type='password' placeholder='Enter password' required)
       label#password_error.errormsg
       label#generic_error.errormsg
-      input.check-box(type='checkbox')
-      span I agree to the terms &amp; conditions
+      p By Signing up, I agree to the 
+      a(href="/PrivacyPolicy.docx") Privacy Policy
+      br
+      br
       button.submit-btn(type='submit') Register
 // Script to toggle between the forms
 script(src='scripts/login-register.js')
